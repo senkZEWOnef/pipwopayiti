@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color: #10243d;
+  background-color: #ffffff;
+}
+
+body {
+  @apply font-sans bg-white text-pp-navy;
+}
+
+#root {
+  @apply min-h-screen;
+}

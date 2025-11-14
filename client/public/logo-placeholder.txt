@@ -1,0 +1,8 @@
+Add your logo files here:
+- logo.png (main logo)
+- logo.svg (vector version)
+- favicon.ico (browser icon)
+
+Recommended sizes:
+- Logo: 200x200px minimum
+- Favicon: 32x32px
