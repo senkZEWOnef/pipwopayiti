@@ -40,6 +40,9 @@ export default function Footer() {
               <a href="#contact" className="block text-white/80 hover:text-pp-sky transition-colors">
                 {t('nav.contact')}
               </a>
+              <Link to="/apply" className="block text-white/80 hover:text-pp-sky transition-colors">
+                💼 Apply for Work
+              </Link>
             </div>
           </div>
 

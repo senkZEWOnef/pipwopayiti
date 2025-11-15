@@ -1,4 +1,5 @@
 import { useTranslation } from "react-i18next";
+import ContactForm from "../components/ContactForm";
 
 export default function ContactPage() {
   const { t } = useTranslation();
@@ -117,107 +118,7 @@ export default function ContactPage() {
               </p>
             </div>
             
-            <form className="space-y-6">
-              <div className="grid md:grid-cols-2 gap-4">
-                <div className="space-y-2">
-                  <label className="block text-sm font-semibold text-pp-deep">
-                    {t('contact.name')} <span className="text-red-500">*</span>
-                  </label>
-                  <div className="relative">
-                    <input
-                      type="text"
-                      required
-                      className="w-full rounded-xl border-2 border-pp-gray bg-white px-4 py-3 text-sm outline-none focus:border-pp-blue focus:ring-4 focus:ring-pp-blue/10 transition-all"
-                      placeholder={t('booking.namePlaceholder')}
-                    />
-                    <div className="absolute inset-y-0 right-0 pr-3 flex items-center">
-                      <span className="text-pp-deep/40">👤</span>
-                    </div>
-                  </div>
-                </div>
-                
-                <div className="space-y-2">
-                  <label className="block text-sm font-semibold text-pp-deep">
-                    {t('contact.phone')} <span className="text-red-500">*</span>
-                  </label>
-                  <div className="relative">
-                    <input
-                      type="tel"
-                      required
-                      className="w-full rounded-xl border-2 border-pp-gray bg-white px-4 py-3 text-sm outline-none focus:border-pp-blue focus:ring-4 focus:ring-pp-blue/10 transition-all"
-                      placeholder={t('booking.phonePlaceholder')}
-                    />
-                    <div className="absolute inset-y-0 right-0 pr-3 flex items-center">
-                      <span className="text-pp-deep/40">📱</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              
-              <div className="space-y-2">
-                <label className="block text-sm font-semibold text-pp-deep">
-                  {t('contact.emailOptional')}
-                </label>
-                <div className="relative">
-                  <input
-                    type="email"
-                    className="w-full rounded-xl border-2 border-pp-gray bg-white px-4 py-3 text-sm outline-none focus:border-pp-blue focus:ring-4 focus:ring-pp-blue/10 transition-all"
-                    placeholder={t('booking.emailPlaceholder')}
-                  />
-                  <div className="absolute inset-y-0 right-0 pr-3 flex items-center">
-                    <span className="text-pp-deep/40">✉️</span>
-                  </div>
-                </div>
-              </div>
-              
-              <div className="space-y-2">
-                <label className="block text-sm font-semibold text-pp-deep">
-                  {t('contact.interested')} <span className="text-red-500">*</span>
-                </label>
-                <div className="relative">
-                  <select 
-                    required
-                    className="w-full rounded-xl border-2 border-pp-gray bg-white px-4 py-3 text-sm outline-none focus:border-pp-blue focus:ring-4 focus:ring-pp-blue/10 transition-all appearance-none"
-                  >
-                    <option value="">{t('contact.chooseService')}</option>
-                    <option value="cleaning">{t('contact.cleaningProducts')}</option>
-                    <option value="kitchen">{t('contact.pvcKitchen')}</option>
-                    <option value="closets">{t('contact.closetsWardrobes')}</option>
-                    <option value="delivery">{t('contact.deliveryInstall')}</option>
-                    <option value="other">{t('contact.otherMultiple')}</option>
-                  </select>
-                  <div className="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
-                    <span className="text-pp-deep/40">⬇️</span>
-                  </div>
-                </div>
-              </div>
-              
-              <div className="space-y-2">
-                <label className="block text-sm font-semibold text-pp-deep">
-                  {t('contact.message')} <span className="text-red-500">*</span>
-                </label>
-                <textarea
-                  rows="5"
-                  required
-                  className="w-full rounded-xl border-2 border-pp-gray bg-white px-4 py-3 text-sm outline-none focus:border-pp-blue focus:ring-4 focus:ring-pp-blue/10 transition-all resize-none"
-                  placeholder={t('contact.messagePlaceholder')}
-                />
-              </div>
-              
-              <button
-                type="submit"
-                className="w-full bg-gradient-to-r from-pp-blue to-pp-deep text-white py-4 rounded-xl font-semibold text-lg hover:from-pp-deep hover:to-pp-navy transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-[1.02] active:scale-[0.98]"
-              >
-                <span className="flex items-center justify-center space-x-2">
-                  <span>{t('contact.sendMessage')}</span>
-                  <span className="text-xl">🚀</span>
-                </span>
-              </button>
-              
-              <p className="text-center text-xs text-pp-deep/60">
-                <span className="text-red-500">*</span> {t('contact.requiredFields')}
-              </p>
-            </form>
+            <ContactForm isMainPage={true} />
           </div>
         </div>
       </div>

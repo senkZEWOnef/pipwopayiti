@@ -1,6 +1,7 @@
 import { Link, useLocation } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import Footer from "./Footer";
+import ContactForm from "./ContactForm";
 
 export default function Layout({ children }) {
   const location = useLocation();
@@ -68,6 +69,14 @@ export default function Layout({ children }) {
             >
               {t('nav.contact')}
             </Link>
+            <Link 
+              to="/apply" 
+              className={`font-semibold transition-colors hover:text-pp-blue ${
+                location.pathname === '/apply' ? 'text-pp-blue' : 'text-pp-deep'
+              }`}
+            >
+              Apply for Work
+            </Link>
           </nav>
 
           {/* Language Toggle & CTA Button */}
@@ -81,6 +90,13 @@ export default function Layout({ children }) {
                 {i18n.language === 'ht' ? '🇭🇹 KR' : '🇫🇷 FR'}
               </span>
             </button>
+            
+            <Link
+              to="/apply"
+              className="bg-green-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-green-700 transition-all duration-300 hover:scale-105 shadow-lg"
+            >
+              💼 Join Our Team
+            </Link>
             
             <Link
               to="/services"
@@ -128,55 +144,7 @@ export default function Layout({ children }) {
             </div>
             
             <div className="bg-white/10 backdrop-blur-sm rounded-3xl p-8 border border-white/20">
-              <form className="space-y-6">
-                <div className="grid md:grid-cols-2 gap-6">
-                  <div>
-                    <label className="block text-sm font-semibold text-white mb-2">{t('contact.name')}</label>
-                    <input
-                      className="w-full rounded-xl border border-white/30 bg-white/20 backdrop-blur-sm px-4 py-3 text-white placeholder-white/70 outline-none focus:border-pp-sky focus:ring-2 focus:ring-pp-sky/30 transition-all"
-                      type="text"
-                      placeholder={t('booking.namePlaceholder')}
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-semibold text-white mb-2">{t('contact.phone')}</label>
-                    <input
-                      className="w-full rounded-xl border border-white/30 bg-white/20 backdrop-blur-sm px-4 py-3 text-white placeholder-white/70 outline-none focus:border-pp-sky focus:ring-2 focus:ring-pp-sky/30 transition-all"
-                      type="text"
-                      placeholder={t('booking.phonePlaceholder')}
-                    />
-                  </div>
-                </div>
-                
-                <div>
-                  <label className="block text-sm font-semibold text-white mb-2">{t('contact.interested')}</label>
-                  <select className="w-full rounded-xl border border-white/30 bg-white/20 backdrop-blur-sm px-4 py-3 text-white outline-none focus:border-pp-sky focus:ring-2 focus:ring-pp-sky/30 transition-all">
-                    <option className="text-pp-deep">{t('contact.cleaningProducts')}</option>
-                    <option className="text-pp-deep">{t('contact.pvcKitchen')}</option>
-                    <option className="text-pp-deep">{t('contact.closetsWardrobes')}</option>
-                    <option className="text-pp-deep">{t('contact.deliveryInstall')}</option>
-                    <option className="text-pp-deep">{t('contact.otherMultiple')}</option>
-                  </select>
-                </div>
-                
-                <div>
-                  <label className="block text-sm font-semibold text-white mb-2">{t('contact.message')}</label>
-                  <textarea
-                    rows="4"
-                    className="w-full rounded-xl border border-white/30 bg-white/20 backdrop-blur-sm px-4 py-3 text-white placeholder-white/70 outline-none focus:border-pp-sky focus:ring-2 focus:ring-pp-sky/30 transition-all"
-                    placeholder={t('contact.messagePlaceholder')}
-                  />
-                </div>
-                
-                <div className="text-center">
-                  <button
-                    type="submit"
-                    className="bg-pp-sky text-pp-deep px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-pp-deep transition-all duration-300 hover:scale-105 shadow-lg"
-                  >
-                    {t('contact.sendMessage')}
-                  </button>
-                </div>
-              </form>
+              <ContactForm />
             </div>
           </div>
         </section>

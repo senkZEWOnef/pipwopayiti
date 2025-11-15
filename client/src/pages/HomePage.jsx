@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import ProductCarousel from "../components/ProductCarousel";
 
 export default function HomePage() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   return (
     <div>
@@ -38,21 +39,7 @@ export default function HomePage() {
               </div>
             </div>
 
-            <div className="grid grid-cols-2 gap-6">
-              {[
-                { title: t('homepage.cleaningProducts'), desc: "Detèjan, savon, ak plis ankò", icon: "🧴", count: "50+" },
-                { title: t('homepage.pvcKitchen'), desc: "Modèn ak rezistan", icon: "🏠", count: "100+" },
-                { title: t('homepage.closets'), desc: "Òganizasyon ak style", icon: "👔", count: "75+" },
-                { title: t('homepage.delivery'), desc: "Nan tout Ayiti", icon: "🚚", count: "24/7" }
-              ].map((item, idx) => (
-                <div key={idx} className="bg-white/10 backdrop-blur-sm p-6 rounded-2xl border border-white/20">
-                  <div className="text-3xl mb-3">{item.icon}</div>
-                  <div className="text-2xl font-bold text-pp-sky">{item.count}</div>
-                  <h3 className="font-semibold text-lg mb-1">{item.title}</h3>
-                  <p className="text-sm text-white/80">{item.desc}</p>
-                </div>
-              ))}
-            </div>
+            <ProductCarousel />
           </div>
         </div>
       </section>
@@ -93,6 +80,80 @@ export default function HomePage() {
                 <p className="text-pp-deep/70">{feature.desc}</p>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Join Our Team Section */}
+      <section className="py-20 bg-gradient-to-r from-green-600 to-green-700 text-white">
+        <div className="mx-auto max-w-7xl px-6">
+          <div className="text-center">
+            <h2 className="text-3xl md:text-4xl font-bold mb-6">
+              {i18n.language === 'fr' ? 'Rejoignez l\'équipe Pi Pwòp!' : 'Vin nan ekip Pi Pwòp la!'} 💼
+            </h2>
+            <p className="text-xl text-green-100 mb-8 max-w-3xl mx-auto">
+              {i18n.language === 'fr' 
+                ? 'Nous recrutons des professionnels qualifiés pour l\'installation de cuisines, le nettoyage, la livraison, et plus encore! Travaillez avec des horaires flexibles comme entrepreneur indépendant.'
+                : 'Nou ap rekrite pwofesyonèl ak ekspètiz pou enstalasyon kwizin, netwayaj, livrezon, ak anpil lòt bagay! Travay ak orè fleksib kòm kontrakte endepandan.'
+              }
+            </p>
+            
+            <div className="grid md:grid-cols-3 gap-8 mb-12">
+              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20">
+                <div className="text-3xl mb-3">🔧</div>
+                <h3 className="font-semibold mb-2">
+                  {i18n.language === 'fr' ? 'Installateurs Cuisine' : 'Enstalè Kwizin'}
+                </h3>
+                <p className="text-green-100 text-sm">
+                  {i18n.language === 'fr' ? 'Installation professionnelle' : 'Enstalasyon pwofesyonèl'}
+                </p>
+              </div>
+              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20">
+                <div className="text-3xl mb-3">🧹</div>
+                <h3 className="font-semibold mb-2">
+                  {i18n.language === 'fr' ? 'Nettoyeurs Professionnels' : 'Nètoyè Pwofesyonèl'}
+                </h3>
+                <p className="text-green-100 text-sm">
+                  {i18n.language === 'fr' ? 'Services de nettoyage' : 'Sèvis netwayaj'}
+                </p>
+              </div>
+              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20">
+                <div className="text-3xl mb-3">🚚</div>
+                <h3 className="font-semibold mb-2">
+                  {i18n.language === 'fr' ? 'Chauffeurs Livraison' : 'Chofè Livrezon'}
+                </h3>
+                <p className="text-green-100 text-sm">
+                  {i18n.language === 'fr' ? 'Livraison et installation' : 'Livrezon ak enstalasyon'}
+                </p>
+              </div>
+            </div>
+            
+            <div className="flex flex-wrap justify-center gap-4">
+              <Link
+                to="/apply"
+                className="bg-white text-green-600 px-8 py-4 rounded-full font-bold text-lg hover:bg-green-50 hover:scale-105 transition-all duration-300 shadow-lg"
+              >
+                {i18n.language === 'fr' ? 'Postuler Maintenant!' : 'Aplike Kounye a!'} 🚀
+              </Link>
+              <a
+                href="tel:+50912345678"
+                className="border-2 border-white text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-white hover:text-green-600 transition-all duration-300"
+              >
+                {i18n.language === 'fr' ? 'Appelez-nous:' : 'Rele nou:'} +509 1234 5678
+              </a>
+            </div>
+            
+            <div className="mt-8 bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 max-w-2xl mx-auto">
+              <h4 className="font-semibold mb-2">
+                ✨ {i18n.language === 'fr' ? 'Pourquoi Travailler Avec Nous?' : 'Poukisa Travay Ak Nou?'}
+              </h4>
+              <div className="grid md:grid-cols-2 gap-4 text-green-100 text-sm">
+                <div>• {i18n.language === 'fr' ? 'Horaire flexible' : 'Orè travay fleksib'}</div>
+                <div>• {i18n.language === 'fr' ? 'Paiements bihebdomadaires' : 'Yo peye ou chak 2 semèn'}</div>
+                <div>• {i18n.language === 'fr' ? 'Entrepreneur indépendant' : 'Kontrakte endepandan'}</div>
+                <div>• {i18n.language === 'fr' ? 'Opportunités de travail régulières' : 'Opòtinite travay regilyè'}</div>
+              </div>
+            </div>
           </div>
         </div>
       </section>

@@ -4,6 +4,7 @@ import HomePage from "./pages/HomePage";
 import ProductsPage from "./pages/ProductsPage";
 import ServicesPage from "./pages/ServicesPage";
 import ContactPage from "./pages/ContactPage";
+import ApplyPage from "./pages/ApplyPage";
 import AdminPage from "./pages/AdminPage";
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
               <Route path="/products" element={<ProductsPage />} />
               <Route path="/services" element={<ServicesPage />} />
               <Route path="/contact" element={<ContactPage />} />
+              <Route path="/apply" element={<ApplyPage />} />
             </Routes>
           </Layout>
         } />
