@@ -54,10 +54,10 @@ export default function ContactForm({ isMainPage = false }) {
     return (
       <div className="text-center py-8">
         <span className="text-6xl mb-4 block">✅</span>
-        <h3 className={`text-2xl font-bold mb-2 ${isMainPage ? 'text-pp-deep' : 'text-white'}`}>
+        <h3 className={`text-2xl font-bold mb-2 ${isMainPage ? 'text-pp-deep dark:text-dark-text' : 'text-white'}`}>
           Mèsi!
         </h3>
-        <p className={`${isMainPage ? 'text-pp-deep/70' : 'text-white/80'}`}>
+        <p className={`${isMainPage ? 'text-pp-deep/70 dark:text-dark-text-secondary' : 'text-white/80'}`}>
           Mesaj ou an te voye ak siksè. N ap reponn ou nan kèk tan.
         </p>
       </div>
@@ -68,7 +68,7 @@ export default function ContactForm({ isMainPage = false }) {
     <form onSubmit={handleSubmit} className="space-y-6">
       <div className="grid md:grid-cols-2 gap-6">
         <div>
-          <label className={`block text-sm font-semibold mb-2 ${isMainPage ? 'text-pp-deep' : 'text-white'}`}>
+          <label className={`block text-sm font-semibold mb-2 ${isMainPage ? 'text-pp-deep dark:text-dark-text' : 'text-white'}`}>
             {t('contact.name')} <span className="text-red-500">*</span>
           </label>
           <input
@@ -79,14 +79,14 @@ export default function ContactForm({ isMainPage = false }) {
             required
             className={`w-full rounded-xl border px-4 py-3 text-sm outline-none transition-all ${
               isMainPage
-                ? 'border-pp-gray bg-white text-pp-deep placeholder-pp-deep/50 focus:border-pp-blue focus:ring-2 focus:ring-pp-blue/10'
+                ? 'border-pp-gray dark:border-dark-border bg-white dark:bg-dark-surface text-pp-deep dark:text-dark-text placeholder-pp-deep/50 dark:placeholder-dark-text-secondary focus:border-pp-blue dark:focus:border-dark-accent-blue focus:ring-2 focus:ring-pp-blue/10 dark:focus:ring-dark-accent-blue/10'
                 : 'border-white/30 bg-white/20 backdrop-blur-sm text-white placeholder-white/70 focus:border-pp-sky focus:ring-2 focus:ring-pp-sky/30'
             }`}
             placeholder={t('booking.namePlaceholder')}
           />
         </div>
         <div>
-          <label className={`block text-sm font-semibold mb-2 ${isMainPage ? 'text-pp-deep' : 'text-white'}`}>
+          <label className={`block text-sm font-semibold mb-2 ${isMainPage ? 'text-pp-deep dark:text-dark-text' : 'text-white'}`}>
             {t('contact.phone')} <span className="text-red-500">*</span>
           </label>
           <input
@@ -97,7 +97,7 @@ export default function ContactForm({ isMainPage = false }) {
             required
             className={`w-full rounded-xl border px-4 py-3 text-sm outline-none transition-all ${
               isMainPage
-                ? 'border-pp-gray bg-white text-pp-deep placeholder-pp-deep/50 focus:border-pp-blue focus:ring-2 focus:ring-pp-blue/10'
+                ? 'border-pp-gray dark:border-dark-border bg-white dark:bg-dark-surface text-pp-deep dark:text-dark-text placeholder-pp-deep/50 dark:placeholder-dark-text-secondary focus:border-pp-blue dark:focus:border-dark-accent-blue focus:ring-2 focus:ring-pp-blue/10 dark:focus:ring-dark-accent-blue/10'
                 : 'border-white/30 bg-white/20 backdrop-blur-sm text-white placeholder-white/70 focus:border-pp-sky focus:ring-2 focus:ring-pp-sky/30'
             }`}
             placeholder={t('booking.phonePlaceholder')}
@@ -107,7 +107,7 @@ export default function ContactForm({ isMainPage = false }) {
 
       {isMainPage && (
         <div>
-          <label className="block text-sm font-semibold text-pp-deep mb-2">
+          <label className="block text-sm font-semibold text-pp-deep dark:text-dark-text mb-2">
             {t('contact.emailOptional')}
           </label>
           <input
@@ -115,14 +115,14 @@ export default function ContactForm({ isMainPage = false }) {
             name="email"
             value={formData.email}
             onChange={handleChange}
-            className="w-full rounded-xl border border-pp-gray bg-white px-4 py-3 text-pp-deep text-sm placeholder-pp-deep/50 outline-none focus:border-pp-blue focus:ring-2 focus:ring-pp-blue/10 transition-all"
+            className="w-full rounded-xl border border-pp-gray dark:border-dark-border bg-white dark:bg-dark-surface px-4 py-3 text-pp-deep dark:text-dark-text text-sm placeholder-pp-deep/50 dark:placeholder-dark-text-secondary outline-none focus:border-pp-blue dark:focus:border-dark-accent-blue focus:ring-2 focus:ring-pp-blue/10 dark:focus:ring-dark-accent-blue/10 transition-all"
             placeholder={t('booking.emailPlaceholder')}
           />
         </div>
       )}
       
       <div>
-        <label className={`block text-sm font-semibold mb-2 ${isMainPage ? 'text-pp-deep' : 'text-white'}`}>
+        <label className={`block text-sm font-semibold mb-2 ${isMainPage ? 'text-pp-deep dark:text-dark-text' : 'text-white'}`}>
           {t('contact.interested')} <span className="text-red-500">*</span>
         </label>
         <select 
@@ -132,7 +132,7 @@ export default function ContactForm({ isMainPage = false }) {
           required
           className={`w-full rounded-xl border px-4 py-3 text-sm outline-none transition-all ${
             isMainPage
-              ? 'border-pp-gray bg-white text-pp-deep focus:border-pp-blue focus:ring-2 focus:ring-pp-blue/10'
+              ? 'border-pp-gray dark:border-dark-border bg-white dark:bg-dark-surface text-pp-deep dark:text-dark-text focus:border-pp-blue dark:focus:border-dark-accent-blue focus:ring-2 focus:ring-pp-blue/10 dark:focus:ring-dark-accent-blue/10'
               : 'border-white/30 bg-white/20 backdrop-blur-sm text-white focus:border-pp-sky focus:ring-2 focus:ring-pp-sky/30'
           }`}
         >
@@ -146,7 +146,7 @@ export default function ContactForm({ isMainPage = false }) {
       </div>
       
       <div>
-        <label className={`block text-sm font-semibold mb-2 ${isMainPage ? 'text-pp-deep' : 'text-white'}`}>
+        <label className={`block text-sm font-semibold mb-2 ${isMainPage ? 'text-pp-deep dark:text-dark-text' : 'text-white'}`}>
           {t('contact.message')} <span className="text-red-500">*</span>
         </label>
         <textarea
@@ -157,7 +157,7 @@ export default function ContactForm({ isMainPage = false }) {
           rows={isMainPage ? "5" : "4"}
           className={`w-full rounded-xl border px-4 py-3 text-sm outline-none transition-all resize-none ${
             isMainPage
-              ? 'border-pp-gray bg-white text-pp-deep placeholder-pp-deep/50 focus:border-pp-blue focus:ring-2 focus:ring-pp-blue/10'
+              ? 'border-pp-gray dark:border-dark-border bg-white dark:bg-dark-surface text-pp-deep dark:text-dark-text placeholder-pp-deep/50 dark:placeholder-dark-text-secondary focus:border-pp-blue dark:focus:border-dark-accent-blue focus:ring-2 focus:ring-pp-blue/10 dark:focus:ring-dark-accent-blue/10'
               : 'border-white/30 bg-white/20 backdrop-blur-sm text-white placeholder-white/70 focus:border-pp-sky focus:ring-2 focus:ring-pp-sky/30'
           }`}
           placeholder={t('contact.messagePlaceholder')}
@@ -170,7 +170,7 @@ export default function ContactForm({ isMainPage = false }) {
           disabled={isSubmitting}
           className={`px-8 py-3 rounded-xl font-semibold transition-all duration-300 shadow-lg ${
             isMainPage
-              ? 'bg-gradient-to-r from-pp-blue to-pp-deep text-white hover:from-pp-deep hover:to-pp-navy hover:scale-[1.02] active:scale-[0.98]'
+              ? 'bg-gradient-to-r from-pp-blue to-pp-deep dark:from-dark-accent-blue dark:to-dark-accent text-white hover:from-pp-deep hover:to-pp-navy dark:hover:from-dark-accent dark:hover:to-dark-accent-blue hover:scale-[1.02] active:scale-[0.98]'
               : 'bg-pp-sky text-pp-deep hover:bg-white hover:text-pp-deep hover:scale-105'
           } ${isSubmitting ? 'opacity-50 cursor-not-allowed' : ''}`}
         >
@@ -189,7 +189,7 @@ export default function ContactForm({ isMainPage = false }) {
       </div>
 
       {isMainPage && (
-        <p className="text-center text-xs text-pp-deep/60">
+        <p className="text-center text-xs text-pp-deep/60 dark:text-dark-text-secondary">
           <span className="text-red-500">*</span> {t('contact.requiredFields')}
         </p>
       )}

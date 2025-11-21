@@ -49,10 +49,12 @@
     "notAvailable": "Non Disponible",
     "noResults": "Aucun produit trouvé",
     "noResultsDesc": "Essayez de modifier les filtres ou de rechercher avec des mots-clés différents",
+    "resetFilters": "Réinitialiser les Filtres",
     "allProducts": "Tous les Produits",
     "cleaningProducts": "Produits de Nettoyage",
     "kitchensVanities": "Cuisines & Vanités",
     "closetsWardrobes": "Placards & Armoires",
+    "electronics": "Électronique & Solaire",
     "other": "Autres"
   },
   "services": {
@@ -124,6 +126,7 @@
     "fillForm": "Remplissez le formulaire et nous vous répondrons sous 24 heures.",
     "email": "Email",
     "emailOptional": "Email (optionnel)",
+    "whatsapp": "WhatsApp",
     "chooseService": "Choisissez un service...",
     "requiredFields": "Champs requis",
     "whereWeAre": "Où nous sommes",
@@ -141,7 +144,8 @@
     "cleaningProducts": "Produits de Nettoyage",
     "pvcKitchen": "Cuisine PVC",
     "closetsWardrobes": "Placards & Armoires",
-    "deliveryInstall": "Livraison & Installation"
+    "deliveryInstall": "Livraison & Installation",
+    "applyWork": "Rejoindre Notre Équipe"
   },
   "booking": {
     "bookAppointment": "Prendre Rendez-vous",
@@ -169,10 +173,16 @@
     "estimatedPrice": "Prix Estimé:",
     "duration": "Durée:",
     "cancel": "Annuler",
-    "confirm": "Confirmer le Rendez-vous",
+    "confirmAppointment": "Confirmer le Rendez-vous",
     "thankYou": "Merci ! Nous vous appellerons dans quelques heures pour confirmer le rendez-vous.",
     "namePlaceholder": "Jean Baptiste",
     "phonePlaceholder": "+509 1234 5678",
-    "emailPlaceholder": "jean@example.com"
+    "emailPlaceholder": "jean@example.com",
+    "timeSelectPlaceholder": "Choisissez une heure",
+    "timeMorning": "Matin (8h-12h)",
+    "timeAfternoon": "Après-midi (12h-17h)",
+    "timeEvening": "Soir (17h-20h)",
+    "additionalNotes": "Notes Supplémentaires",
+    "notesPlaceholder": "Dites-nous en plus sur votre projet ou vos demandes spéciales"
   }
 }

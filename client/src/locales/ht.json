@@ -49,10 +49,12 @@
     "notAvailable": "Pa Disponib",
     "noResults": "Pa gen pwodwi yo jwenn",
     "noResultsDesc": "Eseye chanje filtè yo oswa rechèche ak mo kle diferan",
+    "resetFilters": "Renmèt Filtè yo",
     "allProducts": "Tout Pwodwi",
     "cleaningProducts": "Pwodwi Netwayaj",
     "kitchensVanities": "Kwizin & Vanity",
     "closetsWardrobes": "Closets & Gadrob",
+    "electronics": "Elektwonik & Solè",
     "other": "Lòt Bagay"
   },
   "services": {
@@ -124,6 +126,7 @@
     "fillForm": "Ranpli fòm nan epi nou pral reponn ou nan mwens pase 24 èdtan.",
     "email": "Email",
     "emailOptional": "Email (opsyonèl)",
+    "whatsapp": "WhatsApp",
     "chooseService": "Chwazi yon sèvis...",
     "requiredFields": "Jaden ki obligatwa",
     "whereWeAre": "Kote nou ye",
@@ -141,7 +144,8 @@
     "cleaningProducts": "Pwodwi Netwayaj",
     "pvcKitchen": "Kwizin PVC",
     "closetsWardrobes": "Closets & Gadrob",
-    "deliveryInstall": "Livrezon & Enstalasyon"
+    "deliveryInstall": "Livrezon & Enstalasyon",
+    "applyWork": "Vin nan Ekip Nou an"
   },
   "booking": {
     "bookAppointment": "Pran Randevou",
@@ -169,10 +173,16 @@
     "estimatedPrice": "Pri Estime:",
     "duration": "Dire:",
     "cancel": "Anile",
-    "confirm": "Konfime Randevou",
+    "confirmAppointment": "Konfime Randevou",
     "thankYou": "Mèsi! Nou pral rele ou nan kèk èdtan pou konfime randevou an.",
     "namePlaceholder": "Jean Baptiste",
     "phonePlaceholder": "+509 1234 5678",
-    "emailPlaceholder": "jean@example.com"
+    "emailPlaceholder": "jean@example.com",
+    "timeSelectPlaceholder": "Chwazi yon lè",
+    "timeMorning": "Maten (8h-12h)",
+    "timeAfternoon": "Apremidi (12h-17h)",
+    "timeEvening": "Aswè (17h-20h)",
+    "additionalNotes": "Nòt Adisyonèl",
+    "notesPlaceholder": "Di nou plis sou pwojè w la oswa demand espesyal ou yo"
   }
 }

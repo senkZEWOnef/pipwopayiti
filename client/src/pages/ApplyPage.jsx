@@ -164,27 +164,31 @@ export default function ApplyPage() {
   const selectedJob = JOB_POSITIONS.find(job => job.id === selectedPosition);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-pp-blue via-pp-deep to-pp-navy">
-      <div className="pt-20">
-        <div className="max-w-6xl mx-auto px-6 py-12">
+    <div className="min-h-screen bg-gradient-to-br from-pp-blue via-pp-deep to-pp-navy dark:from-dark-bg dark:via-dark-surface dark:to-dark-card transition-colors duration-300">
+      <div className="pt-16 md:pt-20">
+        <div className="max-w-6xl mx-auto px-4 md:px-6 py-8 md:py-12">
           
           {/* Header */}
-          <div className="text-center mb-12">
-            <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
-              Vin Nan Ekip Pi Pwòp La
+          <div className="text-center mb-8 md:mb-12">
+            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white dark:text-dark-text mb-4 md:mb-6">
+              {i18n.language === 'fr' ? 'Rejoignez l\'Équipe Pi Pwòp' : 'Vin Nan Ekip Pi Pwòp La'}
             </h1>
-            <p className="text-xl text-white/80 mb-8 max-w-3xl mx-auto">
-              Nou ap chèche pwofesyonèl ak eksperyans pou vin nan ekip nou an ki ap grandi. 
-              Travay ak orè fleksib, yo peye ou chak 2 semèn, ak fè pati konpani pi bon an nan Ayiti.
+            <p className="text-lg md:text-xl text-white/80 dark:text-dark-text-secondary mb-6 md:mb-8 max-w-3xl mx-auto leading-relaxed">
+              {i18n.language === 'fr' 
+                ? 'Nous recherchons des professionnels expérimentés pour rejoindre notre équipe en pleine croissance. Travaillez avec des horaires flexibles, payés toutes les 2 semaines, et faites partie de la meilleure entreprise en Haïti.'
+                : 'Nou ap chèche pwofesyonèl ak eksperyans pou vin nan ekip nou an ki ap grandi. Travay ak orè fleksib, yo peye ou chak 2 semèn, ak fè pati konpani pi bon an nan Ayiti.'
+              }
             </p>
-            <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 max-w-2xl mx-auto">
-              <h3 className="text-white font-semibold mb-2">💼 Sa Nou Ofri:</h3>
-              <ul className="text-white/90 text-left space-y-1">
-                <li>• Orè travay fleksib - travay lè ou vle</li>
-                <li>• Yo peye ou chak 2 semèn - lajan regilyè</li>
-                <li>• Estatut kontrakte endepandan</li>
-                <li>• Opòtinite travay regilyè</li>
-                <li>• Sipò pwofesyonèl ak fòmasyon</li>
+            <div className="bg-white/10 dark:bg-dark-card backdrop-blur-sm rounded-xl md:rounded-2xl p-4 md:p-6 border border-white/20 dark:border-dark-border max-w-2xl mx-auto">
+              <h3 className="text-white dark:text-dark-text font-semibold mb-2">
+                💼 {i18n.language === 'fr' ? 'Ce Que Nous Offrons:' : 'Sa Nou Ofri:'}
+              </h3>
+              <ul className="text-white/90 dark:text-dark-text-secondary text-left space-y-1">
+                <li>• {i18n.language === 'fr' ? 'Horaires de travail flexibles - travaillez quand vous voulez' : 'Orè travay fleksib - travay lè ou vle'}</li>
+                <li>• {i18n.language === 'fr' ? 'Payé toutes les 2 semaines - revenus réguliers' : 'Yo peye ou chak 2 semèn - lajan regilyè'}</li>
+                <li>• {i18n.language === 'fr' ? 'Statut de contracteur indépendant' : 'Estatut kontrakte endepandan'}</li>
+                <li>• {i18n.language === 'fr' ? 'Opportunités de travail régulières' : 'Opòtinite travay regilyè'}</li>
+                <li>• {i18n.language === 'fr' ? 'Support professionnel et formation' : 'Sipò pwofesyonèl ak fòmasyon'}</li>
               </ul>
             </div>
           </div>
@@ -194,28 +198,28 @@ export default function ApplyPage() {
             {JOB_POSITIONS.map((job) => (
               <div
                 key={job.id}
-                className={`bg-white/10 backdrop-blur-sm rounded-2xl p-6 border transition-all duration-300 cursor-pointer ${
+                className={`bg-white/10 dark:bg-dark-card backdrop-blur-sm rounded-2xl p-6 border transition-all duration-300 cursor-pointer ${
                   selectedPosition === job.id 
-                    ? 'border-pp-sky bg-white/20 scale-105' 
-                    : 'border-white/20 hover:border-white/40 hover:bg-white/15'
+                    ? 'border-pp-sky dark:border-dark-accent-blue bg-white/20 dark:bg-dark-surface scale-105' 
+                    : 'border-white/20 dark:border-dark-border hover:border-white/40 dark:hover:border-dark-accent-blue hover:bg-white/15 dark:hover:bg-dark-surface'
                 }`}
                 onClick={() => setSelectedPosition(job.id)}
               >
                 <div className="text-center mb-4">
-                  <h3 className="text-xl font-bold text-white mb-2">
+                  <h3 className="text-xl font-bold text-white dark:text-dark-text mb-2">
                     {t && i18n.language === 'fr' ? job.titleFr : job.title}
                   </h3>
                 </div>
                 
-                <p className="text-white/80 mb-4 text-sm">
+                <p className="text-white/80 dark:text-dark-text-secondary mb-4 text-sm">
                   {t && i18n.language === 'fr' ? job.descriptionFr : job.description}
                 </p>
                 
-                <div className="bg-white/10 rounded-xl p-3 mb-4">
-                  <p className="text-white font-semibold text-sm mb-2">
+                <div className="bg-white/10 dark:bg-dark-surface rounded-xl p-3 mb-4">
+                  <p className="text-white dark:text-dark-text font-semibold text-sm mb-2">
                     {t && i18n.language === 'fr' ? 'Exigences Principales:' : 'Kondisyon Yo:'}
                   </p>
-                  <ul className="text-white/80 text-xs space-y-1">
+                  <ul className="text-white/80 dark:text-dark-text-secondary text-xs space-y-1">
                     {(t && i18n.language === 'fr' ? job.requirementsFr : job.requirements)
                       .slice(0, 3).map((req, idx) => (
                       <li key={idx}>• {req}</li>
@@ -225,7 +229,7 @@ export default function ApplyPage() {
                 
                 {selectedPosition === job.id && (
                   <div className="mt-4 text-center">
-                    <span className="bg-pp-sky text-pp-deep px-4 py-2 rounded-full font-semibold text-sm">
+                    <span className="bg-pp-sky dark:bg-dark-accent-blue text-pp-deep dark:text-dark-bg px-4 py-2 rounded-full font-semibold text-sm">
                       ✓ Selected
                     </span>
                   </div>
@@ -236,13 +240,13 @@ export default function ApplyPage() {
 
           {/* Application Form */}
           {selectedPosition && (
-            <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-8 border border-white/20">
+            <div className="bg-white/10 dark:bg-dark-card backdrop-blur-lg rounded-2xl p-8 border border-white/20 dark:border-dark-border">
               <div className="mb-8">
-                <h2 className="text-2xl font-bold text-white mb-2">
+                <h2 className="text-2xl font-bold text-white dark:text-dark-text mb-2">
                   {i18n.language === 'fr' ? 'Postuler pour: ' : 'Aplike pou: '}
                   {i18n.language === 'fr' ? selectedJob?.titleFr : selectedJob?.title}
                 </h2>
-                <p className="text-white/70">
+                <p className="text-white/70 dark:text-dark-text-secondary">
                   {i18n.language === 'fr' 
                     ? "Remplissez la demande ci-dessous pour rejoindre notre équipe."
                     : "Ranpli aplikasyon an anba a pou vin nan ekip nou an."
@@ -251,15 +255,15 @@ export default function ApplyPage() {
               </div>
 
               {/* Position Details */}
-              <div className="bg-white/10 rounded-xl p-6 mb-8">
-                <h3 className="text-white font-semibold mb-4">
+              <div className="bg-white/10 dark:bg-dark-surface rounded-xl p-6 mb-8">
+                <h3 className="text-white dark:text-dark-text font-semibold mb-4">
                   {i18n.language === 'fr' ? 'Détails du Poste:' : 'Detay Travay La:'}
                 </h3>
                 <div>
-                  <h4 className="text-pp-sky font-semibold mb-2">
+                  <h4 className="text-pp-sky dark:text-dark-accent-blue font-semibold mb-2">
                     {i18n.language === 'fr' ? 'Exigences:' : 'Kondisyon Yo:'}
                   </h4>
-                  <ul className="text-white/80 text-sm space-y-1">
+                  <ul className="text-white/80 dark:text-dark-text-secondary text-sm space-y-1">
                     {(i18n.language === 'fr' ? selectedJob?.requirementsFr : selectedJob?.requirements)?.map((req, idx) => (
                       <li key={idx}>• {req}</li>
                     ))}
@@ -271,7 +275,7 @@ export default function ApplyPage() {
                 {/* Personal Information */}
                 <div className="grid md:grid-cols-2 gap-6">
                   <div>
-                    <label className="block text-white font-semibold mb-2">
+                    <label className="block text-white dark:text-dark-text font-semibold mb-2">
                       {i18n.language === 'fr' ? 'Nom Complet' : 'Non Konplè'} <span className="text-red-400">*</span>
                     </label>
                     <input
@@ -279,13 +283,13 @@ export default function ApplyPage() {
                       required
                       value={formData.fullName}
                       onChange={(e) => setFormData({...formData, fullName: e.target.value})}
-                      className="w-full rounded-xl border border-white/30 bg-white/20 backdrop-blur-sm px-4 py-3 text-white placeholder-white/70 outline-none focus:border-pp-sky focus:ring-2 focus:ring-pp-sky/30 transition-all"
+                      className="w-full rounded-xl border border-white/30 dark:border-dark-border bg-white/20 dark:bg-dark-surface backdrop-blur-sm px-4 py-3 text-white dark:text-dark-text placeholder-white/70 dark:placeholder-dark-text-secondary outline-none focus:border-pp-sky dark:focus:border-dark-accent-blue focus:ring-2 focus:ring-pp-sky/30 dark:focus:ring-dark-accent-blue/30 transition-all"
                       placeholder={i18n.language === 'fr' ? 'Votre nom complet' : 'Non konplè ou'}
                     />
                   </div>
                   
                   <div>
-                    <label className="block text-white font-semibold mb-2">
+                    <label className="block text-white dark:text-dark-text font-semibold mb-2">
                       {i18n.language === 'fr' ? 'Numéro de Téléphone' : 'Nimewo Telefòn'} <span className="text-red-400">*</span>
                     </label>
                     <input
@@ -293,7 +297,7 @@ export default function ApplyPage() {
                       required
                       value={formData.phone}
                       onChange={(e) => setFormData({...formData, phone: e.target.value})}
-                      className="w-full rounded-xl border border-white/30 bg-white/20 backdrop-blur-sm px-4 py-3 text-white placeholder-white/70 outline-none focus:border-pp-sky focus:ring-2 focus:ring-pp-sky/30 transition-all"
+                      className="w-full rounded-xl border border-white/30 dark:border-dark-border bg-white/20 dark:bg-dark-surface backdrop-blur-sm px-4 py-3 text-white dark:text-dark-text placeholder-white/70 dark:placeholder-dark-text-secondary outline-none focus:border-pp-sky dark:focus:border-dark-accent-blue focus:ring-2 focus:ring-pp-sky/30 dark:focus:ring-dark-accent-blue/30 transition-all"
                       placeholder="+509 1234 5678"
                     />
                   </div>
@@ -301,77 +305,77 @@ export default function ApplyPage() {
 
                 <div className="grid md:grid-cols-2 gap-6">
                   <div>
-                    <label className="block text-white font-semibold mb-2">
-                      Email (Optional)
+                    <label className="block text-white dark:text-dark-text font-semibold mb-2">
+                      {i18n.language === 'fr' ? 'Email (Optionnel)' : 'Email (Opsyonèl)'}
                     </label>
                     <input
                       type="email"
                       value={formData.email}
                       onChange={(e) => setFormData({...formData, email: e.target.value})}
-                      className="w-full rounded-xl border border-white/30 bg-white/20 backdrop-blur-sm px-4 py-3 text-white placeholder-white/70 outline-none focus:border-pp-sky focus:ring-2 focus:ring-pp-sky/30 transition-all"
-                      placeholder="your.email@example.com"
+                      className="w-full rounded-xl border border-white/30 dark:border-dark-border bg-white/20 dark:bg-dark-surface backdrop-blur-sm px-4 py-3 text-white dark:text-dark-text placeholder-white/70 dark:placeholder-dark-text-secondary outline-none focus:border-pp-sky dark:focus:border-dark-accent-blue focus:ring-2 focus:ring-pp-sky/30 dark:focus:ring-dark-accent-blue/30 transition-all"
+                      placeholder={i18n.language === 'fr' ? 'votre.email@exemple.com' : 'email.w@egzanp.com'}
                     />
                   </div>
                   
                   <div>
-                    <label className="block text-white font-semibold mb-2">
-                      Years of Experience <span className="text-red-400">*</span>
+                    <label className="block text-white dark:text-dark-text font-semibold mb-2">
+                      {i18n.language === 'fr' ? 'Années d\'Expérience' : 'Kòmbyen Ane Eksperyans'} <span className="text-red-400">*</span>
                     </label>
                     <select
                       required
                       value={formData.experienceYears}
                       onChange={(e) => setFormData({...formData, experienceYears: e.target.value})}
-                      className="w-full rounded-xl border border-white/30 bg-white/20 backdrop-blur-sm px-4 py-3 text-white outline-none focus:border-pp-sky focus:ring-2 focus:ring-pp-sky/30 transition-all"
+                      className="w-full rounded-xl border border-white/30 dark:border-dark-border bg-white/20 dark:bg-dark-surface backdrop-blur-sm px-4 py-3 text-white dark:text-dark-text outline-none focus:border-pp-sky dark:focus:border-dark-accent-blue focus:ring-2 focus:ring-pp-sky/30 dark:focus:ring-dark-accent-blue/30 transition-all"
                     >
-                      <option className="text-pp-deep" value="">Select experience level</option>
-                      <option className="text-pp-deep" value="0-1">0-1 years (Beginner)</option>
-                      <option className="text-pp-deep" value="2-3">2-3 years</option>
-                      <option className="text-pp-deep" value="4-5">4-5 years</option>
-                      <option className="text-pp-deep" value="6-10">6-10 years</option>
-                      <option className="text-pp-deep" value="10+">10+ years (Expert)</option>
+                      <option className="text-pp-deep" value="">{i18n.language === 'fr' ? 'Sélectionnez le niveau d\'expérience' : 'Chwazi nivo eksperyans ou'}</option>
+                      <option className="text-pp-deep" value="0-1">{i18n.language === 'fr' ? '0-1 ans (Débutant)' : '0-1 ane (Kòmansè)'}</option>
+                      <option className="text-pp-deep" value="2-3">{i18n.language === 'fr' ? '2-3 ans' : '2-3 ane'}</option>
+                      <option className="text-pp-deep" value="4-5">{i18n.language === 'fr' ? '4-5 ans' : '4-5 ane'}</option>
+                      <option className="text-pp-deep" value="6-10">{i18n.language === 'fr' ? '6-10 ans' : '6-10 ane'}</option>
+                      <option className="text-pp-deep" value="10+">{i18n.language === 'fr' ? '10+ ans (Expert)' : '10+ ane (Ekspè)'}</option>
                     </select>
                   </div>
                 </div>
 
                 <div>
-                  <label className="block text-white font-semibold mb-2">
-                    Address/Location <span className="text-red-400">*</span>
+                  <label className="block text-white dark:text-dark-text font-semibold mb-2">
+                    {i18n.language === 'fr' ? 'Adresse/Localisation' : 'Adrès/Kote w ye'} <span className="text-red-400">*</span>
                   </label>
                   <input
                     type="text"
                     required
                     value={formData.address}
                     onChange={(e) => setFormData({...formData, address: e.target.value})}
-                    className="w-full rounded-xl border border-white/30 bg-white/20 backdrop-blur-sm px-4 py-3 text-white placeholder-white/70 outline-none focus:border-pp-sky focus:ring-2 focus:ring-pp-sky/30 transition-all"
-                    placeholder="Port-au-Prince, Delmas, Carrefour, etc."
+                    className="w-full rounded-xl border border-white/30 dark:border-dark-border bg-white/20 dark:bg-dark-surface backdrop-blur-sm px-4 py-3 text-white dark:text-dark-text placeholder-white/70 dark:placeholder-dark-text-secondary outline-none focus:border-pp-sky dark:focus:border-dark-accent-blue focus:ring-2 focus:ring-pp-sky/30 dark:focus:ring-dark-accent-blue/30 transition-all"
+                    placeholder={i18n.language === 'fr' ? 'Port-au-Prince, Delmas, Carrefour, etc.' : 'Port-au-Prince, Delmas, Carrefour, elatrè'}
                   />
                 </div>
 
                 <div>
-                  <label className="block text-white font-semibold mb-2">
-                    Previous Work Experience <span className="text-red-400">*</span>
+                  <label className="block text-white dark:text-dark-text font-semibold mb-2">
+                    {i18n.language === 'fr' ? 'Expérience Professionnelle Antérieure' : 'Eksperyans Travay Anvan'} <span className="text-red-400">*</span>
                   </label>
                   <textarea
                     rows="4"
                     required
                     value={formData.previousWork}
                     onChange={(e) => setFormData({...formData, previousWork: e.target.value})}
-                    className="w-full rounded-xl border border-white/30 bg-white/20 backdrop-blur-sm px-4 py-3 text-white placeholder-white/70 outline-none focus:border-pp-sky focus:ring-2 focus:ring-pp-sky/30 transition-all resize-none"
-                    placeholder="Describe your relevant work experience, skills, and any companies you've worked for..."
+                    className="w-full rounded-xl border border-white/30 dark:border-dark-border bg-white/20 dark:bg-dark-surface backdrop-blur-sm px-4 py-3 text-white dark:text-dark-text placeholder-white/70 dark:placeholder-dark-text-secondary outline-none focus:border-pp-sky dark:focus:border-dark-accent-blue focus:ring-2 focus:ring-pp-sky/30 dark:focus:ring-dark-accent-blue/30 transition-all resize-none"
+                    placeholder={i18n.language === 'fr' ? 'Décrivez votre expérience professionnelle pertinente, vos compétences et les entreprises pour lesquelles vous avez travaillé...' : 'Dekri eksperyans travay ki gen rapò ak ou, kapasite w yo ak konpani yo ou te travay pou yo...'}
                   />
                 </div>
 
                 <div>
-                  <label className="block text-white font-semibold mb-2">
-                    Availability <span className="text-red-400">*</span>
+                  <label className="block text-white dark:text-dark-text font-semibold mb-2">
+                    {i18n.language === 'fr' ? 'Disponibilité' : 'Disponibilite'} <span className="text-red-400">*</span>
                   </label>
                   <textarea
                     rows="3"
                     required
                     value={formData.availability}
                     onChange={(e) => setFormData({...formData, availability: e.target.value})}
-                    className="w-full rounded-xl border border-white/30 bg-white/20 backdrop-blur-sm px-4 py-3 text-white placeholder-white/70 outline-none focus:border-pp-sky focus:ring-2 focus:ring-pp-sky/30 transition-all resize-none"
-                    placeholder="Monday-Friday 8am-5pm, Weekends available, Flexible hours, etc."
+                    className="w-full rounded-xl border border-white/30 dark:border-dark-border bg-white/20 dark:bg-dark-surface backdrop-blur-sm px-4 py-3 text-white dark:text-dark-text placeholder-white/70 dark:placeholder-dark-text-secondary outline-none focus:border-pp-sky dark:focus:border-dark-accent-blue focus:ring-2 focus:ring-pp-sky/30 dark:focus:ring-dark-accent-blue/30 transition-all resize-none"
+                    placeholder={i18n.language === 'fr' ? 'Lundi-Vendredi 8h-17h, Week-ends disponibles, Horaires flexibles, etc.' : 'Lendi-Vandredi 8am-5pm, Wikann disponib, Orè fleksib, elatrè'}
                   />
                 </div>
 
@@ -385,8 +389,8 @@ export default function ApplyPage() {
                         onChange={(e) => setFormData({...formData, hasTransportation: e.target.checked})}
                         className="w-5 h-5 rounded border-white/30 bg-white/20"
                       />
-                      <label htmlFor="hasTransportation" className="text-white font-semibold">
-                        I have reliable transportation
+                      <label htmlFor="hasTransportation" className="text-white dark:text-dark-text font-semibold">
+                        {i18n.language === 'fr' ? 'J\'ai un transport fiable' : 'Mwen gen transpò relyab'}
                       </label>
                     </div>
                     
@@ -398,49 +402,49 @@ export default function ApplyPage() {
                         onChange={(e) => setFormData({...formData, hasOwnTools: e.target.checked})}
                         className="w-5 h-5 rounded border-white/30 bg-white/20"
                       />
-                      <label htmlFor="hasOwnTools" className="text-white font-semibold">
-                        I have my own tools
+                      <label htmlFor="hasOwnTools" className="text-white dark:text-dark-text font-semibold">
+                        {i18n.language === 'fr' ? 'J\'ai mes propres outils' : 'Mwen gen zouti pwòp mwen'}
                       </label>
                     </div>
                   </div>
                   
                   <div>
-                    <label className="block text-white font-semibold mb-2">
-                      Available Start Date
+                    <label className="block text-white dark:text-dark-text font-semibold mb-2">
+                      {i18n.language === 'fr' ? 'Date de début disponible' : 'Dat pou komanse travay'}
                     </label>
                     <input
                       type="date"
                       value={formData.startDate}
                       onChange={(e) => setFormData({...formData, startDate: e.target.value})}
-                      className="w-full rounded-xl border border-white/30 bg-white/20 backdrop-blur-sm px-4 py-3 text-white outline-none focus:border-pp-sky focus:ring-2 focus:ring-pp-sky/30 transition-all"
+                      className="w-full rounded-xl border border-white/30 dark:border-dark-border bg-white/20 dark:bg-dark-surface backdrop-blur-sm px-4 py-3 text-white dark:text-dark-text outline-none focus:border-pp-sky dark:focus:border-dark-accent-blue focus:ring-2 focus:ring-pp-sky/30 dark:focus:ring-dark-accent-blue/30 transition-all"
                     />
                   </div>
                 </div>
 
                 <div>
-                  <label className="block text-white font-semibold mb-2">
-                    References (Optional)
+                  <label className="block text-white dark:text-dark-text font-semibold mb-2">
+                    {i18n.language === 'fr' ? 'Références (Optionnel)' : 'Moun ki ka rekonmande w (Opsyonèl)'}
                   </label>
                   <textarea
                     rows="3"
                     value={formData.references}
                     onChange={(e) => setFormData({...formData, references: e.target.value})}
-                    className="w-full rounded-xl border border-white/30 bg-white/20 backdrop-blur-sm px-4 py-3 text-white placeholder-white/70 outline-none focus:border-pp-sky focus:ring-2 focus:ring-pp-sky/30 transition-all resize-none"
-                    placeholder="Previous employers, supervisors, or professional references with contact information..."
+                    className="w-full rounded-xl border border-white/30 dark:border-dark-border bg-white/20 dark:bg-dark-surface backdrop-blur-sm px-4 py-3 text-white dark:text-dark-text placeholder-white/70 dark:placeholder-dark-text-secondary outline-none focus:border-pp-sky dark:focus:border-dark-accent-blue focus:ring-2 focus:ring-pp-sky/30 dark:focus:ring-dark-accent-blue/30 transition-all resize-none"
+                    placeholder={i18n.language === 'fr' ? 'Anciens employeurs, superviseurs, ou références professionnelles...' : 'Ansyen patron, sipevìk, oswa moun ki ka rekonmande w...'}
                   />
                 </div>
 
                 <div>
-                  <label className="block text-white font-semibold mb-2">
-                    Why do you want to work with Pi Pwòp? <span className="text-red-400">*</span>
+                  <label className="block text-white dark:text-dark-text font-semibold mb-2">
+                    {i18n.language === 'fr' ? 'Pourquoi voulez-vous travailler avec Pi Pwòp?' : 'Poukisa ou vle travay ak Pi Pwòp?'} <span className="text-red-400">*</span>
                   </label>
                   <textarea
                     rows="3"
                     required
                     value={formData.motivation}
                     onChange={(e) => setFormData({...formData, motivation: e.target.value})}
-                    className="w-full rounded-xl border border-white/30 bg-white/20 backdrop-blur-sm px-4 py-3 text-white placeholder-white/70 outline-none focus:border-pp-sky focus:ring-2 focus:ring-pp-sky/30 transition-all resize-none"
-                    placeholder="Tell us why you're interested in working with our team..."
+                    className="w-full rounded-xl border border-white/30 dark:border-dark-border bg-white/20 dark:bg-dark-surface backdrop-blur-sm px-4 py-3 text-white dark:text-dark-text placeholder-white/70 dark:placeholder-dark-text-secondary outline-none focus:border-pp-sky dark:focus:border-dark-accent-blue focus:ring-2 focus:ring-pp-sky/30 dark:focus:ring-dark-accent-blue/30 transition-all resize-none"
+                    placeholder={i18n.language === 'fr' ? 'Dites-nous pourquoi vous êtes intéressé à travailler avec notre équipe...' : 'Di nou poukisa ou enterese pou travay ak ekip nou an...'}
                   />
                 </div>
 
@@ -449,15 +453,15 @@ export default function ApplyPage() {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="bg-pp-sky text-pp-deep px-12 py-4 rounded-full font-bold text-lg hover:bg-white hover:text-pp-deep transition-all duration-300 hover:scale-105 shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="bg-pp-sky dark:bg-dark-accent-blue text-pp-deep dark:text-dark-bg px-12 py-4 rounded-full font-bold text-lg hover:bg-white dark:hover:bg-dark-accent hover:text-pp-deep dark:hover:text-dark-text transition-all duration-300 hover:scale-105 shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     {isSubmitting ? (
                       <span className="flex items-center justify-center space-x-2">
                         <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-pp-deep"></div>
-                        <span>Submitting...</span>
+                        <span>{i18n.language === 'fr' ? 'Envoi en cours...' : 'Ap voye...'}</span>
                       </span>
                     ) : (
-                      'Submit Application'
+i18n.language === 'fr' ? 'Soumettre la demande' : 'Voye aplikasyon an'
                     )}
                   </button>
                 </div>
@@ -466,15 +470,29 @@ export default function ApplyPage() {
               {/* Success/Error Messages */}
               {submitStatus === 'success' && (
                 <div className="mt-6 bg-green-500/20 border border-green-500/30 rounded-xl p-4 text-green-200">
-                  <h3 className="font-semibold mb-2">✅ Application Submitted Successfully!</h3>
-                  <p>Thank you for your interest in joining Pi Pwòp! We'll review your application and contact you within 2-3 business days.</p>
+                  <h3 className="font-semibold mb-2">
+                    ✅ {i18n.language === 'fr' ? 'Candidature Soumise avec Succès!' : 'Aplikasyon an Voye ak Siksè!'}
+                  </h3>
+                  <p>
+                    {i18n.language === 'fr' 
+                      ? 'Merci pour votre intérêt à rejoindre Pi Pwòp! Nous examinerons votre candidature et vous contacterons dans 2-3 jours ouvrables.'
+                      : 'Mèsi pou enterè w nan vin nan Pi Pwòp! Nou pral gade aplikasyon ou an epi nou pral kontak ou nan 2-3 jou travay.'
+                    }
+                  </p>
                 </div>
               )}
 
               {submitStatus === 'error' && (
                 <div className="mt-6 bg-red-500/20 border border-red-500/30 rounded-xl p-4 text-red-200">
-                  <h3 className="font-semibold mb-2">❌ Submission Error</h3>
-                  <p>There was an error submitting your application. Please try again or contact us directly.</p>
+                  <h3 className="font-semibold mb-2">
+                    ❌ {i18n.language === 'fr' ? 'Erreur de Soumission' : 'Erè nan Voye a'}
+                  </h3>
+                  <p>
+                    {i18n.language === 'fr' 
+                      ? 'Il y a eu une erreur lors de la soumission de votre candidature. Veuillez réessayer ou nous contacter directement.'
+                      : 'Te gen yon erè lè nou t ap voye aplikasyon ou an. Tanpri eseye ankò oswa kontak nou dirèkteman.'
+                    }
+                  </p>
                 </div>
               )}
             </div>
@@ -482,8 +500,8 @@ export default function ApplyPage() {
 
           {!selectedPosition && (
             <div className="text-center">
-              <p className="text-white/70 text-lg">
-                Select a position above to start your application
+              <p className="text-white/70 dark:text-dark-text-secondary text-lg">
+                {i18n.language === 'fr' ? 'Sélectionnez un poste ci-dessus pour commencer votre candidature' : 'Chwazi yon pozisyon ki anwo a pou komanse aplikasyon ou'}
               </p>
             </div>
           )}
