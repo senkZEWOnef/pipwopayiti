@@ -35,9 +35,32 @@ const PRODUCT_DATA_FR = [
 
 export default function ProductsPage() {
   const { t, i18n } = useTranslation();
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
   
-  // Get products based on current language
-  const PRODUCT_DATA = i18n.language === 'fr' ? PRODUCT_DATA_FR : PRODUCT_DATA_HT;
+  // Fetch products from database
+  useEffect(() => {
+    fetchProducts();
+  }, []);
+
+  const fetchProducts = async () => {
+    try {
+      const response = await fetch('http://localhost:4000/api/products');
+      if (response.ok) {
+        const data = await response.json();
+        setProducts(data);
+      }
+    } catch (error) {
+      console.error('Error fetching products:', error);
+      // Fallback to static data if API fails
+      setProducts(i18n.language === 'fr' ? PRODUCT_DATA_FR : PRODUCT_DATA_HT);
+    } finally {
+      setLoading(false);
+    }
+  };
+  
+  // Get products based on current language - use fetched data or fallback
+  const PRODUCT_DATA = products.length > 0 ? products : (i18n.language === 'fr' ? PRODUCT_DATA_FR : PRODUCT_DATA_HT);
   
   const CATEGORIES = [
     { id: "all", name: t('products.allProducts'), count: PRODUCT_DATA.length },

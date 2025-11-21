@@ -24,7 +24,7 @@ export default function AdminPage() {
   const [productFormData, setProductFormData] = useState({
     name: '', description: '', category: '', supplier: '', supplier_contact: '',
     cost_price: '', selling_price: '', current_stock: '', min_stock_level: '',
-    max_stock_level: '', unit: 'piece', barcode: '', notes: ''
+    max_stock_level: '', unit: 'piece', barcode: '', notes: '', images: []
   });
   const [showPositionForm, setShowPositionForm] = useState(false);
   const [editingPosition, setEditingPosition] = useState(null);
@@ -36,6 +36,12 @@ export default function AdminPage() {
   useEffect(() => {
     checkAuthStatus();
   }, []);
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      handleTabChange(activeTab);
+    }
+  }, [activeTab, isAuthenticated]);
 
   const checkAuthStatus = () => {
     const token = localStorage.getItem('admin_token');
@@ -108,21 +114,41 @@ export default function AdminPage() {
         const statsData = await statsResponse.json();
         setStats(statsData);
       }
-
-      // Fetch messages if on messages tab
-      if (activeTab === "messages") {
-        fetchMessages();
-      }
-      // Fetch cleaners if on cleaners tab
-      if (activeTab === "cleaners") {
-        fetchCleaners();
-      }
-      // Fetch jobs if on jobs tab
-      if (activeTab === "jobs") {
-        fetchJobs();
-      }
     } catch (error) {
       console.error('Error fetching dashboard data:', error);
+    }
+  };
+
+  const handleTabChange = async (tabId) => {
+    const token = localStorage.getItem('admin_token');
+    if (!token) return;
+
+    try {
+      switch (tabId) {
+        case 'messages':
+          await fetchMessages();
+          break;
+        case 'cleaners':
+          await fetchCleaners();
+          break;
+        case 'jobs':
+          await fetchJobs();
+          break;
+        case 'products':
+          await fetchProducts();
+          break;
+        case 'job-positions':
+          await fetchJobPositions();
+          break;
+        case 'analytics':
+          await fetchAnalytics();
+          await fetchProductAnalytics();
+          break;
+        default:
+          break;
+      }
+    } catch (error) {
+      console.error('Error fetching tab data:', error);
     }
   };
 
@@ -207,21 +233,6 @@ export default function AdminPage() {
     }
   };
 
-  useEffect(() => {
-    if (isAuthenticated) {
-      fetchDashboardData();
-      if (activeTab === "products") {
-        fetchProducts();
-      }
-      if (activeTab === "job-positions") {
-        fetchJobPositions();
-      }
-      if (activeTab === "analytics") {
-        fetchAnalytics();
-        fetchProductAnalytics();
-      }
-    }
-  }, [activeTab]);
 
   const fetchProducts = async () => {
     const token = localStorage.getItem('admin_token');
@@ -344,6 +355,48 @@ export default function AdminPage() {
     }
   };
 
+  const handleImageUpload = (e) => {
+    const files = Array.from(e.target.files);
+    const maxSize = 5 * 1024 * 1024; // 5MB
+    
+    files.forEach(file => {
+      if (file.size > maxSize) {
+        alert(`${file.name} twò gwo. Max 5MB chak foto.`);
+        return;
+      }
+      
+      if (!file.type.startsWith('image/')) {
+        alert(`${file.name} pa yon foto valid.`);
+        return;
+      }
+      
+      const reader = new FileReader();
+      reader.onload = (event) => {
+        const newImage = {
+          file: file,
+          preview: event.target.result,
+          name: file.name
+        };
+        
+        setProductFormData(prev => ({
+          ...prev,
+          images: [...(prev.images || []), newImage]
+        }));
+      };
+      reader.readAsDataURL(file);
+    });
+    
+    // Clear the input
+    e.target.value = '';
+  };
+
+  const removeImage = (index) => {
+    setProductFormData(prev => ({
+      ...prev,
+      images: prev.images.filter((_, i) => i !== index)
+    }));
+  };
+
   if (isLoading) {
     return (
       <div className="min-h-screen bg-pp-gray flex items-center justify-center">
@@ -408,42 +461,18 @@ export default function AdminPage() {
   }
 
   return (
-    <div className="min-h-screen bg-pp-gray">
-      {/* Header */}
-      <div className="bg-gradient-to-r from-pp-navy to-pp-deep text-white py-6">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="flex justify-between items-center">
-            <div>
-              <h1 className="text-3xl font-bold">Pi Pwòp Admin Dashboard</h1>
-              <p className="text-white/70">Jesyon kompani an ak sistèm administrasyon</p>
-            </div>
-            <div className="flex items-center space-x-4">
-              <div className="text-right">
-                <p className="text-sm text-white/70">Connected as Admin</p>
-                <p className="font-semibold">{new Date().toLocaleDateString()}</p>
-              </div>
-              <Link
-                to="/"
-                className="bg-pp-sky/20 hover:bg-pp-sky/30 border border-pp-sky/30 px-4 py-2 rounded-full text-sm font-semibold transition-all flex items-center space-x-2"
-              >
-                <span>🏠</span>
-                <span>Back to Site</span>
-              </Link>
-              <button
-                onClick={handleLogout}
-                className="bg-white/20 hover:bg-white/30 px-4 py-2 rounded-full text-sm font-semibold transition-all"
-              >
-                Logout
-              </button>
-            </div>
-          </div>
+    <div className="flex min-h-screen bg-pp-gray dark:bg-dark-surface">
+      {/* Sidebar Navigation */}
+      <div className="w-64 bg-white dark:bg-dark-card shadow-xl flex flex-col">
+        {/* Logo/Header */}
+        <div className="p-6 border-b border-pp-gray dark:border-dark-border">
+          <h1 className="text-2xl font-bold text-pp-deep dark:text-dark-text">Pi Pwòp Admin</h1>
+          <p className="text-sm text-pp-deep/70 dark:text-dark-text-secondary">Dashboard Administrasyon</p>
         </div>
-      </div>
 
-      <div className="max-w-7xl mx-auto px-6 py-8">
-        {/* Navigation Tabs */}
-        <div className="bg-white rounded-2xl p-2 shadow-sm mb-8">
-          <div className="flex flex-wrap gap-2">
+        {/* Navigation Menu */}
+        <nav className="flex-1 p-4">
+          <ul className="space-y-2">
             {[
               { id: "dashboard", label: "Dashboard", icon: "📊" },
               { id: "messages", label: "Mesaj yo", icon: "📧" },
@@ -454,21 +483,76 @@ export default function AdminPage() {
               { id: "analytics", label: "Analytics", icon: "📈" },
               { id: "settings", label: "Konfigirasyon", icon: "⚙️" }
             ].map(tab => (
-              <button
-                key={tab.id}
-                onClick={() => setActiveTab(tab.id)}
-                className={`flex items-center space-x-2 px-6 py-3 rounded-xl font-semibold transition-all ${
-                  activeTab === tab.id
-                    ? "bg-pp-blue text-white"
-                    : "text-pp-deep hover:bg-pp-gray"
-                }`}
-              >
-                <span>{tab.icon}</span>
-                <span>{tab.label}</span>
-              </button>
+              <li key={tab.id}>
+                <button
+                  onClick={() => setActiveTab(tab.id)}
+                  className={`w-full flex items-center space-x-3 px-4 py-3 rounded-lg font-medium transition-all text-left ${
+                    activeTab === tab.id
+                      ? "bg-pp-blue text-white shadow-md"
+                      : "text-pp-deep dark:text-dark-text hover:bg-pp-gray dark:hover:bg-dark-surface"
+                  }`}
+                >
+                  <span className="text-lg">{tab.icon}</span>
+                  <span>{tab.label}</span>
+                </button>
+              </li>
             ))}
+          </ul>
+        </nav>
+
+        {/* Footer */}
+        <div className="p-4 border-t border-pp-gray dark:border-dark-border space-y-3">
+          <Link
+            to="/"
+            className="w-full bg-pp-sky/20 dark:bg-pp-blue/20 hover:bg-pp-sky/30 dark:hover:bg-pp-blue/30 text-pp-deep dark:text-dark-text px-4 py-2 rounded-lg text-sm font-semibold transition-all flex items-center justify-center space-x-2"
+          >
+            <span>🏠</span>
+            <span>Back to Site</span>
+          </Link>
+          <button
+            onClick={handleLogout}
+            className="w-full bg-red-500 text-white px-4 py-3 rounded-lg font-semibold hover:bg-red-600 transition-colors flex items-center justify-center space-x-2"
+          >
+            <span>🚪</span>
+            <span>Logout</span>
+          </button>
+        </div>
+      </div>
+
+      {/* Main Content Area */}
+      <div className="flex-1 overflow-auto">
+        {/* Top Header */}
+        <div className="bg-white dark:bg-dark-card shadow-sm border-b border-pp-gray dark:border-dark-border">
+          <div className="px-8 py-4">
+            <div className="flex justify-between items-center">
+              <div>
+                <h1 className="text-2xl font-bold text-pp-deep dark:text-dark-text">
+                  {[
+                    { id: "dashboard", label: "Dashboard" },
+                    { id: "messages", label: "Mesaj yo" },
+                    { id: "cleaners", label: "Travayè yo" },
+                    { id: "jobs", label: "Travay yo" },
+                    { id: "products", label: "Pwodwi yo" },
+                    { id: "job-positions", label: "Pozisyon Travay" },
+                    { id: "analytics", label: "Analytics" },
+                    { id: "settings", label: "Konfigirasyon" }
+                  ].find(tab => tab.id === activeTab)?.label}
+                </h1>
+                <p className="text-pp-deep/70 dark:text-dark-text-secondary">
+                  {new Date().toLocaleDateString('fr-FR', { 
+                    weekday: 'long', 
+                    year: 'numeric', 
+                    month: 'long', 
+                    day: 'numeric' 
+                  })}
+                </p>
+              </div>
+            </div>
           </div>
         </div>
+
+        {/* Content */}
+        <div className="p-8">
 
         {/* Dashboard Tab */}
         {activeTab === "dashboard" && (
@@ -770,12 +854,13 @@ export default function AdminPage() {
                 <h2 className="text-2xl font-bold text-pp-deep">Jesyon Pwodwi</h2>
                 <button 
                   onClick={() => {
+                    console.log('Add product button clicked');
                     setShowProductForm(true);
                     setEditingProduct(null);
                     setProductFormData({
                       name: '', description: '', category: '', supplier: '', supplier_contact: '',
                       cost_price: '', selling_price: '', current_stock: '', min_stock_level: '',
-                      max_stock_level: '', unit: 'piece', barcode: '', notes: ''
+                      max_stock_level: '', unit: 'piece', barcode: '', notes: '', images: []
                     });
                   }}
                   className="bg-pp-blue text-white px-6 py-2 rounded-full font-semibold hover:bg-pp-deep transition-colors"
@@ -851,7 +936,7 @@ export default function AdminPage() {
                         <td className="p-4 text-pp-deep/70">${product.selling_price}</td>
                         <td className="p-4">
                           <div className="text-green-600 font-semibold">
-                            ${product.profit_amount?.toFixed(2)} ({product.profit_margin?.toFixed(1)}%)
+                            ${parseFloat(product.profit_amount || 0).toFixed(2)} ({parseFloat(product.profit_margin || 0).toFixed(1)}%)
                           </div>
                         </td>
                         <td className="p-4 text-pp-deep/70">{product.supplier}</td>
@@ -928,6 +1013,7 @@ export default function AdminPage() {
                           <option value="cleaning">Netwayaj</option>
                           <option value="kitchen">Kwizin</option>
                           <option value="organization">Òganizasyon</option>
+                          <option value="electronics">Elektwonik</option>
                           <option value="delivery">Livrezon</option>
                         </select>
                       </div>
@@ -943,6 +1029,53 @@ export default function AdminPage() {
                         className="w-full px-4 py-3 border border-pp-gray rounded-xl focus:ring-2 focus:ring-pp-blue focus:border-transparent"
                         rows={3}
                       />
+                    </div>
+
+                    {/* Image Upload Section */}
+                    <div>
+                      <label className="block text-sm font-semibold text-pp-deep mb-2">
+                        Galri Foto yo
+                      </label>
+                      <div className="border-2 border-dashed border-pp-gray rounded-xl p-6">
+                        <input
+                          type="file"
+                          multiple
+                          accept="image/*"
+                          onChange={handleImageUpload}
+                          className="hidden"
+                          id="product-images"
+                        />
+                        <label 
+                          htmlFor="product-images"
+                          className="flex flex-col items-center cursor-pointer"
+                        >
+                          <div className="text-4xl text-pp-deep/50 mb-2">📸</div>
+                          <p className="text-pp-deep font-semibold">Klike pou ajoute foto yo</p>
+                          <p className="text-pp-deep/70 text-sm">PNG, JPG oswa GIF (Max 5MB chak)</p>
+                        </label>
+                        
+                        {/* Image Preview Grid */}
+                        {productFormData.images && productFormData.images.length > 0 && (
+                          <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mt-4">
+                            {productFormData.images.map((image, index) => (
+                              <div key={index} className="relative group">
+                                <img
+                                  src={image.preview}
+                                  alt={`Preview ${index + 1}`}
+                                  className="w-full h-24 object-cover rounded-lg border-2 border-pp-gray"
+                                />
+                                <button
+                                  type="button"
+                                  onClick={() => removeImage(index)}
+                                  className="absolute -top-2 -right-2 bg-red-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm hover:bg-red-600"
+                                >
+                                  ×
+                                </button>
+                              </div>
+                            ))}
+                          </div>
+                        )}
+                      </div>
                     </div>
 
                     <div className="grid md:grid-cols-2 gap-4">
@@ -1360,8 +1493,8 @@ export default function AdminPage() {
                             </div>
                           </div>
                           <div className="text-right">
-                            <div className="font-bold text-green-700">{product.profit_margin?.toFixed(1)}%</div>
-                            <div className="text-sm text-green-600">${product.profit_amount?.toFixed(2)}</div>
+                            <div className="font-bold text-green-700">{parseFloat(product.profit_margin || 0).toFixed(1)}%</div>
+                            <div className="text-sm text-green-600">${parseFloat(product.profit_amount || 0).toFixed(2)}</div>
                           </div>
                         </div>
                       </div>
@@ -1487,6 +1620,8 @@ export default function AdminPage() {
             </div>
           </div>
         )}
+        
+        </div>
       </div>
     </div>
   );

@@ -809,6 +809,48 @@ app.get("/api/services", async (_req, res) => {
   }
 });
 
+// Public endpoint for products (for main website)
+app.get("/api/products", async (req, res) => {
+  try {
+    const result = await pool.query(`
+      SELECT id, name, description, category, selling_price as price, 
+             current_stock > 0 as "inStock", category as image
+      FROM products 
+      WHERE is_active = true 
+      ORDER BY name
+    `);
+    
+    // Map database products to frontend format
+    const products = result.rows.map(product => ({
+      id: product.id,
+      name: product.name,
+      category: product.category,
+      price: `$${product.price}`,
+      rating: 4.5, // Default rating
+      image: getCategoryIcon(product.category),
+      description: product.description || '',
+      inStock: product.inStock
+    }));
+    
+    res.json(products);
+  } catch (err) {
+    console.error('Error fetching public products:', err);
+    res.status(500).json({ error: "Server error" });
+  }
+});
+
+// Helper function for category icons
+function getCategoryIcon(category) {
+  const icons = {
+    'cleaning': '🧴',
+    'kitchen': '🏠',
+    'organization': '👔',
+    'electronics': '⚡',
+    'delivery': '🚚'
+  };
+  return icons[category] || '📦';
+}
+
 app.listen(PORT, () => {
   console.log(`Pi Pwòp API running on http://localhost:${PORT}`);
 });

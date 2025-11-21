@@ -1,9 +1,38 @@
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import { useState, useEffect } from "react";
 import ProductCarousel from "../components/ProductCarousel";
 
 export default function HomePage() {
   const { t, i18n } = useTranslation();
+  const [productCounts, setProductCounts] = useState({
+    cleaning: 0,
+    kitchen: 0,
+    organization: 0,
+    electronics: 0
+  });
+
+  useEffect(() => {
+    fetchProductCounts();
+  }, []);
+
+  const fetchProductCounts = async () => {
+    try {
+      const response = await fetch('http://localhost:4000/api/products');
+      if (response.ok) {
+        const products = await response.json();
+        const counts = {
+          cleaning: products.filter(p => p.category === 'cleaning').length,
+          kitchen: products.filter(p => p.category === 'kitchen').length,
+          organization: products.filter(p => p.category === 'organization').length,
+          electronics: products.filter(p => p.category === 'electronics').length
+        };
+        setProductCounts(counts);
+      }
+    } catch (error) {
+      console.error('Error fetching product counts:', error);
+    }
+  };
 
   return (
     <div>
@@ -84,7 +113,7 @@ export default function HomePage() {
                   {i18n.language === 'fr' ? 'Détergents et produits de nettoyage professionnels' : 'Detèjan ak pwodwi netwayaj pwofesyonèl'}
                 </p>
                 <div className="text-pp-blue dark:text-dark-accent-blue font-semibold text-sm">
-                  {i18n.language === 'fr' ? '3 produits disponibles' : '3 pwodwi disponib'}
+                  {i18n.language === 'fr' ? `${productCounts.cleaning} produits disponibles` : `${productCounts.cleaning} pwodwi disponib`}
                 </div>
               </div>
             </div>
@@ -105,7 +134,7 @@ export default function HomePage() {
                   {i18n.language === 'fr' ? 'Cuisines PVC modernes et vanités' : 'Kwizin PVC modèn ak vanity'}
                 </p>
                 <div className="text-pp-blue dark:text-dark-accent-blue font-semibold text-sm">
-                  {i18n.language === 'fr' ? '2 produits disponibles' : '2 pwodwi disponib'}
+                  {i18n.language === 'fr' ? `${productCounts.kitchen} produits disponibles` : `${productCounts.kitchen} pwodwi disponib`}
                 </div>
               </div>
             </div>
@@ -126,7 +155,7 @@ export default function HomePage() {
                   {i18n.language === 'fr' ? 'Placards et solutions de rangement' : 'Closet ak solisyon depo'}
                 </p>
                 <div className="text-pp-blue dark:text-dark-accent-blue font-semibold text-sm">
-                  {i18n.language === 'fr' ? '2 produits disponibles' : '2 pwodwi disponib'}
+                  {i18n.language === 'fr' ? `${productCounts.organization} produits disponibles` : `${productCounts.organization} pwodwi disponib`}
                 </div>
               </div>
             </div>
@@ -152,7 +181,7 @@ export default function HomePage() {
                   {i18n.language === 'fr' ? 'Solutions solaires et électroniques' : 'Solisyon solè ak elektwonik'}
                 </p>
                 <div className="text-pp-blue dark:text-dark-accent-blue font-semibold text-sm">
-                  {i18n.language === 'fr' ? '5 produits disponibles' : '5 pwodwi disponib'}
+                  {i18n.language === 'fr' ? `${productCounts.electronics} produits disponibles` : `${productCounts.electronics} pwodwi disponib`}
                 </div>
               </div>
             </div>
