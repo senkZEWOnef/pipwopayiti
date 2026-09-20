@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
+import { API_BASE } from "../api";
 
 export default function ProductCarousel() {
   const { t, i18n } = useTranslation();
@@ -83,7 +84,7 @@ export default function ProductCarousel() {
 
   const fetchBestSellers = async () => {
     try {
-      const response = await fetch('http://localhost:4000/api/products/best-sellers');
+      const response = await fetch(`${API_BASE}/api/products/best-sellers`);
       if (response.ok) {
         const data = await response.json();
         console.log('Fetched products data:', data);

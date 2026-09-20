@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import { API_BASE } from "../api";
 
 export default function ContactForm({ isMainPage = false }) {
   const { t } = useTranslation();
@@ -27,7 +28,7 @@ export default function ContactForm({ isMainPage = false }) {
     setIsSubmitting(true);
 
     try {
-      const response = await fetch('http://localhost:4001/api/contact/submit', {
+      const response = await fetch(`${API_BASE}/api/contact/submit`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

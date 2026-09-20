@@ -3,6 +3,7 @@ import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import { api } from "../api";
 import { ShipmentsPanel, CallbacksPanel, ChatPanel } from "./admin/ShippingAdmin";
+import { API_BASE } from "../api";
 
 export default function AdminPage() {
   const { t, i18n } = useTranslation();
@@ -84,7 +85,7 @@ export default function AdminPage() {
     
     try {
       console.log('Attempting login with:', loginData.username);
-      const response = await fetch('http://localhost:4000/api/admin/login', {
+      const response = await fetch(`${API_BASE}/api/admin/login`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -124,7 +125,7 @@ export default function AdminPage() {
 
     try {
       // Create tables first
-      await fetch('http://localhost:4000/api/admin/create-tables', {
+      await fetch(`${API_BASE}/api/admin/create-tables`, {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${token}`,
@@ -133,7 +134,7 @@ export default function AdminPage() {
       });
 
       // Fetch dashboard stats
-      const statsResponse = await fetch('http://localhost:4000/api/admin/dashboard-stats', {
+      const statsResponse = await fetch(`${API_BASE}/api/admin/dashboard-stats`, {
         headers: { 'Authorization': `Bearer ${token}` },
       });
       if (statsResponse.ok) {
@@ -181,7 +182,7 @@ export default function AdminPage() {
   const fetchMessages = async () => {
     const token = localStorage.getItem('admin_token');
     try {
-      const response = await fetch('http://localhost:4000/api/admin/messages', {
+      const response = await fetch(`${API_BASE}/api/admin/messages`, {
         headers: { 'Authorization': `Bearer ${token}` },
       });
       if (response.ok) {
@@ -196,7 +197,7 @@ export default function AdminPage() {
   const fetchCleaners = async () => {
     const token = localStorage.getItem('admin_token');
     try {
-      const response = await fetch('http://localhost:4000/api/admin/cleaners', {
+      const response = await fetch(`${API_BASE}/api/admin/cleaners`, {
         headers: { 'Authorization': `Bearer ${token}` },
       });
       if (response.ok) {
@@ -211,7 +212,7 @@ export default function AdminPage() {
   const fetchJobs = async () => {
     const token = localStorage.getItem('admin_token');
     try {
-      const response = await fetch('http://localhost:4000/api/admin/jobs', {
+      const response = await fetch(`${API_BASE}/api/admin/jobs`, {
         headers: { 'Authorization': `Bearer ${token}` },
       });
       if (response.ok) {
@@ -226,7 +227,7 @@ export default function AdminPage() {
   const markMessageAsRead = async (messageId) => {
     const token = localStorage.getItem('admin_token');
     try {
-      const response = await fetch(`http://localhost:4000/api/admin/messages/${messageId}/read`, {
+      const response = await fetch(`${API_BASE}/api/admin/messages/${messageId}/read`, {
         method: 'PUT',
         headers: { 'Authorization': `Bearer ${token}` },
       });
@@ -242,7 +243,7 @@ export default function AdminPage() {
   const updateCleanerStatus = async (cleanerId, status) => {
     const token = localStorage.getItem('admin_token');
     try {
-      const response = await fetch(`http://localhost:4000/api/admin/cleaners/${cleanerId}/status`, {
+      const response = await fetch(`${API_BASE}/api/admin/cleaners/${cleanerId}/status`, {
         method: 'PUT',
         headers: {
           'Authorization': `Bearer ${token}`,
@@ -263,7 +264,7 @@ export default function AdminPage() {
   const fetchProducts = async () => {
     const token = localStorage.getItem('admin_token');
     try {
-      const response = await fetch('http://localhost:4000/api/admin/products', {
+      const response = await fetch(`${API_BASE}/api/admin/products`, {
         headers: { 'Authorization': `Bearer ${token}` },
       });
       if (response.ok) {
@@ -278,7 +279,7 @@ export default function AdminPage() {
   const fetchJobPositions = async () => {
     const token = localStorage.getItem('admin_token');
     try {
-      const response = await fetch('http://localhost:4000/api/admin/job-positions', {
+      const response = await fetch(`${API_BASE}/api/admin/job-positions`, {
         headers: { 'Authorization': `Bearer ${token}` },
       });
       if (response.ok) {
@@ -296,8 +297,8 @@ export default function AdminPage() {
     
     try {
       const url = editingProduct 
-        ? `http://localhost:4000/api/admin/products/${editingProduct.id}`
-        : 'http://localhost:4000/api/admin/products';
+        ? `${API_BASE}/api/admin/products/${editingProduct.id}`
+        : `${API_BASE}/api/admin/products`;
       
       const method = editingProduct ? 'PUT' : 'POST';
       
@@ -327,8 +328,8 @@ export default function AdminPage() {
     
     try {
       const url = editingPosition 
-        ? `http://localhost:4000/api/admin/job-positions/${editingPosition.id}`
-        : 'http://localhost:4000/api/admin/job-positions';
+        ? `${API_BASE}/api/admin/job-positions/${editingPosition.id}`
+        : `${API_BASE}/api/admin/job-positions`;
       
       const method = editingPosition ? 'PUT' : 'POST';
       
@@ -354,7 +355,7 @@ export default function AdminPage() {
   const fetchAnalytics = async () => {
     const token = localStorage.getItem('admin_token');
     try {
-      const response = await fetch('http://localhost:4000/api/admin/analytics', {
+      const response = await fetch(`${API_BASE}/api/admin/analytics`, {
         headers: { 'Authorization': `Bearer ${token}` },
       });
       if (response.ok) {
@@ -369,7 +370,7 @@ export default function AdminPage() {
   const fetchProductAnalytics = async () => {
     const token = localStorage.getItem('admin_token');
     try {
-      const response = await fetch('http://localhost:4000/api/admin/products/analytics', {
+      const response = await fetch(`${API_BASE}/api/admin/products/analytics`, {
         headers: { 'Authorization': `Bearer ${token}` },
       });
       if (response.ok) {
@@ -1296,7 +1297,7 @@ export default function AdminPage() {
                         onClick={async () => {
                           const token = localStorage.getItem('admin_token');
                           try {
-                            await fetch(`http://localhost:4000/api/admin/job-positions/${position.id}`, {
+                            await fetch(`${API_BASE}/api/admin/job-positions/${position.id}`, {
                               method: 'PUT',
                               headers: {
                                 'Authorization': `Bearer ${token}`,

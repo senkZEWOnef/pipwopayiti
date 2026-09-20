@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { API_BASE } from "../api";
 
 const ICONS = {
   "cleaning-products": "🧼",
@@ -11,7 +12,7 @@ export default function ServicesStrip() {
   const [services, setServices] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:4000/api/services")
+    fetch(`${API_BASE}/api/services`)
       .then((res) => res.json())
       .then(setServices)
       .catch((err) => console.error(err));

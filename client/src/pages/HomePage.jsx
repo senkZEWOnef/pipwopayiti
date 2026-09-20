@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { useState, useEffect } from "react";
 import { ShippingHero, ShippingActions, ShippingServices, ShippingSteps } from "../components/ShippingSections";
+import { API_BASE } from "../api";
 
 export default function HomePage() {
   const { t, i18n } = useTranslation();
@@ -18,7 +19,7 @@ export default function HomePage() {
 
   const fetchProductCounts = async () => {
     try {
-      const response = await fetch('http://localhost:4000/api/products');
+      const response = await fetch(`${API_BASE}/api/products`);
       if (response.ok) {
         const products = await response.json();
         const counts = {
