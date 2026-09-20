@@ -3,6 +3,8 @@ import { useTranslation } from "react-i18next";
 import Footer from "./Footer";
 import ContactForm from "./ContactForm";
 import ThemeToggle from "./ThemeToggle";
+import Logo from "./Logo";
+import ChatWidget from "./ChatWidget";
 
 export default function Layout({ children }) {
   const location = useLocation();
@@ -25,15 +27,8 @@ export default function Layout({ children }) {
         <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
           
           {/* Logo */}
-          <Link to="/" className="flex items-center space-x-3 -ml-2">
-            <div className="flex items-center gap-2 font-bold text-2xl text-pp-navy dark:text-dark-text">
-              <span className="tracking-tight">Pi Pwòp</span>
-              <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-pp-blue/10 dark:bg-dark-accent-blue/20">
-                <svg viewBox="0 0 24 24" className="h-5 w-5 text-pp-blue dark:text-dark-accent-blue" aria-hidden="true">
-                  <path d="M12 3l1.6 3.7L17 8.4l-3.4 1.7L12 14l-1.6-3.9L7 8.4l3.4-1.7L12 3z" fill="currentColor" />
-                </svg>
-              </span>
-            </div>
+          <Link to="/" className="flex items-center -ml-2">
+            <Logo size="text-xl md:text-2xl" />
           </Link>
 
           {/* Desktop Navigation */}
@@ -45,6 +40,14 @@ export default function Layout({ children }) {
               }`}
             >
               {t('nav.home')}
+            </Link>
+            <Link 
+              to="/shipping" 
+              className={`font-semibold transition-colors hover:text-pp-blue dark:hover:text-dark-accent-blue ${
+                location.pathname.startsWith('/shipping') ? 'text-pp-blue dark:text-dark-accent-blue' : 'text-pp-deep dark:text-dark-text'
+              }`}
+            >
+              {t('nav.shipping')}
             </Link>
             <Link 
               to="/products" 
@@ -107,7 +110,8 @@ export default function Layout({ children }) {
         {/* Mobile Navigation (hidden by default) */}
         <div className="md:hidden border-t border-pp-gray dark:border-dark-border bg-white dark:bg-dark-surface">
           <nav className="px-6 py-4 space-y-3">
-            <Link to="/" className="block py-2 text-pp-deep font-semibold">{t('nav.home')}</Link>
+            <Link to="/" className="block py-2 text-pp-deep dark:text-dark-text font-semibold">{t('nav.home')}</Link>
+            <Link to="/shipping" className="block py-2 text-pp-deep dark:text-dark-text font-semibold">{t('nav.shipping')}</Link>
             <Link to="/products" className="block py-2 text-pp-deep font-semibold">{t('nav.products')}</Link>
             <Link to="/services" className="block py-2 text-pp-deep font-semibold">{t('nav.services')}</Link>
             <Link to="/contact" className="block py-2 text-pp-deep font-semibold">{t('nav.contact')}</Link>
@@ -122,6 +126,7 @@ export default function Layout({ children }) {
 
 
       <Footer />
+      <ChatWidget />
     </div>
   );
 }

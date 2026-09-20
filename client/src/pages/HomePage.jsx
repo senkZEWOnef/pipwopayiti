@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { useState, useEffect } from "react";
-import ProductCarousel from "../components/ProductCarousel";
+import { ShippingHero, ShippingActions, ShippingServices, ShippingSteps } from "../components/ShippingSections";
 
 export default function HomePage() {
   const { t, i18n } = useTranslation();
@@ -36,62 +36,21 @@ export default function HomePage() {
 
   return (
     <div>
-      {/* Clean, Modern Hero Section */}
-      <section className="relative bg-white dark:bg-dark-bg overflow-hidden pt-8 pb-16">
-        {/* Minimal background pattern */}
-        <div className="absolute inset-0">
-          <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-pp-gray/30 to-transparent dark:from-dark-surface/30"></div>
-          <div className="absolute bottom-0 left-0 w-1/4 h-1/2 bg-gradient-to-t from-pp-sky/5 to-transparent dark:from-dark-accent-blue/5"></div>
-        </div>
-
-        <div className="relative mx-auto max-w-4xl px-6 text-center">
-          <div className="space-y-8">
-            {/* Main heading */}
-            <div className="space-y-4">
-              <h1 className="text-6xl lg:text-8xl font-bold text-pp-navy dark:text-dark-text tracking-tight leading-none">
-                {t('homepage.title')}
-              </h1>
-              <h2 className="text-2xl lg:text-3xl font-light text-pp-deep/80 dark:text-dark-text-secondary">
-                {t('homepage.subtitle')}
-              </h2>
-            </div>
-            
-            {/* Description */}
-            <p className="text-lg text-pp-deep/70 dark:text-dark-text-secondary leading-relaxed max-w-xl mx-auto">
-              {t('homepage.description')}
-            </p>
-
-            {/* Call-to-action buttons */}
-            <div className="flex flex-wrap gap-4 justify-center">
-              <Link
-                to="/products"
-                className="bg-pp-navy dark:bg-dark-accent-blue text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-pp-deep dark:hover:bg-blue-600 transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl"
-              >
-                {t('homepage.viewProducts')}
-              </Link>
-              <Link
-                to="/services"
-                className="border-2 border-pp-navy dark:border-dark-accent-blue text-pp-navy dark:text-dark-accent-blue px-8 py-4 rounded-full font-semibold text-lg hover:bg-pp-navy dark:hover:bg-dark-accent-blue hover:text-white transition-all duration-300 hover:scale-105"
-              >
-                {t('homepage.ourServices')}
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* Pi Pwòp Shipping — main focus of the site */}
+      <ShippingHero />
+      <ShippingActions />
+      <ShippingServices />
+      <ShippingSteps />
 
       {/* Products Preview Section */}
-      <section className="py-20 bg-pp-gray dark:bg-dark-surface transition-colors duration-300">
+      <section className="py-20 bg-white dark:bg-dark-bg transition-colors duration-300">
         <div className="mx-auto max-w-7xl px-6">
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold text-pp-deep dark:text-dark-text mb-4">
-              {t('nav.products')}
+              {t('homepage.productsServicesTitle')}
             </h2>
             <p className="text-lg text-pp-deep/70 dark:text-dark-text-secondary max-w-2xl mx-auto">
-              {i18n.language === 'fr' 
-                ? 'Découvrez notre gamme de produits de qualité pour votre maison et votre entreprise'
-                : 'Dekouvri pwodwi kalite nou yo pou kay ou ak biznis ou'
-              }
+              {t('homepage.productsServicesDesc')}
             </p>
           </div>
 
@@ -188,13 +147,19 @@ export default function HomePage() {
           </div>
 
           {/* Call to Action */}
-          <div className="text-center">
+          <div className="flex flex-wrap justify-center gap-4">
             <Link
               to="/products"
               className="inline-flex items-center space-x-2 bg-pp-navy dark:bg-dark-accent-blue text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-pp-deep dark:hover:bg-blue-600 transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl"
             >
               <span>{i18n.language === 'fr' ? 'Voir tous les produits' : 'Gade tout pwodwi yo'}</span>
-              <span className="group-hover:translate-x-1 transition-transform">→</span>
+              <span>→</span>
+            </Link>
+            <Link
+              to="/services"
+              className="inline-flex items-center border-2 border-pp-navy dark:border-dark-accent-blue text-pp-navy dark:text-dark-accent-blue px-8 py-4 rounded-full font-semibold text-lg hover:bg-pp-navy dark:hover:bg-dark-accent-blue hover:text-white transition-all duration-300 hover:scale-105"
+            >
+              {t('homepage.viewServices')}
             </Link>
           </div>
         </div>
@@ -251,7 +216,7 @@ export default function HomePage() {
         <div className="mx-auto max-w-7xl px-6">
           <div className="text-center">
             <h2 className="text-3xl md:text-4xl font-bold mb-6">
-              {i18n.language === 'fr' ? 'Rejoignez l\'équipe Pi Pwòp!' : 'Vin nan ekip Pi Pwòp la!'} 💼
+              {i18n.language === 'fr' ? 'Rejoignez l\'équipe Pi Pwòp Shipping!' : 'Vin nan ekip Pi Pwòp Shipping la!'} 💼
             </h2>
             <p className="text-xl text-white/90 mb-8 max-w-3xl mx-auto">
               {i18n.language === 'fr' 

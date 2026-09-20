@@ -15,7 +15,7 @@ export default function Hero() {
           <p className="text-lg text-pp-deep/80">
             Pwodwi netwayaj, kwizin ak closets PVC, livrezon pare pou enstalasyon.
             <span className="block">
-              Pi Pwòp lakay ou, depi boutèy savon rive nan dènye kabinè a.
+              Pi Pwòp Shipping — soti Ozetazini rive lakay ou an Ayiti.
             </span>
           </p>
           <div className="flex flex-wrap gap-3">

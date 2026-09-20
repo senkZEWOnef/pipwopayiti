@@ -4,16 +4,18 @@
     "products": "Produits",
     "services": "Services",
     "contact": "Contact",
-    "bookAppointment": "Prendre Rendez-vous"
+    "bookAppointment": "Prendre Rendez-vous",
+    "shipping": "Expédition",
+    "getQuote": "Demander un Devis"
   },
   "homepage": {
-    "title": "Pi Pwòp",
+    "title": "Pi Pwòp Shipping",
     "subtitle": "Chez Vous",
     "description": "Des produits de nettoyage efficaces aux cuisines et placards PVC modernes. Nous vous offrons des solutions complètes pour un foyer plus propre et plus organisé.",
     "viewProducts": "Voir Nos Produits",
     "ourServices": "Nos Services",
-    "whyChoose": "Pourquoi Choisir Pi Pwòp ?",
-    "whyChooseDesc": "Depuis 2020, nous servons la communauté haïtienne avec des produits et services de qualité. Nous nous concentrons sur la satisfaction client et l'innovation dans chaque projet.",
+    "whyChoose": "Pourquoi Choisir Pi Pwòp Shipping ?",
+    "whyChooseDesc": "Depuis 2020, nous servons la communauté haïtienne avec des services de qualité : expédition des États-Unis vers Haïti, produits de nettoyage et installation de cuisines. Nous nous concentrons sur la satisfaction client dans chaque projet.",
     "qualityFirst": "Qualité Supérieure",
     "qualityFirstDesc": "Nous ne sélectionnons que des produits et matériaux de qualité supérieure",
     "professionalInstall": "Installation Professionnelle",
@@ -27,7 +29,10 @@
     "cleaningProducts": "Produits de nettoyage",
     "pvcKitchen": "Cuisine PVC",
     "closets": "Placards",
-    "delivery": "Livraison"
+    "delivery": "Livraison",
+    "productsServicesTitle": "Pi Pwòp Produits & Services",
+    "productsServicesDesc": "En plus de l'expédition, nous proposons toujours des produits de qualité pour votre maison et votre entreprise, ainsi que des installations professionnelles.",
+    "viewServices": "Voir Tous les Services"
   },
   "products": {
     "title": "Nos Produits",
@@ -79,7 +84,7 @@
   },
   "admin": {
     "title": "Tableau de Bord Admin",
-    "subtitle": "Système de Gestion Pi Pwòp",
+    "subtitle": "Système de Gestion Pi Pwòp Shipping",
     "connectedAs": "Connecté en tant qu'Admin",
     "dashboard": "Tableau de Bord",
     "orders": "Commandes",
@@ -110,7 +115,7 @@
   },
   "contact": {
     "title": "Parlons de votre projet",
-    "description": "Dites-nous si vous avez besoin de produits de nettoyage en gros, ou d'une cuisine / placard PVC pour votre maison, Airbnb ou entreprise.",
+    "description": "Dites-nous si vous souhaitez expédier un conteneur des États-Unis vers Haïti, ou si vous avez besoin de produits de nettoyage ou d'une cuisine / placard PVC pour votre maison, Airbnb ou entreprise.",
     "name": "Votre nom",
     "phone": "WhatsApp / Téléphone",
     "interested": "Qu'est-ce qui vous intéresse ?",
@@ -130,11 +135,12 @@
     "chooseService": "Choisissez un service...",
     "requiredFields": "Champs requis",
     "whereWeAre": "Où nous sommes",
-    "location": "Port-au-Prince, Haïti"
+    "location": "Port-au-Prince, Haïti",
+    "shipping": "Expédition États-Unis → Haïti"
   },
   "footer": {
-    "tagline": "Qualité et confiance",
-    "description": "Produits de nettoyage et services d'installation de cuisines et placards PVC de qualité supérieure pour la communauté haïtienne.",
+    "tagline": "Expédition États-Unis → Haïti",
+    "description": "Nous expédions et recevons des conteneurs des États-Unis vers Haïti. Nous proposons aussi des produits de nettoyage et l'installation de cuisines et placards PVC pour la communauté haïtienne.",
     "navigation": "Navigation",
     "ourServices": "Nos Services",
     "contactUs": "Nous Contacter",
@@ -145,7 +151,9 @@
     "pvcKitchen": "Cuisine PVC",
     "closetsWardrobes": "Placards & Armoires",
     "deliveryInstall": "Livraison & Installation",
-    "applyWork": "Rejoindre Notre Équipe"
+    "applyWork": "Rejoindre Notre Équipe",
+    "shipping": "Expédition de Conteneurs",
+    "shippingLink": "Expédition"
   },
   "booking": {
     "bookAppointment": "Prendre Rendez-vous",
@@ -166,8 +174,8 @@
     "morning": "Matin (8h-12h)",
     "afternoon": "Après-midi (12h-17h)",
     "evening": "Soir (17h-20h)",
-    "additionalNotes": "Notes Additionnelles",
-    "notesPlaceholder": "Parlez-nous plus de votre projet ou de vos demandes spéciales",
+    "additionalNotes": "Notes Supplémentaires",
+    "notesPlaceholder": "Dites-nous en plus sur votre projet ou vos demandes spéciales",
     "serviceSummary": "Résumé du Service",
     "service": "Service:",
     "estimatedPrice": "Prix Estimé:",
@@ -181,8 +189,487 @@
     "timeSelectPlaceholder": "Choisissez une heure",
     "timeMorning": "Matin (8h-12h)",
     "timeAfternoon": "Après-midi (12h-17h)",
-    "timeEvening": "Soir (17h-20h)",
-    "additionalNotes": "Notes Supplémentaires",
-    "notesPlaceholder": "Dites-nous en plus sur votre projet ou vos demandes spéciales"
+    "timeEvening": "Soir (17h-20h)"
+  },
+  "shipping": {
+    "brandSuffix": "Shipping",
+    "badge": "États-Unis → Haïti",
+    "heroTitle": "Expédiez votre conteneur des États-Unis vers Haïti.",
+    "heroDesc": "Nous aidons les familles et les entreprises à expédier et recevoir leurs marchandises en conteneur, des États-Unis jusqu'en Haïti. Une seule équipe s'occupe de vos biens tout au long du trajet.",
+    "ctaQuote": "Demander un Devis",
+    "ctaServices": "Voir les Services",
+    "routeFrom": "États-Unis",
+    "routeTo": "Haïti",
+    "routeSend": "Envoi",
+    "routeShip": "Transport",
+    "routeReceive": "Réception",
+    "servicesTitle": "Nos Services d'Expédition",
+    "servicesSubtitle": "Tout ce dont vous avez besoin pour que vos marchandises arrivent en toute sécurité.",
+    "services": [
+      {
+        "icon": "🚢",
+        "title": "Envoi de conteneurs depuis les États-Unis",
+        "desc": "Nous vous aidons à préparer et à expédier vos marchandises en conteneur, en toute sécurité, des États-Unis vers Haïti."
+      },
+      {
+        "icon": "📥",
+        "title": "Réception en Haïti",
+        "desc": "Nous réceptionnons le conteneur à son arrivée et préparons vos marchandises pour la livraison."
+      },
+      {
+        "icon": "🚚",
+        "title": "Livraison à domicile",
+        "desc": "Nous livrons vos marchandises directement chez vous ou à votre entreprise."
+      },
+      {
+        "icon": "📋",
+        "title": "Accompagnement et documents",
+        "desc": "Nous vous guidons dans les démarches et les documents pour que tout se passe sans souci."
+      }
+    ],
+    "howTitle": "Comment Ça Marche",
+    "howSubtitle": "Simple, clair, et nous sommes avec vous à chaque étape.",
+    "steps": [
+      {
+        "title": "Contactez-nous",
+        "desc": "Dites-nous ce que vous souhaitez expédier et demandez un devis."
+      },
+      {
+        "title": "Préparation et envoi",
+        "desc": "Nous vous aidons à préparer vos marchandises et à les charger dans le conteneur."
+      },
+      {
+        "title": "Le conteneur voyage",
+        "desc": "Le conteneur traverse des États-Unis vers Haïti."
+      },
+      {
+        "title": "Réception en Haïti",
+        "desc": "Nous réceptionnons, prenons soin de vos marchandises et vous les livrons."
+      }
+    ],
+    "ctaTitle": "Prêt à expédier votre conteneur ?",
+    "ctaDesc": "Contactez-nous dès aujourd'hui et nous vous répondrons dans les plus brefs délais.",
+    "ctaCall": "Demander un Rappel",
+    "pageTitle": "Pi Pwòp Shipping",
+    "ctaTrack": "Suivre un Colis",
+    "actionsTitle": "Comment pouvons-nous vous aider aujourd'hui ?",
+    "actions": {
+      "request": {
+        "title": "Demander un devis",
+        "desc": "Donnez-nous les informations du conteneur et recevez un numéro de suivi.",
+        "cta": "Commencer"
+      },
+      "track": {
+        "title": "Suivre votre colis",
+        "desc": "Entrez votre numéro de suivi pour voir où se trouve votre envoi et depuis combien de jours.",
+        "cta": "Suivre"
+      },
+      "call": {
+        "title": "Demander un rappel",
+        "desc": "Vous préférez parler à quelqu'un ? Laissez votre numéro et nous vous appelons.",
+        "cta": "Rappelez-moi"
+      }
+    },
+    "features": [
+      "Suivi en direct avec votre numéro",
+      "Paiement en ligne",
+      "Chat pour une aide rapide"
+    ],
+    "quickTrackTitle": "Vous avez un numéro de suivi ?",
+    "options": {
+      "containers": {
+        "20ft": {
+          "label": "Conteneur 20 pieds",
+          "hint": "Le plus petit — pour un chargement modéré"
+        },
+        "40ft": {
+          "label": "Conteneur 40 pieds",
+          "hint": "Le double de la longueur d'un 20 pieds"
+        },
+        "40ft_hc": {
+          "label": "Conteneur 40 pieds High Cube",
+          "hint": "40 pieds avec plus de hauteur"
+        },
+        "partial": {
+          "label": "Une partie de conteneur (groupage)",
+          "hint": "Pour les petits envois — pas besoin d'un conteneur entier"
+        },
+        "not_sure": {
+          "label": "Je ne suis pas sûr(e) — aidez-moi à choisir",
+          "hint": "Notre équipe vous conseillera"
+        }
+      },
+      "cargo": {
+        "household": "Effets personnels et meubles",
+        "food": "Nourriture et produits secs",
+        "building": "Matériaux de construction",
+        "electronics": "Électronique et appareils",
+        "vehicle": "Véhicules et pièces",
+        "commercial": "Marchandises commerciales",
+        "clothing": "Vêtements et chaussures",
+        "other": "Autre"
+      }
+    },
+    "status": {
+      "submitted": "Demande reçue",
+      "approved": "Approuvé",
+      "cargo_received": "Marchandises reçues",
+      "loaded": "Chargé dans le conteneur",
+      "departed": "Le conteneur a quitté les États-Unis",
+      "in_transit": "En mer",
+      "arrived_haiti": "Arrivé en Haïti",
+      "customs": "En douane",
+      "out_for_delivery": "En cours de livraison",
+      "delivered": "Livré",
+      "rejected": "Non approuvé"
+    },
+    "request": {
+      "title": "Demander un Devis d'Expédition",
+      "subtitle": "Remplissez le formulaire. Une fois envoyé, vous recevez un numéro de suivi. Nous examinons la demande et l'approuvons ; ensuite vous pourrez suivre votre colis avec le même numéro.",
+      "sections": {
+        "route": "1. Le trajet",
+        "cargo": "2. Conteneur et marchandises",
+        "recipient": "3. Destinataire en Haïti",
+        "sender": "4. Vos informations"
+      },
+      "originCity": "Ville de départ du conteneur (États-Unis)",
+      "originState": "État",
+      "pickupNeeded": "J'ai besoin que vous veniez chercher les marchandises chez moi",
+      "originAddress": "Adresse de ramassage",
+      "destinationCity": "Ville de destination en Haïti",
+      "destinationOther": "Autre ville",
+      "destinationOtherPlaceholder": "Écrivez le nom de la ville",
+      "homeDelivery": "Je souhaite une livraison à domicile en Haïti",
+      "destinationAddress": "Adresse de livraison en Haïti",
+      "containerSize": "Taille du conteneur",
+      "containerQty": "Nombre de conteneurs",
+      "cargoType": "Type de marchandises",
+      "cargoDescription": "Que souhaitez-vous expédier ?",
+      "cargoDescriptionPlaceholder": "Exemple : 3 meubles, 10 cartons de vêtements, un réfrigérateur...",
+      "estWeight": "Poids approximatif (lb)",
+      "declaredValue": "Valeur approximative des marchandises (USD)",
+      "preferredShipDate": "Date d'envoi souhaitée",
+      "notes": "Notes supplémentaires",
+      "notesPlaceholder": "Instructions spéciales, objets fragiles, etc.",
+      "recipientName": "Nom du destinataire",
+      "recipientPhone": "Téléphone du destinataire",
+      "senderName": "Votre nom complet",
+      "senderPhone": "Votre téléphone / WhatsApp",
+      "senderEmail": "E-mail",
+      "optional": "optionnel",
+      "select": "Choisir...",
+      "confirm": "Je confirme que les informations sont exactes. Le prix final dépend de l'évaluation de notre équipe.",
+      "submit": "Envoyer la Demande",
+      "submitting": "Envoi en cours...",
+      "errors": {
+        "generic": "Un problème est survenu. Veuillez réessayer.",
+        "missing": "Veuillez remplir tous les champs obligatoires.",
+        "email": "L'adresse e-mail n'est pas valide.",
+        "tooMany": "Trop de tentatives. Veuillez patienter quelques minutes puis réessayer."
+      },
+      "success": {
+        "title": "Demande reçue ! 🎉",
+        "numberLabel": "Votre numéro de suivi",
+        "saveIt": "Conservez ce numéro. Il vous servira à suivre votre colis et à payer.",
+        "copy": "Copier",
+        "copied": "Copié !",
+        "nextTitle": "Et maintenant ?",
+        "next1": "Notre équipe examine votre demande.",
+        "next2": "Une fois approuvée, vous verrez toutes les étapes sur la page de suivi avec le même numéro, et vous pourrez payer en ligne.",
+        "next3": "Nous pouvons vous appeler si nous avons besoin de plus de détails.",
+        "trackNow": "Aller à la page de suivi",
+        "another": "Faire une autre demande"
+      }
+    },
+    "track": {
+      "title": "Suivre Votre Colis",
+      "subtitle": "Entrez votre numéro de suivi (exemple : PPS-AB12CD).",
+      "placeholder": "PPS-XXXXXX",
+      "button": "Suivre",
+      "searching": "Recherche...",
+      "notFound": "Aucun colis trouvé avec ce numéro. Vérifiez le numéro et réessayez.",
+      "error": "Un problème est survenu. Veuillez réessayer.",
+      "recent": "Vos derniers colis",
+      "refresh": "Actualiser",
+      "hello": "Bonjour {{name}} 👋",
+      "pendingTitle": "Votre demande est en cours d'examen",
+      "pendingDesc": "Nous avons bien reçu votre demande. Dès que notre équipe l'approuve, vous pourrez voir toutes les étapes ici avec ce même numéro.",
+      "rejectedTitle": "Nous n'avons pas pu approuver la demande",
+      "rejectedDesc": "Veuillez nous contacter pour plus d'informations.",
+      "teamNote": "Message de l'équipe",
+      "currentStatus": "Statut actuel",
+      "daysSinceApproved": "Jours depuis l'approbation",
+      "daysInTransit": "Jours depuis le départ",
+      "daysToDelivery": "Jours restants (estimation)",
+      "estimatedDelivery": "Livraison estimée",
+      "deliveredOn": "Livré le",
+      "days": "{{count}} jour(s)",
+      "route": "Trajet",
+      "container": "Conteneur",
+      "cargo": "Marchandises",
+      "timeline": "Historique du colis",
+      "noEvents": "Aucune mise à jour pour le moment.",
+      "payment": {
+        "title": "Paiement",
+        "quote": "Prix du service",
+        "paid": "Payé",
+        "balance": "Reste à payer",
+        "payNow": "Payer en ligne",
+        "paying": "Ouverture du paiement...",
+        "paidFull": "Paiement complet ✅ Merci !",
+        "awaitingQuote": "Le prix final n'est pas encore fixé. Nous vous contacterons bientôt.",
+        "notAvailable": "Le paiement en ligne n'est pas encore disponible. Contactez-nous pour payer.",
+        "confirming": "Vérification de votre paiement...",
+        "success": "Nous avons bien reçu votre paiement. Merci !",
+        "canceled": "Le paiement a été annulé. Vous pouvez réessayer à tout moment.",
+        "confirmFail": "Nous n'avons pas encore pu confirmer le paiement. Si vous avez été débité(e), contactez-nous.",
+        "error": "Impossible d'ouvrir le paiement. Veuillez réessayer.",
+        "secure": "Paiement sécurisé par Stripe.",
+        "chooseMethod": "Choisissez comment payer",
+        "payCard": "Payer par carte",
+        "payMoncash": "Payer avec MonCash",
+        "moncashAmount": "{{amount}} HTG (1 USD = {{rate}} HTG)",
+        "moncashError": "Impossible d'ouvrir MonCash. Veuillez réessayer ou choisir un autre moyen de paiement.",
+        "moncashSecure": "Vous serez redirigé(e) vers MonCash pour finaliser le paiement.",
+        "payPaypal": "Payer avec PayPal",
+        "payCash": "Payer en espèces",
+        "cashTitle": "Payer en espèces",
+        "cashDesc": "Vous paierez en espèces à l'équipe Pi Pwòp Shipping. L'acceptation du conteneur reste en attente jusqu'à ce que notre équipe confirme la réception de l'argent.",
+        "cashConfirm": "Oui, je paierai en espèces",
+        "cashBack": "Retour",
+        "cashChange": "Choisir un autre moyen de paiement",
+        "cashError": "Impossible d'enregistrer votre choix. Veuillez réessayer.",
+        "cashPendingTitle": "Espèces — en attente de confirmation",
+        "cashPendingDesc": "Notre équipe confirmera dès réception de l'argent. Vous pouvez changer de moyen de paiement à tout moment.",
+        "paypalError": "Impossible d'ouvrir PayPal. Veuillez réessayer ou choisir un autre moyen de paiement.",
+        "paypalConfirming": "Vérification de votre paiement PayPal...",
+        "paypalFail": "Nous n'avons pas pu confirmer le paiement PayPal. Si vous avez été débité(e), contactez-nous.",
+        "secureGeneric": "Vous serez redirigé(e) vers le site de paiement pour finaliser."
+      },
+      "helpTitle": "Besoin d'aide ?",
+      "helpChat": "Discuter avec nous",
+      "helpCall": "Demander un rappel",
+      "cashBanner": {
+        "title": "Acceptation du conteneur en attente",
+        "desc": "Vous avez choisi de payer en espèces. L'acceptation du conteneur reste en attente jusqu'à ce que notre équipe confirme la réception de l'argent."
+      }
+    },
+    "call": {
+      "title": "Demander un Rappel",
+      "subtitle": "Laissez votre nom et votre numéro, et un membre de notre équipe vous appellera.",
+      "name": "Votre nom",
+      "phone": "Téléphone / WhatsApp",
+      "email": "E-mail (optionnel)",
+      "preferredTime": "Quel est le meilleur moment pour vous appeler ?",
+      "times": {
+        "anytime": "À tout moment",
+        "morning": "Matin",
+        "afternoon": "Après-midi",
+        "evening": "Soir"
+      },
+      "topic": "À quel sujet ?",
+      "topics": {
+        "quote": "Demander un devis",
+        "tracking": "Question sur un colis",
+        "payment": "Paiement",
+        "other": "Autre"
+      },
+      "message": "De quoi avez-vous besoin ? (optionnel)",
+      "submit": "Demander un Rappel",
+      "submitting": "Envoi en cours...",
+      "successTitle": "Demande reçue ! 📞",
+      "successDesc": "Un membre de notre équipe vous appellera bientôt.",
+      "another": "Envoyer une autre demande",
+      "error": "Un problème est survenu. Veuillez réessayer.",
+      "missing": "Veuillez indiquer votre nom et votre téléphone."
+    },
+    "moncash": {
+      "title": "Paiement MonCash",
+      "checking": "Vérification de votre paiement avec MonCash...",
+      "success": "Nous avons bien reçu votre paiement MonCash. Merci !",
+      "notCompleted": "Nous ne voyons pas encore le paiement. Si vous avez déjà payé, patientez quelques minutes puis réessayez, ou contactez-nous.",
+      "error": "Un problème est survenu pendant la vérification. Veuillez réessayer.",
+      "retry": "Vérifier à nouveau",
+      "backToTrack": "Voir mon colis",
+      "noRef": "Référence de paiement introuvable. Si vous avez payé, contactez-nous."
+    }
+  },
+  "chat": {
+    "open": "Chat",
+    "title": "Pi Pwòp Shipping",
+    "online": "L'équipe est en ligne",
+    "away": "L'assistant IA est disponible",
+    "welcomeOnline": "Bonjour ! 👋 Comment pouvons-nous vous aider ?",
+    "welcomeAway": "Bonjour ! 👋 Je suis l'assistant IA de Pi Pwòp Shipping. Je peux répondre à vos questions sur l'expédition États-Unis → Haïti, et l'équipe prendra le relais ensuite.",
+    "namePrompt": "Quel est votre nom ? (optionnel)",
+    "namePlaceholder": "Votre nom",
+    "start": "Démarrer le chat",
+    "placeholder": "Écrivez votre message...",
+    "send": "Envoyer",
+    "team": "Équipe Pi Pwòp",
+    "ai": "Assistant IA",
+    "typing": "est en train d'écrire…",
+    "error": "Le message n'a pas pu être envoyé. Réessayez.",
+    "close": "Fermer",
+    "aiNotice": "L'assistant IA peut se tromper. Pour les détails importants, confirmez avec l'équipe."
+  },
+  "shipAdmin": {
+    "tabShipments": "Expéditions",
+    "tabChat": "Chat",
+    "tabCallbacks": "Demandes de rappel",
+    "yes": "Oui",
+    "no": "Non",
+    "refresh": "Actualiser",
+    "save": "Enregistrer",
+    "saved": "Enregistré ✓",
+    "cancel": "Annuler",
+    "delete": "Supprimer",
+    "back": "← Retour",
+    "error": "Une erreur est survenue. Réessayez.",
+    "shipments": {
+      "title": "Demandes d'Expédition",
+      "all": "Toutes",
+      "pendingFilter": "En attente d'examen",
+      "empty": "Aucune demande d'expédition pour le moment.",
+      "number": "Numéro",
+      "customer": "Client",
+      "route": "Trajet",
+      "container": "Conteneur",
+      "status": "Statut",
+      "payment": "Paiement",
+      "date": "Date",
+      "paymentStatus": {
+        "unpaid": "Non payé",
+        "partial": "Partiellement payé",
+        "paid": "Payé"
+      },
+      "sender": "Expéditeur",
+      "recipient": "Destinataire",
+      "phone": "Téléphone",
+      "email": "E-mail",
+      "language": "Langue",
+      "pickup": "Ramassage chez l'expéditeur",
+      "homeDelivery": "Livraison à domicile",
+      "address": "Adresse",
+      "cargo": "Marchandises",
+      "weight": "Poids (lb)",
+      "value": "Valeur déclarée (USD)",
+      "shipDate": "Date d'envoi souhaitée",
+      "customerNotes": "Notes du client",
+      "submittedOn": "Envoyé le",
+      "manage": "Gérer la demande",
+      "approveHelp": "Une fois approuvée, le client peut suivre son colis avec son numéro et payer en ligne (si vous fixez un prix).",
+      "approve": "Approuver la demande",
+      "reject": "Refuser",
+      "rejectReason": "Raison (visible par le client)",
+      "quote": "Prix (USD)",
+      "eta": "Livraison estimée",
+      "publicNote": "Message pour le client (public)",
+      "adminNotes": "Notes internes (invisibles au client)",
+      "saveDetails": "Enregistrer les détails",
+      "addUpdate": "Ajouter une mise à jour de suivi",
+      "newStatus": "Nouveau statut",
+      "location": "Lieu (optionnel)",
+      "locationPlaceholder": "Exemple : Port de Miami",
+      "note": "Note (optionnel)",
+      "when": "Date et heure (si ce n'est pas maintenant)",
+      "addBtn": "Ajouter la mise à jour",
+      "timeline": "Historique du colis",
+      "removeEvent": "Supprimer cette mise à jour",
+      "payments": "Paiements",
+      "noPayments": "Aucun paiement pour le moment.",
+      "recordPayment": "Enregistrer un paiement",
+      "amount": "Montant (USD)",
+      "method": "Méthode",
+      "methods": {
+        "cash": "Espèces",
+        "zelle": "Zelle",
+        "wire": "Virement",
+        "check": "Chèque",
+        "other": "Autre",
+        "moncash": "MonCash",
+        "paypal": "PayPal",
+        "card": "Carte (Stripe)"
+      },
+      "addPayment": "Enregistrer le paiement",
+      "card": "Carte (en ligne)",
+      "manual": "Manuel",
+      "totalPaid": "Total payé",
+      "balance": "Reste",
+      "deleteShipment": "Supprimer cette demande",
+      "confirmDelete": "Supprimer définitivement cette demande ?",
+      "confirmReject": "Refuser cette demande ?",
+      "needQuoteToPay": "Fixez un prix pour que le client puisse payer en ligne.",
+      "cashPending": "Espèces en attente",
+      "cashPendingTitle": "Le client a choisi de payer en espèces",
+      "cashPendingHelp": "L'acceptation du conteneur reste en attente jusqu'à ce que vous confirmiez avoir reçu l'argent.",
+      "confirmCash": "Confirmer la réception des espèces",
+      "cashAmount": "Montant reçu (USD)",
+      "dismissCash": "Annuler la demande d'espèces"
+    },
+    "callbacks": {
+      "title": "Demandes de Rappel",
+      "empty": "Aucune demande de rappel.",
+      "name": "Nom",
+      "phone": "Téléphone",
+      "time": "Moment",
+      "topic": "Sujet",
+      "message": "Message",
+      "date": "Date",
+      "status": "Statut",
+      "statuses": {
+        "new": "Nouvelle",
+        "called": "Rappelé",
+        "done": "Terminé"
+      },
+      "markCalled": "Marquer comme rappelé",
+      "markDone": "Marquer comme terminé",
+      "call": "Appeler"
+    },
+    "chat": {
+      "title": "Chat avec les Clients",
+      "available": "Je suis disponible pour le chat",
+      "availableHelp": "Quand cette option est activée et que la page admin est ouverte, les messages vous arrivent. Sinon, l'assistant IA répond aux clients.",
+      "onlineNow": "Les clients vous voient en ligne",
+      "awayNow": "Les clients parlent à l'assistant IA",
+      "aiOn": "L'assistant IA est actif",
+      "aiOff": "L'assistant IA n'est pas configuré : les clients reçoivent un simple message automatique. Ajoutez ANTHROPIC_API_KEY dans server/.env.",
+      "conversations": "Conversations",
+      "none": "Aucune conversation pour le moment.",
+      "select": "Choisissez une conversation pour voir les messages.",
+      "anonymous": "Visiteur",
+      "placeholder": "Écrivez votre réponse...",
+      "send": "Envoyer",
+      "close": "Fermer la conversation",
+      "reopen": "Rouvrir",
+      "closed": "Fermée",
+      "you": "Vous",
+      "ai": "Assistant IA",
+      "visitor": "Visiteur"
+    },
+    "paymentSettings": {
+      "title": "Paiement en ligne",
+      "rateLabel": "Taux de change : 1 USD =",
+      "htg": "HTG",
+      "saveRate": "Enregistrer le taux",
+      "rateHelp": "MonCash paie en gourdes (HTG). Indiquez le taux de change pour que les clients voient le montant en gourdes. Mettez-le à jour quand il change.",
+      "noRate": "Indiquez un taux de change pour que l'option MonCash apparaisse aux clients.",
+      "moncashOn": "MonCash configuré ({{mode}})",
+      "moncashOff": "MonCash non configuré (ajoutez MONCASH_CLIENT_ID et MONCASH_CLIENT_SECRET dans server/.env)",
+      "stripeOn": "Carte (Stripe) configuré",
+      "stripeOff": "Carte (Stripe) non configuré",
+      "returnUrl": "URL de retour à saisir dans le portail MonCash :",
+      "methodsTitle": "Moyens de paiement proposés aux clients",
+      "methodNames": {
+        "card": "Carte (Stripe)",
+        "paypal": "PayPal",
+        "moncash": "MonCash",
+        "cash": "Espèces"
+      },
+      "notConfigured": "non configuré",
+      "configured": "configuré",
+      "alwaysReady": "toujours disponible",
+      "keysHint": "Ajoutez les clés dans server/.env (voir server/.env.example) pour activer les moyens non configurés."
+    }
   }
 }

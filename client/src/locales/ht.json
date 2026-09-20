@@ -4,16 +4,18 @@
     "products": "Pwodwi",
     "services": "Sèvis",
     "contact": "Kontak",
-    "bookAppointment": "Pran Randevou"
+    "bookAppointment": "Pran Randevou",
+    "shipping": "Shipping",
+    "getQuote": "Mande yon Devis"
   },
   "homepage": {
-    "title": "Pi Pwòp",
+    "title": "Pi Pwòp Shipping",
     "subtitle": "Lakay Ou",
     "description": "Depi pwodwi netwayaj ki efikas, rive nan kwizin ak closets PVC modèn. Nou ofri ou solisyon konplè pou yon kay ki pi pwòp ak pi òganize.",
     "viewProducts": "Gade Pwodwi Yo",
     "ourServices": "Sèvis Nou Yo",
-    "whyChoose": "Poukisa Chwazi Pi Pwòp?",
-    "whyChooseDesc": "Depi 2020, nou ap sèvi kominote ayisyen an ak pwodwi ak sèvis ki gen kalite. Nou konsantre sou satisfaksyon kliyan ak inovasyon nan chak pwojè.",
+    "whyChoose": "Poukisa Chwazi Pi Pwòp Shipping?",
+    "whyChooseDesc": "Depi 2020, nou ap sèvi kominote ayisyen an ak sèvis ki gen kalite: shipping soti Ozetazini rive Ayiti, pwodwi netwayaj, ak enstalasyon kwizin. Nou konsantre sou satisfaksyon kliyan nan chak pwojè.",
     "qualityFirst": "Kalite Segondè",
     "qualityFirstDesc": "Nou chwazi sèlman pwodwi ak materyèl ki gen kalite segondè",
     "professionalInstall": "Enstalasyon Pwofesyonèl",
@@ -27,7 +29,10 @@
     "cleaningProducts": "Pwodwi netwayaj",
     "pvcKitchen": "Kwizin PVC",
     "closets": "Closets",
-    "delivery": "Livrezon"
+    "delivery": "Livrezon",
+    "productsServicesTitle": "Pi Pwòp Pwodwi & Sèvis",
+    "productsServicesDesc": "Anplis shipping, nou toujou ofri pwodwi kalite pou kay ou ak biznis ou, ak enstalasyon pwofesyonèl.",
+    "viewServices": "Gade Tout Sèvis Yo"
   },
   "products": {
     "title": "Pwodwi Nou Yo",
@@ -79,7 +84,7 @@
   },
   "admin": {
     "title": "Admin Dashboard",
-    "subtitle": "Pi Pwòp Management System",
+    "subtitle": "Pi Pwòp Shipping Management System",
     "connectedAs": "Konekte kòm Admin",
     "dashboard": "Dashboard",
     "orders": "Kòmand yo",
@@ -110,7 +115,7 @@
   },
   "contact": {
     "title": "Ann pale sou pwojè w la",
-    "description": "Di nou si w bezwen pwodwi netwayaj an gwo, oswa yon kwizin / closet PVC pou kay, Airbnb oswa biznis ou.",
+    "description": "Di nou si w vle voye yon kontenè soti Ozetazini pou Ayiti, oswa si w bezwen pwodwi netwayaj oswa yon kwizin / closet PVC pou kay, Airbnb oswa biznis ou.",
     "name": "Non ou",
     "phone": "WhatsApp / Telefòn",
     "interested": "Ki sa w enterese ladan?",
@@ -130,11 +135,12 @@
     "chooseService": "Chwazi yon sèvis...",
     "requiredFields": "Jaden ki obligatwa",
     "whereWeAre": "Kote nou ye",
-    "location": "Port-au-Prince, Ayiti"
+    "location": "Port-au-Prince, Ayiti",
+    "shipping": "Shipping Ozetazini → Ayiti"
   },
   "footer": {
-    "tagline": "Kalite ak konfyans",
-    "description": "Pwodwi netwayaj ak sèvis enstalasyon kwizin ak closet PVC ki gen kalite segondè pou kominote ayisyen an.",
+    "tagline": "Shipping Ozetazini → Ayiti",
+    "description": "Nou voye ak resevwa kontenè soti Ozetazini rive Ayiti. Nou ofri tou pwodwi netwayaj ak enstalasyon kwizin ak closet PVC pou kominote ayisyen an.",
     "navigation": "Navigasyon",
     "ourServices": "Sèvis Nou Yo",
     "contactUs": "Kontak Nou",
@@ -145,7 +151,9 @@
     "pvcKitchen": "Kwizin PVC",
     "closetsWardrobes": "Closets & Gadrob",
     "deliveryInstall": "Livrezon & Enstalasyon",
-    "applyWork": "Vin nan Ekip Nou an"
+    "applyWork": "Vin nan Ekip Nou an",
+    "shipping": "Shipping Kontenè",
+    "shippingLink": "Shipping"
   },
   "booking": {
     "bookAppointment": "Pran Randevou",
@@ -181,8 +189,487 @@
     "timeSelectPlaceholder": "Chwazi yon lè",
     "timeMorning": "Maten (8h-12h)",
     "timeAfternoon": "Apremidi (12h-17h)",
-    "timeEvening": "Aswè (17h-20h)",
-    "additionalNotes": "Nòt Adisyonèl",
-    "notesPlaceholder": "Di nou plis sou pwojè w la oswa demand espesyal ou yo"
+    "timeEvening": "Aswè (17h-20h)"
+  },
+  "shipping": {
+    "brandSuffix": "Shipping",
+    "badge": "Ozetazini → Ayiti",
+    "heroTitle": "Voye kontenè w soti Ozetazini rive Ayiti.",
+    "heroDesc": "Nou ede fanmi ak biznis voye ak resevwa machandiz yo nan kontenè, soti Ozetazini jouk an Ayiti. Yon sèl ekip ki pran swen bagay ou yo tout wout la.",
+    "ctaQuote": "Mande yon Devis",
+    "ctaServices": "Gade Sèvis Yo",
+    "routeFrom": "Ozetazini",
+    "routeTo": "Ayiti",
+    "routeSend": "Voye",
+    "routeShip": "Transpò",
+    "routeReceive": "Resevwa",
+    "servicesTitle": "Sèvis Shipping Nou Yo",
+    "servicesSubtitle": "Tout sa w bezwen pou machandiz ou rive an sekirite.",
+    "services": [
+      {
+        "icon": "🚢",
+        "title": "Voye kontenè soti Ozetazini",
+        "desc": "Nou ede w prepare ak voye machandiz ou yo nan kontenè, an sekirite, soti Ozetazini rive Ayiti."
+      },
+      {
+        "icon": "📥",
+        "title": "Resepsyon an Ayiti",
+        "desc": "Nou resevwa kontenè a lè li rive epi nou prepare machandiz yo pou livrezon."
+      },
+      {
+        "icon": "🚚",
+        "title": "Livrezon lakay ou",
+        "desc": "Nou pote machandiz ou yo jouk lakay ou oswa nan biznis ou."
+      },
+      {
+        "icon": "📋",
+        "title": "Akonpayman ak dokiman",
+        "desc": "Nou gide w nan demach ak dokiman yo pou tout bagay pase san traka."
+      }
+    ],
+    "howTitle": "Kijan Sa Mache",
+    "howSubtitle": "Senp, klè, epi nou avè w nan chak etap.",
+    "steps": [
+      {
+        "title": "Kontakte nou",
+        "desc": "Di nou sa w vle voye epi mande yon devis."
+      },
+      {
+        "title": "Prepare epi voye",
+        "desc": "Nou ede w prepare machandiz yo epi chaje yo nan kontenè a."
+      },
+      {
+        "title": "Kontenè a ap vwayaje",
+        "desc": "Kontenè a travèse soti Ozetazini pou ale Ayiti."
+      },
+      {
+        "title": "Resevwa an Ayiti",
+        "desc": "Nou resevwa, nou pran swen, epi nou livre machandiz ou yo."
+      }
+    ],
+    "ctaTitle": "Pare pou voye kontenè w?",
+    "ctaDesc": "Kontakte nou jodi a epi nou pral reponn ou pi vit posib.",
+    "ctaCall": "Mande yon Rele",
+    "pageTitle": "Pi Pwòp Shipping",
+    "ctaTrack": "Swiv Kolis",
+    "actionsTitle": "Kijan nou ka ede w jodi a?",
+    "actions": {
+      "request": {
+        "title": "Mande yon devis",
+        "desc": "Ba nou enfòmasyon kontenè a epi resevwa yon nimewo swivi.",
+        "cta": "Kòmanse"
+      },
+      "track": {
+        "title": "Swiv kolis ou",
+        "desc": "Antre nimewo swivi ou pou wè kote kolis la ye ak konbyen jou l pran.",
+        "cta": "Swiv"
+      },
+      "call": {
+        "title": "Mande yon rele",
+        "desc": "Ou pito pale ak yon moun? Kite nimewo w epi nou rele w.",
+        "cta": "Rele m"
+      }
+    },
+    "features": [
+      "Swivi an dirèk ak nimewo w",
+      "Peman an liy",
+      "Chat pou èd rapid"
+    ],
+    "quickTrackTitle": "Ou gen yon nimewo swivi?",
+    "options": {
+      "containers": {
+        "20ft": {
+          "label": "Kontenè 20 pye",
+          "hint": "Pi piti a — bon pou yon chajman modere"
+        },
+        "40ft": {
+          "label": "Kontenè 40 pye",
+          "hint": "De fwa longè 20 pye a"
+        },
+        "40ft_hc": {
+          "label": "Kontenè 40 pye High Cube",
+          "hint": "40 pye ak plis wotè"
+        },
+        "partial": {
+          "label": "Yon pati nan kontenè (chaje pataje)",
+          "hint": "Pou ti chajman — ou pa bezwen yon kontenè antye"
+        },
+        "not_sure": {
+          "label": "Mwen pa sèten — ede m chwazi",
+          "hint": "Ekip nou an ap konseye w"
+        }
+      },
+      "cargo": {
+        "household": "Bagay kay ak mèb",
+        "food": "Manje ak pwodwi sèk",
+        "building": "Materyèl konstriksyon",
+        "electronics": "Elektwonik ak aparèy",
+        "vehicle": "Veyikil ak pyès",
+        "commercial": "Machandiz pou komès",
+        "clothing": "Rad ak soulye",
+        "other": "Lòt bagay"
+      }
+    },
+    "status": {
+      "submitted": "Demann resevwa",
+      "approved": "Apwouve",
+      "cargo_received": "Machandiz resevwa",
+      "loaded": "Chaje nan kontenè a",
+      "departed": "Kontenè a kite Ozetazini",
+      "in_transit": "Sou lanmè",
+      "arrived_haiti": "Rive Ayiti",
+      "customs": "Nan Douan",
+      "out_for_delivery": "Nan livrezon",
+      "delivered": "Livre",
+      "rejected": "Pa apwouve"
+    },
+    "request": {
+      "title": "Mande yon Devis Shipping",
+      "subtitle": "Ranpli fòm nan. Lè w voye l, w ap resevwa yon nimewo swivi. Nou revize demann lan epi nou apwouve l; apre sa w ap ka swiv kolis la ak menm nimewo a.",
+      "sections": {
+        "route": "1. Wout la",
+        "cargo": "2. Kontenè ak machandiz",
+        "recipient": "3. Moun k ap resevwa an Ayiti",
+        "sender": "4. Enfòmasyon ou"
+      },
+      "originCity": "Vil kote kontenè a soti (Ozetazini)",
+      "originState": "Eta",
+      "pickupNeeded": "Mwen bezwen nou vin chèche machandiz yo lakay mwen",
+      "originAddress": "Adrès kote pou chèche",
+      "destinationCity": "Vil destinasyon an Ayiti",
+      "destinationOther": "Lòt vil",
+      "destinationOtherPlaceholder": "Ekri non vil la",
+      "homeDelivery": "Mwen vle livrezon lakay moun nan an Ayiti",
+      "destinationAddress": "Adrès livrezon an Ayiti",
+      "containerSize": "Gwosè kontenè",
+      "containerQty": "Kantite kontenè",
+      "cargoType": "Kalite machandiz",
+      "cargoDescription": "Kisa w ap voye?",
+      "cargoDescriptionPlaceholder": "Egzanp: 3 mèb, 10 bwat rad, yon frijidè...",
+      "estWeight": "Pwa apwoksimatif (lb)",
+      "declaredValue": "Valè apwoksimatif machandiz yo (USD)",
+      "preferredShipDate": "Dat ou ta renmen voye",
+      "notes": "Nòt adisyonèl",
+      "notesPlaceholder": "Enstriksyon espesyal, machandiz frajil, elatriye.",
+      "recipientName": "Non moun k ap resevwa",
+      "recipientPhone": "Telefòn moun k ap resevwa",
+      "senderName": "Non konplè ou",
+      "senderPhone": "Telefòn / WhatsApp ou",
+      "senderEmail": "Imèl",
+      "optional": "opsyonèl",
+      "select": "Chwazi...",
+      "confirm": "Mwen konfime enfòmasyon yo kòrèk. Pri final la depann de evalyasyon ekip nou an.",
+      "submit": "Voye Demann Lan",
+      "submitting": "N ap voye...",
+      "errors": {
+        "generic": "Gen yon pwoblèm. Tanpri eseye ankò.",
+        "missing": "Tanpri ranpli tout jaden ki obligatwa.",
+        "email": "Adrès imèl la pa valid.",
+        "tooMany": "Twòp tantativ. Tanpri tann kèk minit epi eseye ankò."
+      },
+      "success": {
+        "title": "Demann ou an resevwa! 🎉",
+        "numberLabel": "Nimewo swivi ou",
+        "saveIt": "Sere nimewo sa a. W ap bezwen l pou swiv kolis la ak pou peye.",
+        "copy": "Kopye",
+        "copied": "Kopye!",
+        "nextTitle": "Sa k ap pase kounye a",
+        "next1": "Ekip nou an ap revize demann ou an.",
+        "next2": "Lè nou apwouve l, w ap ka wè tout etap yo sou paj swivi a ak menm nimewo a, epi peye an liy.",
+        "next3": "Nou ka rele w si nou bezwen plis detay.",
+        "trackNow": "Ale sou paj swivi a",
+        "another": "Fè yon lòt demann"
+      }
+    },
+    "track": {
+      "title": "Swiv Kolis Ou",
+      "subtitle": "Antre nimewo swivi ou a (egzanp: PPS-AB12CD).",
+      "placeholder": "PPS-XXXXXX",
+      "button": "Swiv",
+      "searching": "N ap chèche...",
+      "notFound": "Nou pa jwenn okenn kolis ak nimewo sa a. Verifye nimewo a epi eseye ankò.",
+      "error": "Gen yon pwoblèm. Tanpri eseye ankò.",
+      "recent": "Dènye kolis ou yo",
+      "refresh": "Aktyalize",
+      "hello": "Bonjou {{name}} 👋",
+      "pendingTitle": "Demann ou an ap revize",
+      "pendingDesc": "Nou resevwa demann ou an. Yon fwa ekip nou an apwouve l, w ap ka wè tout etap yo isit la ak menm nimewo sa a.",
+      "rejectedTitle": "Nou pa t ka apwouve demann lan",
+      "rejectedDesc": "Tanpri kontakte nou pou plis enfòmasyon.",
+      "teamNote": "Mesaj ekip la",
+      "currentStatus": "Estati kounye a",
+      "daysSinceApproved": "Jou depi apwobasyon",
+      "daysInTransit": "Jou depi kontenè a kite",
+      "daysToDelivery": "Jou ki rete (estimasyon)",
+      "estimatedDelivery": "Livrezon estime",
+      "deliveredOn": "Livre nan",
+      "days": "{{count}} jou",
+      "route": "Wout la",
+      "container": "Kontenè",
+      "cargo": "Machandiz",
+      "timeline": "Istwa kolis la",
+      "noEvents": "Poko gen okenn mizajou.",
+      "payment": {
+        "title": "Peman",
+        "quote": "Pri sèvis la",
+        "paid": "Peye",
+        "balance": "Rès pou peye",
+        "payNow": "Peye an liy",
+        "paying": "N ap ouvri peman an...",
+        "paidFull": "Peman an konplè ✅ Mèsi!",
+        "awaitingQuote": "Nou poko fikse pri final la. Nou pral kontakte w byento.",
+        "notAvailable": "Peman an liy poko disponib. Kontakte nou pou w peye.",
+        "confirming": "N ap verifye peman ou...",
+        "success": "Nou resevwa peman ou. Mèsi!",
+        "canceled": "Peman an te anile. Ou ka eseye ankò nenpòt lè.",
+        "confirmFail": "Nou pa t ka konfime peman an ankò. Si yo pran lajan an, kontakte nou.",
+        "error": "Nou pa t ka ouvri peman an. Tanpri eseye ankò.",
+        "secure": "Peman an sekirize pa Stripe.",
+        "chooseMethod": "Chwazi ki jan w vle peye",
+        "payCard": "Peye ak kat",
+        "payMoncash": "Peye ak MonCash",
+        "moncashAmount": "{{amount}} HTG (1 USD = {{rate}} HTG)",
+        "moncashError": "Nou pa t ka ouvri MonCash. Tanpri eseye ankò oswa chwazi yon lòt fason pou peye.",
+        "moncashSecure": "Ou pral voye sou MonCash pou w fini peman an.",
+        "payPaypal": "Peye ak PayPal",
+        "payCash": "Peye kach",
+        "cashTitle": "Peye kach",
+        "cashDesc": "Ou pral peye kach ba ekip Pi Pwòp Shipping. Aksepte kontenè a rete annatant jiskaske ekip nou an konfime ke nou resevwa lajan an.",
+        "cashConfirm": "Wi, mwen pral peye kach",
+        "cashBack": "Retounen",
+        "cashChange": "Chwazi yon lòt fason pou peye",
+        "cashError": "Nou pa t ka anrejistre chwa a. Tanpri eseye ankò.",
+        "cashPendingTitle": "Kach — n ap tann konfimasyon",
+        "cashPendingDesc": "Ekip nou an pral konfime lè nou resevwa kach la. Ou ka chanje pou yon lòt fason pou peye nenpòt lè.",
+        "paypalError": "Nou pa t ka ouvri PayPal. Tanpri eseye ankò oswa chwazi yon lòt fason pou peye.",
+        "paypalConfirming": "N ap verifye peman PayPal ou...",
+        "paypalFail": "Nou pa t ka konfime peman PayPal la. Si yo pran lajan an, kontakte nou.",
+        "secureGeneric": "Ou pral voye sou sit peman an pou w fini."
+      },
+      "helpTitle": "Bezwen èd?",
+      "helpChat": "Chat ak nou",
+      "helpCall": "Mande yon rele",
+      "cashBanner": {
+        "title": "Aksepte kontenè a annatant",
+        "desc": "Ou chwazi peye kach. Aksepte kontenè a rete annatant jiskaske ekip nou an konfime ke nou resevwa lajan an."
+      }
+    },
+    "call": {
+      "title": "Mande yon Rele",
+      "subtitle": "Kite non ak nimewo w, epi yon moun nan ekip nou an ap rele w.",
+      "name": "Non ou",
+      "phone": "Telefòn / WhatsApp",
+      "email": "Imèl (opsyonèl)",
+      "preferredTime": "Ki lè ki pi bon pou rele w?",
+      "times": {
+        "anytime": "Nenpòt lè",
+        "morning": "Maten",
+        "afternoon": "Apremidi",
+        "evening": "Aswè"
+      },
+      "topic": "Sou ki sijè?",
+      "topics": {
+        "quote": "Mande yon devis",
+        "tracking": "Kesyon sou yon kolis",
+        "payment": "Peman",
+        "other": "Lòt bagay"
+      },
+      "message": "Kisa w bezwen? (opsyonèl)",
+      "submit": "Mande yon Rele",
+      "submitting": "N ap voye...",
+      "successTitle": "Nou resevwa demann ou an! 📞",
+      "successDesc": "Yon moun nan ekip nou an ap rele w byento.",
+      "another": "Voye yon lòt demann",
+      "error": "Gen yon pwoblèm. Tanpri eseye ankò.",
+      "missing": "Tanpri antre non ak telefòn ou."
+    },
+    "moncash": {
+      "title": "Peman MonCash",
+      "checking": "N ap verifye peman ou ak MonCash...",
+      "success": "Nou resevwa peman MonCash ou an. Mèsi!",
+      "notCompleted": "Nou poko wè peman an. Si w peye deja, tann kèk minit epi eseye ankò, oswa kontakte nou.",
+      "error": "Gen yon pwoblèm pandan verifikasyon an. Tanpri eseye ankò.",
+      "retry": "Verifye ankò",
+      "backToTrack": "Wè kolis mwen",
+      "noRef": "Nou pa jwenn referans peman an. Si w peye, kontakte nou."
+    }
+  },
+  "chat": {
+    "open": "Chat",
+    "title": "Pi Pwòp Shipping",
+    "online": "Ekip la an liy",
+    "away": "Asistan AI a disponib",
+    "welcomeOnline": "Bonjou! 👋 Ki jan nou ka ede w?",
+    "welcomeAway": "Bonjou! 👋 Mwen se asistan AI Pi Pwòp Shipping. Mwen ka reponn kesyon w sou shipping Ozetazini → Ayiti, epi ekip la ap swiv apre.",
+    "namePrompt": "Ki non ou? (opsyonèl)",
+    "namePlaceholder": "Non ou",
+    "start": "Kòmanse chat la",
+    "placeholder": "Ekri mesaj ou...",
+    "send": "Voye",
+    "team": "Ekip Pi Pwòp",
+    "ai": "Asistan AI",
+    "typing": "ap ekri…",
+    "error": "Mesaj la pa t ka pati. Eseye ankò.",
+    "close": "Fèmen",
+    "aiNotice": "Asistan AI a ka fè erè. Pou detay enpòtan, konfime ak ekip la."
+  },
+  "shipAdmin": {
+    "tabShipments": "Shipping",
+    "tabChat": "Chat",
+    "tabCallbacks": "Demann Rele",
+    "yes": "Wi",
+    "no": "Non",
+    "refresh": "Aktyalize",
+    "save": "Sove",
+    "saved": "Sove ✓",
+    "cancel": "Anile",
+    "delete": "Efase",
+    "back": "← Retounen",
+    "error": "Gen yon erè. Eseye ankò.",
+    "shipments": {
+      "title": "Demann Shipping",
+      "all": "Tout",
+      "pendingFilter": "Ap tann revizyon",
+      "empty": "Poko gen demann shipping.",
+      "number": "Nimewo",
+      "customer": "Kliyan",
+      "route": "Wout",
+      "container": "Kontenè",
+      "status": "Estati",
+      "payment": "Peman",
+      "date": "Dat",
+      "paymentStatus": {
+        "unpaid": "Pa peye",
+        "partial": "Peye yon pati",
+        "paid": "Peye"
+      },
+      "sender": "Ekspeditè",
+      "recipient": "Moun k ap resevwa",
+      "phone": "Telefòn",
+      "email": "Imèl",
+      "language": "Lang",
+      "pickup": "Chèche lakay ekspeditè",
+      "homeDelivery": "Livrezon lakay moun nan",
+      "address": "Adrès",
+      "cargo": "Machandiz",
+      "weight": "Pwa (lb)",
+      "value": "Valè deklare (USD)",
+      "shipDate": "Dat vle voye",
+      "customerNotes": "Nòt kliyan",
+      "submittedOn": "Voye le",
+      "manage": "Jere demann lan",
+      "approveHelp": "Lè w apwouve, kliyan an ka swiv kolis la ak nimewo li a epi peye an liy (si w mete yon pri).",
+      "approve": "Apwouve demann lan",
+      "reject": "Refize",
+      "rejectReason": "Rezon (kliyan an ap wè l)",
+      "quote": "Pri (USD)",
+      "eta": "Livrezon estime",
+      "publicNote": "Mesaj pou kliyan an (piblik)",
+      "adminNotes": "Nòt entèn (kliyan an pa wè)",
+      "saveDetails": "Sove detay yo",
+      "addUpdate": "Ajoute yon mizajou swivi",
+      "newStatus": "Nouvo estati",
+      "location": "Kote (opsyonèl)",
+      "locationPlaceholder": "Egzanp: Pò Miami",
+      "note": "Nòt (opsyonèl)",
+      "when": "Dat ak lè (si li pa kounye a)",
+      "addBtn": "Ajoute mizajou",
+      "timeline": "Istwa kolis la",
+      "removeEvent": "Efase mizajou sa a",
+      "payments": "Peman yo",
+      "noPayments": "Poko gen peman.",
+      "recordPayment": "Anrejistre yon peman",
+      "amount": "Montan (USD)",
+      "method": "Metòd",
+      "methods": {
+        "cash": "Lajan kach",
+        "zelle": "Zelle",
+        "wire": "Transfè",
+        "check": "Chèk",
+        "other": "Lòt",
+        "moncash": "MonCash",
+        "paypal": "PayPal",
+        "card": "Kat (Stripe)"
+      },
+      "addPayment": "Anrejistre peman",
+      "card": "Kat (an liy)",
+      "manual": "Manyèl",
+      "totalPaid": "Total peye",
+      "balance": "Rès",
+      "deleteShipment": "Efase demann sa a",
+      "confirmDelete": "Efase demann sa a definitivman?",
+      "confirmReject": "Refize demann sa a?",
+      "needQuoteToPay": "Mete yon pri pou kliyan an ka peye an liy.",
+      "cashPending": "Kach annatant",
+      "cashPendingTitle": "Kliyan an chwazi peye kach",
+      "cashPendingHelp": "Aksepte kontenè a annatant jiskaske w konfime ou resevwa lajan an.",
+      "confirmCash": "Konfime mwen resevwa kach la",
+      "cashAmount": "Montan resevwa (USD)",
+      "dismissCash": "Anile demann kach la"
+    },
+    "callbacks": {
+      "title": "Demann Rele",
+      "empty": "Pa gen demann pou rele.",
+      "name": "Non",
+      "phone": "Telefòn",
+      "time": "Lè",
+      "topic": "Sijè",
+      "message": "Mesaj",
+      "date": "Dat",
+      "status": "Estati",
+      "statuses": {
+        "new": "Nouvo",
+        "called": "Rele",
+        "done": "Fini"
+      },
+      "markCalled": "Make kòm rele",
+      "markDone": "Make kòm fini",
+      "call": "Rele"
+    },
+    "chat": {
+      "title": "Chat ak Kliyan",
+      "available": "Mwen disponib pou chat",
+      "availableHelp": "Lè sa a aktive epi paj admin lan ouvè, mesaj yo vin jwenn ou. Sinon, asistan AI a reponn kliyan yo.",
+      "onlineNow": "Kliyan yo wè w an liy",
+      "awayNow": "Kliyan yo pale ak asistan AI a",
+      "aiOn": "Asistan AI a aktif",
+      "aiOff": "Asistan AI a pa konfigire: kliyan yo resevwa yon mesaj otomatik senp. Mete ANTHROPIC_API_KEY nan server/.env.",
+      "conversations": "Konvèsasyon yo",
+      "none": "Poko gen konvèsasyon.",
+      "select": "Chwazi yon konvèsasyon pou w wè mesaj yo.",
+      "anonymous": "Vizitè",
+      "placeholder": "Ekri repons ou...",
+      "send": "Voye",
+      "close": "Fèmen konvèsasyon an",
+      "reopen": "Rouvri",
+      "closed": "Fèmen",
+      "you": "Ou",
+      "ai": "Asistan AI",
+      "visitor": "Vizitè"
+    },
+    "paymentSettings": {
+      "title": "Peman an liy",
+      "rateLabel": "To chanj: 1 USD =",
+      "htg": "HTG",
+      "saveRate": "Sove to a",
+      "rateHelp": "MonCash peye an goud (HTG). Mete to chanj la pou kliyan yo wè montan an an goud. Mete l ajou lè li chanje.",
+      "noRate": "Mete yon to chanj pou opsyon MonCash parèt bay kliyan yo.",
+      "moncashOn": "MonCash konfigire ({{mode}})",
+      "moncashOff": "MonCash pa konfigire (mete MONCASH_CLIENT_ID ak MONCASH_CLIENT_SECRET nan server/.env)",
+      "stripeOn": "Kat (Stripe) konfigire",
+      "stripeOff": "Kat (Stripe) pa konfigire",
+      "returnUrl": "URL retou pou mete nan pòtal MonCash la:",
+      "methodsTitle": "Fason pou peye ki disponib pou kliyan yo",
+      "methodNames": {
+        "card": "Kat (Stripe)",
+        "paypal": "PayPal",
+        "moncash": "MonCash",
+        "cash": "Kach"
+      },
+      "notConfigured": "pa konfigire",
+      "configured": "konfigire",
+      "alwaysReady": "toujou disponib",
+      "keysHint": "Mete kle yo nan server/.env (gade server/.env.example) pou aktive fason ki pa konfigire yo."
+    }
   }
 }

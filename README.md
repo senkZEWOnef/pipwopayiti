@@ -1,8 +1,8 @@
-# Pi Pwòp - Complete Business Management Platform
+# Pi Pwòp Shipping - Complete Business Management Platform
 
-🏠 **Pi Pwòp** is a comprehensive business management platform for a Haitian cleaning and kitchen installation company. Built with modern web technologies and featuring bilingual support (Haitian Creole & French).
+🚢 **Pi Pwòp Shipping** is a business management platform for a Haitian shipping company: container shipping and receiving from the United States to Haiti (the main focus), alongside cleaning products and PVC kitchen/closet installation. Built with modern web technologies and featuring bilingual support (Haitian Creole & French).
 
-![Pi Pwòp Banner](https://via.placeholder.com/800x200/2563eb/ffffff?text=Pi+Pwòp+Business+Platform)
+![Pi Pwòp Shipping Banner](https://via.placeholder.com/800x200/10243d/ffffff?text=Pi+Pw%C3%B2p+Shipping)
 
 ## 🌟 Features
 
@@ -10,6 +10,7 @@
 - **Multilingual Support**: Full Haitian Creole and French translations
 - **Modern Design**: Responsive design with custom color scheme
 - **Product Carousel**: Dynamic product showcase in hero section
+- **Shipping Section**: Main landing focus — US → Haiti container shipping (`/shipping`)
 - **Service Pages**: Detailed service offerings and descriptions
 - **Contact Forms**: Customer inquiry and service request forms
 - **Job Applications**: Career opportunities and application system
@@ -32,6 +33,15 @@
 - **Staff Coordination**: Application processing and job assignments
 - **Financial Tracking**: Revenue reporting and profit analysis
 
+## 🚢 Shipping module (US → Haiti)
+
+- `/shipping` overview · `/shipping/request` request form (returns a tracking number `PPS-XXXXXX`) · `/shipping/track/:number` live tracking + online payment · `/shipping/call` callback request
+- Live chat widget on every public page. When the admin is "available" (chat tab, page open) messages go to the admin; otherwise an AI assistant answers.
+- Admin: **Shipments** (approve/reject, quote, tracking updates, payments), **Chat**, **Callbacks**.
+- Tables are created automatically on server start (`server/shipping.js`, `server/chat.js`).
+- Payment options (each can be switched on/off in Admin → Shipping): Cash (admin confirms), Card (Stripe), PayPal, MonCash (HTG, needs a USD→HTG rate).
+- Optional keys in `server/.env` (see `server/.env.example`): `ANTHROPIC_API_KEY` (AI assistant), `STRIPE_*`, `PAYPAL_*`, `MONCASH_*`.
+
 ## 🛠️ Technology Stack
 
 ### **Frontend**
@@ -40,7 +50,7 @@
 - **React Router**: Client-side routing
 - **React i18next**: Internationalization framework
 - **Tailwind CSS**: Utility-first CSS framework
-- **Custom Design System**: Pi Pwòp brand colors and components
+- **Custom Design System**: Pi Pwòp Shipping brand colors and components
 
 ### **Backend**
 - **Node.js**: JavaScript runtime
@@ -264,6 +274,6 @@ For support and questions:
 
 ---
 
-**Pi Pwòp** - Empowering Haitian businesses with modern technology 🇭🇹
+**Pi Pwòp Shipping** - Empowering Haitian businesses with modern technology 🇭🇹
 
 *"Pi pwòp, pi bon, pi solid"* - Cleaner, better, stronger

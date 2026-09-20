@@ -1,13 +1,15 @@
 import { useState } from "react";
+import { useSearchParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
 export default function ContactForm({ isMainPage = false }) {
   const { t } = useTranslation();
+  const [searchParams] = useSearchParams();
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
     email: '',
-    serviceType: '',
+    serviceType: searchParams.get('service') === 'shipping' ? 'shipping' : '',
     message: ''
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -137,6 +139,7 @@ export default function ContactForm({ isMainPage = false }) {
           }`}
         >
           <option value="">{t('contact.chooseService')}</option>
+          <option value="shipping">{t('contact.shipping')}</option>
           <option value="cleaning">{t('contact.cleaningProducts')}</option>
           <option value="kitchen">{t('contact.pvcKitchen')}</option>
           <option value="closets">{t('contact.closetsWardrobes')}</option>

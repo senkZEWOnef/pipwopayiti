@@ -1,9 +1,12 @@
 import { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
+import { api } from "../api";
+import { ShipmentsPanel, CallbacksPanel, ChatPanel } from "./admin/ShippingAdmin";
 
 export default function AdminPage() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const [badges, setBadges] = useState({ pendingShipments: 0, pendingCash: 0, newCallbacks: 0, unreadChats: 0 });
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [loginData, setLoginData] = useState({ username: '', password: '' });
@@ -42,6 +45,29 @@ export default function AdminPage() {
       handleTabChange(activeTab);
     }
   }, [activeTab, isAuthenticated]);
+
+  // Sidebar badges. The chat summary call doubles as the "admin is here" heartbeat,
+  // so visitors get the AI assistant when this page is closed.
+  const refreshBadges = async () => {
+    const token = localStorage.getItem('admin_token');
+    if (!token) return;
+    try {
+      const [ship, chat] = await Promise.all([
+        api('/api/admin/shipping/summary', { token }),
+        api('/api/admin/chat/summary', { token }),
+      ]);
+      setBadges({ ...ship, unreadChats: chat.unreadChats });
+    } catch {
+      /* ignore: badges are best-effort */
+    }
+  };
+
+  useEffect(() => {
+    if (!isAuthenticated) return undefined;
+    refreshBadges();
+    const id = setInterval(refreshBadges, 8000);
+    return () => clearInterval(id);
+  }, [isAuthenticated]);
 
   const checkAuthStatus = () => {
     const token = localStorage.getItem('admin_token');
@@ -413,7 +439,7 @@ export default function AdminPage() {
       <div className="min-h-screen bg-gradient-to-br from-pp-blue via-pp-deep to-pp-navy flex items-center justify-center px-4">
         <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-8 border border-white/20 shadow-2xl w-full max-w-md">
           <div className="text-center mb-8">
-            <h1 className="text-3xl font-bold text-white mb-2">Pi Pwòp Admin</h1>
+            <h1 className="text-3xl font-bold text-white mb-2">Pi Pwòp Shipping Admin</h1>
             <p className="text-white/70">Admin dashboard access</p>
           </div>
           
@@ -460,29 +486,34 @@ export default function AdminPage() {
     );
   }
 
+  const TABS = [
+    { id: "dashboard", label: "Dashboard", icon: "📊" },
+    { id: "shipments", label: t('shipAdmin.tabShipments'), icon: "🚢", badge: (badges.pendingShipments || 0) + (badges.pendingCash || 0) },
+    { id: "chat", label: t('shipAdmin.tabChat'), icon: "💬", badge: badges.unreadChats },
+    { id: "callbacks", label: t('shipAdmin.tabCallbacks'), icon: "📞", badge: badges.newCallbacks },
+    { id: "messages", label: "Mesaj yo", icon: "📧" },
+    { id: "cleaners", label: "Travayè yo", icon: "👥" },
+    { id: "jobs", label: "Travay yo", icon: "💼" },
+    { id: "products", label: "Pwodwi yo", icon: "📦" },
+    { id: "job-positions", label: "Pozisyon Travay", icon: "💼" },
+    { id: "analytics", label: "Analytics", icon: "📈" },
+    { id: "settings", label: "Konfigirasyon", icon: "⚙️" }
+  ];
+
   return (
     <div className="flex min-h-screen bg-pp-gray dark:bg-dark-surface">
       {/* Sidebar Navigation */}
       <div className="w-64 bg-white dark:bg-dark-card shadow-xl flex flex-col">
         {/* Logo/Header */}
         <div className="p-6 border-b border-pp-gray dark:border-dark-border">
-          <h1 className="text-2xl font-bold text-pp-deep dark:text-dark-text">Pi Pwòp Admin</h1>
+          <h1 className="text-2xl font-bold text-pp-deep dark:text-dark-text">Pi Pwòp Shipping Admin</h1>
           <p className="text-sm text-pp-deep/70 dark:text-dark-text-secondary">Dashboard Administrasyon</p>
         </div>
 
         {/* Navigation Menu */}
         <nav className="flex-1 p-4">
           <ul className="space-y-2">
-            {[
-              { id: "dashboard", label: "Dashboard", icon: "📊" },
-              { id: "messages", label: "Mesaj yo", icon: "📧" },
-              { id: "cleaners", label: "Travayè yo", icon: "👥" },
-              { id: "jobs", label: "Travay yo", icon: "💼" },
-              { id: "products", label: "Pwodwi yo", icon: "📦" },
-              { id: "job-positions", label: "Pozisyon Travay", icon: "💼" },
-              { id: "analytics", label: "Analytics", icon: "📈" },
-              { id: "settings", label: "Konfigirasyon", icon: "⚙️" }
-            ].map(tab => (
+            {TABS.map(tab => (
               <li key={tab.id}>
                 <button
                   onClick={() => setActiveTab(tab.id)}
@@ -493,7 +524,12 @@ export default function AdminPage() {
                   }`}
                 >
                   <span className="text-lg">{tab.icon}</span>
-                  <span>{tab.label}</span>
+                  <span className="flex-1">{tab.label}</span>
+                  {tab.badge > 0 && (
+                    <span className="flex h-5 min-w-5 items-center justify-center rounded-full bg-red-500 px-1.5 text-xs font-bold text-white">
+                      {tab.badge}
+                    </span>
+                  )}
                 </button>
               </li>
             ))}
@@ -502,6 +538,12 @@ export default function AdminPage() {
 
         {/* Footer */}
         <div className="p-4 border-t border-pp-gray dark:border-dark-border space-y-3">
+          <button
+            onClick={() => i18n.changeLanguage(i18n.language === 'ht' ? 'fr' : 'ht')}
+            className="w-full border border-pp-gray dark:border-dark-border text-pp-deep dark:text-dark-text px-4 py-2 rounded-lg text-sm font-semibold hover:bg-pp-gray dark:hover:bg-dark-surface transition-colors"
+          >
+            {i18n.language === 'ht' ? '🇭🇹 Kreyòl → 🇫🇷 Français' : '🇫🇷 Français → 🇭🇹 Kreyòl'}
+          </button>
           <Link
             to="/"
             className="w-full bg-pp-sky/20 dark:bg-pp-blue/20 hover:bg-pp-sky/30 dark:hover:bg-pp-blue/30 text-pp-deep dark:text-dark-text px-4 py-2 rounded-lg text-sm font-semibold transition-all flex items-center justify-center space-x-2"
@@ -527,16 +569,7 @@ export default function AdminPage() {
             <div className="flex justify-between items-center">
               <div>
                 <h1 className="text-2xl font-bold text-pp-deep dark:text-dark-text">
-                  {[
-                    { id: "dashboard", label: "Dashboard" },
-                    { id: "messages", label: "Mesaj yo" },
-                    { id: "cleaners", label: "Travayè yo" },
-                    { id: "jobs", label: "Travay yo" },
-                    { id: "products", label: "Pwodwi yo" },
-                    { id: "job-positions", label: "Pozisyon Travay" },
-                    { id: "analytics", label: "Analytics" },
-                    { id: "settings", label: "Konfigirasyon" }
-                  ].find(tab => tab.id === activeTab)?.label}
+                  {TABS.find(tab => tab.id === activeTab)?.label}
                 </h1>
                 <p className="text-pp-deep/70 dark:text-dark-text-secondary">
                   {new Date().toLocaleDateString('fr-FR', { 
@@ -639,6 +672,11 @@ export default function AdminPage() {
             </div>
           </div>
         )}
+
+        {/* Shipping Tabs */}
+        {activeTab === "shipments" && <ShipmentsPanel onChanged={refreshBadges} />}
+        {activeTab === "chat" && <ChatPanel />}
+        {activeTab === "callbacks" && <CallbacksPanel onChanged={refreshBadges} />}
 
         {/* Messages Tab */}
         {activeTab === "messages" && (
@@ -1586,7 +1624,7 @@ export default function AdminPage() {
                 </label>
                 <input
                   type="text"
-                  defaultValue="Pi Pwòp"
+                  defaultValue="Pi Pwòp Shipping"
                   className="w-full px-4 py-3 border border-pp-gray rounded-xl focus:ring-2 focus:ring-pp-blue focus:border-transparent"
                 />
               </div>

@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import Logo from "./Logo";
 
 export default function Footer() {
   const { t } = useTranslation();
@@ -10,14 +11,9 @@ export default function Footer() {
           
           {/* Company Info */}
           <div className="md:col-span-1">
-            <div className="flex items-center space-x-3 mb-4">
-              <div className="w-10 h-10 bg-pp-sky dark:bg-dark-accent-blue rounded-lg flex items-center justify-center">
-                <span className="text-pp-navy dark:text-dark-bg font-bold">PP</span>
-              </div>
-              <div>
-                <h3 className="font-bold text-xl text-pp-navy dark:text-dark-text">Pi Pwòp</h3>
-                <p className="text-pp-deep/70 dark:text-dark-text-secondary text-sm">{t('footer.tagline')}</p>
-              </div>
+            <div className="mb-4">
+              <Logo size="text-xl" />
+              <p className="mt-2 text-pp-deep/70 dark:text-dark-text-secondary text-sm">{t('footer.tagline')}</p>
             </div>
             <p className="text-pp-deep/80 dark:text-dark-text-secondary text-sm leading-relaxed">
               {t('footer.description')}
@@ -30,6 +26,9 @@ export default function Footer() {
             <div className="space-y-2">
               <Link to="/" className="block text-pp-deep/80 dark:text-dark-text-secondary hover:text-pp-blue dark:hover:text-dark-accent-blue transition-colors">
                 {t('nav.home')}
+              </Link>
+              <Link to="/shipping" className="block text-pp-deep/80 dark:text-dark-text-secondary hover:text-pp-blue dark:hover:text-dark-accent-blue transition-colors">
+                {t('footer.shippingLink')}
               </Link>
               <Link to="/products" className="block text-pp-deep/80 dark:text-dark-text-secondary hover:text-pp-blue dark:hover:text-dark-accent-blue transition-colors">
                 {t('nav.products')}
@@ -50,6 +49,7 @@ export default function Footer() {
           <div>
             <h4 className="font-semibold text-lg mb-4 text-pp-deep dark:text-dark-text">{t('footer.ourServices')}</h4>
             <div className="space-y-2 text-sm">
+              <p className="text-pp-deep dark:text-dark-text font-semibold">{t('footer.shipping')}</p>
               <p className="text-pp-deep/80 dark:text-dark-text-secondary">{t('footer.cleaningProducts')}</p>
               <p className="text-pp-deep/80 dark:text-dark-text-secondary">{t('footer.pvcKitchen')}</p>
               <p className="text-pp-deep/80 dark:text-dark-text-secondary">{t('footer.closetsWardrobes')}</p>
@@ -99,7 +99,7 @@ export default function Footer() {
         {/* Bottom Bar */}
         <div className="border-t border-pp-gray/30 dark:border-dark-border mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
           <p className="text-pp-deep/60 dark:text-dark-text-secondary text-sm">
-            © {new Date().getFullYear()} Pi Pwòp. {t('footer.allRightsReserved')}
+            © {new Date().getFullYear()} Pi Pwòp Shipping. {t('footer.allRightsReserved')}
           </p>
           <div className="flex space-x-6 mt-4 md:mt-0">
             <a href="#" className="text-pp-deep/60 dark:text-dark-text-secondary hover:text-pp-deep dark:hover:text-dark-text text-sm transition-colors">

@@ -5,6 +5,15 @@ import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import session from "express-session";
 import { pool } from "./db.js";
+import {
+  ensureShippingTables,
+  registerShippingRoutes,
+  registerStripeWebhook,
+  shippingSummary,
+} from "./shipping.js";
+import { ensureChatTables, registerChatRoutes } from "./chat.js";
+import { ensureMoncashTables } from "./moncash.js";
+import { ensurePaypalTables } from "./paypal.js";
 
 dotenv.config();
 
@@ -12,10 +21,19 @@ const app = express();
 const PORT = process.env.PORT || 4000;
 const JWT_SECRET = process.env.JWT_SECRET || "pipwop-admin-secret-key-2024";
 
+// Any localhost port is fine in dev (Vite picks a free port); add production
+// site URLs (comma-separated) in CLIENT_URL.
+const extraOrigins = (process.env.CLIENT_URL || "").split(",").map((o) => o.trim()).filter(Boolean);
+const isAllowedOrigin = (origin) =>
+  Boolean(origin) &&
+  (/^https?:\/\/(localhost|127\.0\.0\.1)(:\d+)?$/.test(origin) || extraOrigins.includes(origin));
+
 app.use(cors({
-  origin: ["http://localhost:5173", "http://localhost:5176", "http://localhost:5177", "http://localhost:5175"],
+  origin: (origin, cb) => cb(null, !origin || isAllowedOrigin(origin)),
   credentials: true
 }));
+// Stripe webhook needs the raw body, so it goes before express.json()
+registerStripeWebhook(app, express);
 app.use(express.json());
 app.use(session({
   secret: JWT_SECRET,
@@ -26,7 +44,7 @@ app.use(session({
 
 // Simple health check
 app.get("/api/health", (_req, res) => {
-  res.json({ ok: true, service: "Pi Pwòp API" });
+  res.json({ ok: true, service: "Pi Pwòp Shipping API" });
 });
 
 // Middleware for authentication
@@ -44,6 +62,23 @@ const authenticateAdmin = (req, res, next) => {
     return res.status(401).json({ error: "Invalid token" });
   }
 };
+
+// ===== SHIPPING + CHAT =====
+registerShippingRoutes(app, {
+  authenticateAdmin,
+  allowedOrigin: (origin) => (isAllowedOrigin(origin) ? origin : null),
+});
+registerChatRoutes(app, { authenticateAdmin });
+
+// Badge counts for the admin sidebar
+app.get("/api/admin/shipping/summary", authenticateAdmin, async (_req, res) => {
+  try {
+    res.json(await shippingSummary());
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "server_error" });
+  }
+});
 
 // ===== ADMIN AUTH ROUTES =====
 
@@ -851,6 +886,14 @@ function getCategoryIcon(category) {
   return icons[category] || '📦';
 }
 
-app.listen(PORT, () => {
-  console.log(`Pi Pwòp API running on http://localhost:${PORT}`);
+app.listen(PORT, async () => {
+  console.log(`Pi Pwòp Shipping API running on http://localhost:${PORT}`);
+  try {
+    await ensureShippingTables();
+    await ensureChatTables();
+    await ensureMoncashTables();
+    await ensurePaypalTables();
+  } catch (err) {
+    console.error("Could not create shipping/chat tables:", err.message);
+  }
 });

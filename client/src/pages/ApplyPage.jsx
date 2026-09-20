@@ -171,7 +171,7 @@ export default function ApplyPage() {
           {/* Header */}
           <div className="text-center mb-8 md:mb-12">
             <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white dark:text-dark-text mb-4 md:mb-6">
-              {i18n.language === 'fr' ? 'Rejoignez l\'Équipe Pi Pwòp' : 'Vin Nan Ekip Pi Pwòp La'}
+              {i18n.language === 'fr' ? 'Rejoignez l\'Équipe Pi Pwòp Shipping' : 'Vin Nan Ekip Pi Pwòp Shipping La'}
             </h1>
             <p className="text-lg md:text-xl text-white/80 dark:text-dark-text-secondary mb-6 md:mb-8 max-w-3xl mx-auto leading-relaxed">
               {i18n.language === 'fr' 
@@ -436,7 +436,7 @@ export default function ApplyPage() {
 
                 <div>
                   <label className="block text-white dark:text-dark-text font-semibold mb-2">
-                    {i18n.language === 'fr' ? 'Pourquoi voulez-vous travailler avec Pi Pwòp?' : 'Poukisa ou vle travay ak Pi Pwòp?'} <span className="text-red-400">*</span>
+                    {i18n.language === 'fr' ? 'Pourquoi voulez-vous travailler avec Pi Pwòp Shipping?' : 'Poukisa ou vle travay ak Pi Pwòp Shipping?'} <span className="text-red-400">*</span>
                   </label>
                   <textarea
                     rows="3"
@@ -475,8 +475,8 @@ i18n.language === 'fr' ? 'Soumettre la demande' : 'Voye aplikasyon an'
                   </h3>
                   <p>
                     {i18n.language === 'fr' 
-                      ? 'Merci pour votre intérêt à rejoindre Pi Pwòp! Nous examinerons votre candidature et vous contacterons dans 2-3 jours ouvrables.'
-                      : 'Mèsi pou enterè w nan vin nan Pi Pwòp! Nou pral gade aplikasyon ou an epi nou pral kontak ou nan 2-3 jou travay.'
+                      ? 'Merci pour votre intérêt à rejoindre Pi Pwòp Shipping! Nous examinerons votre candidature et vous contacterons dans 2-3 jours ouvrables.'
+                      : 'Mèsi pou enterè w nan vin nan Pi Pwòp Shipping! Nou pral gade aplikasyon ou an epi nou pral kontak ou nan 2-3 jou travay.'
                     }
                   </p>
                 </div>

@@ -5,12 +5,13 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        // Pi Pwòp palette - Light theme
+        // Pi Pwòp Shipping palette - Light theme
         "pp-navy": "#10243D",
         "pp-deep": "#143861",
         "pp-blue": "#2F80ED",
         "pp-sky": "#8CC4FF",
         "pp-gray": "#F3F5F8",
+        "pp-gold": "#F5A524",
         
         // Dark theme palette inspired by NextRBZ
         "dark": {
