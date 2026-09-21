@@ -39,33 +39,63 @@ function Stat({ label, value, sub }) {
 function Progress({ status, t }) {
   const current = STATUS_FLOW.indexOf(status);
   return (
-    <div className="-mx-2 overflow-x-auto pb-2">
-      <ol className="flex min-w-[720px] items-start px-2">
+    <>
+      {/* Phones: vertical list */}
+      <ol className="space-y-1 md:hidden">
         {STATUS_FLOW.map((s, i) => {
           const done = i <= current;
           return (
-            <li key={s} className="relative flex flex-1 flex-col items-center text-center">
-              {i > 0 && (
+            <li key={s} className="relative flex items-center gap-3 py-1.5">
+              {i < STATUS_FLOW.length - 1 && (
                 <span
                   aria-hidden="true"
-                  className={`absolute right-1/2 top-5 h-1 w-full ${i <= current ? "bg-pp-blue dark:bg-dark-accent-blue" : "bg-pp-gray dark:bg-dark-border"}`}
+                  className={`absolute left-[17px] top-9 h-full w-0.5 ${i < current ? "bg-pp-blue dark:bg-dark-accent-blue" : "bg-pp-gray dark:bg-dark-border"}`}
                 />
               )}
               <span
-                className={`relative z-10 flex h-10 w-10 items-center justify-center rounded-full text-lg ${
+                className={`relative z-10 flex h-9 w-9 flex-none items-center justify-center rounded-full text-base ${
                   done ? "bg-pp-blue text-white dark:bg-dark-accent-blue" : "bg-pp-gray text-pp-deep/40 dark:bg-dark-border dark:text-dark-text-secondary"
                 } ${i === current ? "ring-4 ring-pp-gold/60" : ""}`}
               >
                 {STATUS_ICONS[s]}
               </span>
-              <span className={`mt-2 px-1 text-xs font-semibold ${done ? "text-pp-deep dark:text-dark-text" : "text-pp-deep/40 dark:text-dark-text-secondary"}`}>
+              <span className={`font-semibold ${i === current ? "text-pp-deep dark:text-dark-text" : done ? "text-pp-deep/80 dark:text-dark-text-secondary" : "text-pp-deep/40 dark:text-dark-text-secondary"}`}>
                 {t(`shipping.status.${s}`)}
               </span>
             </li>
           );
         })}
       </ol>
-    </div>
+
+      {/* Tablet / desktop: horizontal */}
+      <div className="hidden overflow-x-auto pb-2 md:block">
+        <ol className="flex min-w-[720px] items-start px-2">
+          {STATUS_FLOW.map((s, i) => {
+            const done = i <= current;
+            return (
+              <li key={s} className="relative flex flex-1 flex-col items-center text-center">
+                {i > 0 && (
+                  <span
+                    aria-hidden="true"
+                    className={`absolute right-1/2 top-5 h-1 w-full ${i <= current ? "bg-pp-blue dark:bg-dark-accent-blue" : "bg-pp-gray dark:bg-dark-border"}`}
+                  />
+                )}
+                <span
+                  className={`relative z-10 flex h-10 w-10 items-center justify-center rounded-full text-lg ${
+                    done ? "bg-pp-blue text-white dark:bg-dark-accent-blue" : "bg-pp-gray text-pp-deep/40 dark:bg-dark-border dark:text-dark-text-secondary"
+                  } ${i === current ? "ring-4 ring-pp-gold/60" : ""}`}
+                >
+                  {STATUS_ICONS[s]}
+                </span>
+                <span className={`mt-2 px-1 text-xs font-semibold ${done ? "text-pp-deep dark:text-dark-text" : "text-pp-deep/40 dark:text-dark-text-secondary"}`}>
+                  {t(`shipping.status.${s}`)}
+                </span>
+              </li>
+            );
+          })}
+        </ol>
+      </div>
+    </>
   );
 }
 
@@ -304,7 +334,7 @@ export default function ShippingTrackPage() {
     <div className="bg-pp-gray pb-20 dark:bg-dark-bg">
       <PageHeader icon="📍" title={tt("title")} subtitle={tt("subtitle")} />
 
-      <div className="mx-auto -mt-8 max-w-3xl space-y-6 px-6">
+      <div className="relative z-10 mx-auto -mt-8 max-w-3xl space-y-6 px-6">
         {/* Search */}
         <Card>
           <form onSubmit={submit} className="flex flex-col gap-3 sm:flex-row">

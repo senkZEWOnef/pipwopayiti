@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import Footer from "./Footer";
@@ -10,6 +11,24 @@ export default function Layout({ children }) {
   const location = useLocation();
   const { t, i18n } = useTranslation();
   const isAdmin = location.pathname.startsWith('/admin');
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  // Close the mobile menu after navigating, and scroll each new page to the top
+  useEffect(() => {
+    setMenuOpen(false);
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
+
+  const NAV_LINKS = [
+    { to: '/', label: t('nav.home') },
+    { to: '/shipping', label: t('nav.shipping') },
+    { to: '/store', label: t('nav.store') },
+    { to: '/products', label: t('nav.products') },
+    { to: '/services', label: t('nav.services') },
+    { to: '/contact', label: t('nav.contact') },
+    { to: '/apply', label: t('footer.applyWork') },
+  ];
+  const isActive = (to) => (to === '/' ? location.pathname === '/' : location.pathname.startsWith(to));
 
   const toggleLanguage = () => {
     const newLanguage = i18n.language === 'ht' ? 'fr' : 'ht';
@@ -22,110 +41,80 @@ export default function Layout({ children }) {
 
   return (
     <div className="flex min-h-screen flex-col bg-white dark:bg-dark-bg transition-colors duration-300">
-      {/* Modern Navigation */}
-      <header className="sticky top-0 z-50 bg-white/95 dark:bg-dark-surface/95 backdrop-blur-md border-b border-pp-gray dark:border-dark-border shadow-sm transition-colors duration-300">
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
-          
+      {/* Navigation */}
+      <header className="sticky top-0 z-50 border-b border-pp-gray bg-white/95 shadow-sm backdrop-blur-md transition-colors duration-300 dark:border-dark-border dark:bg-dark-surface/95">
+        <div className="mx-auto flex max-w-7xl items-center justify-between gap-2 px-4 py-3 sm:px-6 sm:py-4">
           {/* Logo */}
-          <Link to="/" className="flex items-center -ml-2">
-            <Logo size="text-xl md:text-2xl" />
+          <Link to="/" className="flex min-w-0 items-center">
+            <Logo size="text-lg sm:text-2xl" />
           </Link>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-8">
-            <Link 
-              to="/" 
-              className={`font-semibold transition-colors hover:text-pp-blue dark:hover:text-dark-accent-blue ${
-                location.pathname === '/' ? 'text-pp-blue dark:text-dark-accent-blue' : 'text-pp-deep dark:text-dark-text'
-              }`}
-            >
-              {t('nav.home')}
-            </Link>
-            <Link 
-              to="/shipping" 
-              className={`font-semibold transition-colors hover:text-pp-blue dark:hover:text-dark-accent-blue ${
-                location.pathname.startsWith('/shipping') ? 'text-pp-blue dark:text-dark-accent-blue' : 'text-pp-deep dark:text-dark-text'
-              }`}
-            >
-              {t('nav.shipping')}
-            </Link>
-            <Link 
-              to="/store" 
-              className={`font-semibold transition-colors hover:text-pp-blue dark:hover:text-dark-accent-blue ${
-                location.pathname.startsWith('/store') ? 'text-pp-blue dark:text-dark-accent-blue' : 'text-pp-deep dark:text-dark-text'
-              }`}
-            >
-              {t('nav.store')}
-            </Link>
-            <Link 
-              to="/products" 
-              className={`font-semibold transition-colors hover:text-pp-blue dark:hover:text-dark-accent-blue ${
-                location.pathname === '/products' ? 'text-pp-blue dark:text-dark-accent-blue' : 'text-pp-deep dark:text-dark-text'
-              }`}
-            >
-              {t('nav.products')}
-            </Link>
-            <Link 
-              to="/services" 
-              className={`font-semibold transition-colors hover:text-pp-blue dark:hover:text-dark-accent-blue ${
-                location.pathname === '/services' ? 'text-pp-blue dark:text-dark-accent-blue' : 'text-pp-deep dark:text-dark-text'
-              }`}
-            >
-              {t('nav.services')}
-            </Link>
-            <Link 
-              to="/contact" 
-              className={`font-semibold transition-colors hover:text-pp-blue dark:hover:text-dark-accent-blue ${
-                location.pathname === '/contact' ? 'text-pp-blue dark:text-dark-accent-blue' : 'text-pp-deep dark:text-dark-text'
-              }`}
-            >
-              {t('nav.contact')}
-            </Link>
-            <Link 
-              to="/apply" 
-              className={`font-semibold transition-colors hover:text-pp-blue dark:hover:text-dark-accent-blue ${
-                location.pathname === '/apply' ? 'text-pp-blue dark:text-dark-accent-blue' : 'text-pp-deep dark:text-dark-text'
-              }`}
-            >
-              {t('footer.applyWork')}
-            </Link>
+          {/* Desktop navigation */}
+          <nav className="hidden items-center gap-6 xl:gap-8 lg:flex">
+            {NAV_LINKS.map((l) => (
+              <Link
+                key={l.to}
+                to={l.to}
+                className={`whitespace-nowrap font-semibold transition-colors hover:text-pp-blue dark:hover:text-dark-accent-blue ${
+                  isActive(l.to) ? 'text-pp-blue dark:text-dark-accent-blue' : 'text-pp-deep dark:text-dark-text'
+                }`}
+              >
+                {l.label}
+              </Link>
+            ))}
           </nav>
 
-          {/* Theme Toggle, Language Toggle & CTA Button */}
-          <div className="flex items-center space-x-4">
-            {/* Theme Toggle */}
-            <ThemeToggle />
-            
-            {/* Language Toggle */}
+          {/* Controls */}
+          <div className="flex flex-none items-center gap-2 sm:gap-4">
+            <div className="hidden sm:block">
+              <ThemeToggle />
+            </div>
             <button
               onClick={toggleLanguage}
-              className="flex items-center space-x-2 px-3 py-2 rounded-full border border-pp-gray dark:border-dark-border hover:border-pp-blue dark:hover:border-dark-accent-blue transition-colors"
+              aria-label="Language"
+              className="flex items-center rounded-full border border-pp-gray px-3 py-2 transition-colors hover:border-pp-blue dark:border-dark-border dark:hover:border-dark-accent-blue"
             >
-              <span className="text-sm font-semibold text-pp-deep dark:text-dark-text">
+              <span className="whitespace-nowrap text-sm font-semibold text-pp-deep dark:text-dark-text">
                 {i18n.language === 'ht' ? '🇭🇹 KR' : '🇫🇷 FR'}
               </span>
             </button>
-            
-            {/* Mobile Menu Button */}
-            <button className="md:hidden p-2 text-pp-deep">
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+            <button
+              onClick={() => setMenuOpen((o) => !o)}
+              aria-label="Menu"
+              aria-expanded={menuOpen}
+              className="flex h-10 w-10 items-center justify-center rounded-full text-pp-deep hover:bg-pp-gray dark:text-dark-text dark:hover:bg-dark-card lg:hidden"
+            >
+              <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                {menuOpen
+                  ? <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 6l12 12M18 6L6 18" />
+                  : <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />}
               </svg>
             </button>
           </div>
         </div>
 
-        {/* Mobile Navigation (hidden by default) */}
-        <div className="md:hidden border-t border-pp-gray dark:border-dark-border bg-white dark:bg-dark-surface">
-          <nav className="px-6 py-4 space-y-3">
-            <Link to="/" className="block py-2 text-pp-deep dark:text-dark-text font-semibold">{t('nav.home')}</Link>
-            <Link to="/shipping" className="block py-2 text-pp-deep dark:text-dark-text font-semibold">{t('nav.shipping')}</Link>
-            <Link to="/store" className="block py-2 text-pp-deep dark:text-dark-text font-semibold">{t('nav.store')}</Link>
-            <Link to="/products" className="block py-2 text-pp-deep font-semibold">{t('nav.products')}</Link>
-            <Link to="/services" className="block py-2 text-pp-deep font-semibold">{t('nav.services')}</Link>
-            <Link to="/contact" className="block py-2 text-pp-deep font-semibold">{t('nav.contact')}</Link>
-          </nav>
-        </div>
+        {/* Mobile menu: opens as a panel over the page, closed by default */}
+        {menuOpen && (
+          <div className="absolute inset-x-0 top-full max-h-[calc(100vh-64px)] overflow-y-auto border-b border-pp-gray bg-white shadow-xl dark:border-dark-border dark:bg-dark-surface lg:hidden">
+            <nav className="mx-auto max-w-7xl px-4 py-2 sm:px-6">
+              {NAV_LINKS.map((l) => (
+                <Link
+                  key={l.to}
+                  to={l.to}
+                  className={`block border-b border-pp-gray/60 py-3.5 text-lg font-semibold last:border-0 dark:border-dark-border ${
+                    isActive(l.to) ? 'text-pp-blue dark:text-dark-accent-blue' : 'text-pp-deep dark:text-dark-text'
+                  }`}
+                >
+                  {l.label}
+                </Link>
+              ))}
+              <div className="flex items-center justify-between py-4 sm:hidden">
+                <span className="font-semibold text-pp-deep dark:text-dark-text">🌓</span>
+                <ThemeToggle />
+              </div>
+            </nav>
+          </div>
+        )}
       </header>
 
       {/* Main Content */}

@@ -12,7 +12,7 @@ export function ContainerIcon({ className = "h-5 w-5" }) {
 export default function Logo({ size = "text-2xl", variant = "default" }) {
   const light = variant === "light";
   return (
-    <div className={`flex items-center gap-2.5 font-bold ${size}`}>
+    <div className={`flex items-center gap-2 font-bold sm:gap-2.5 ${size}`}>
       <span
         className={`inline-flex h-[1.4em] w-[1.4em] items-center justify-center rounded-lg ${
           light ? "bg-white/15 text-white" : "bg-pp-navy text-white dark:bg-dark-accent-blue"
@@ -20,7 +20,7 @@ export default function Logo({ size = "text-2xl", variant = "default" }) {
       >
         <ContainerIcon className="h-[0.9em] w-[0.9em]" />
       </span>
-      <span className="flex items-baseline gap-1.5 leading-none tracking-tight">
+      <span className="flex items-baseline gap-1.5 whitespace-nowrap leading-none tracking-tight">
         <span className={light ? "text-white" : "text-pp-navy dark:text-dark-text"}>Pi Pwòp</span>
         <span className={light ? "text-pp-gold" : "text-pp-blue dark:text-dark-accent-blue"}>Shipping</span>
       </span>

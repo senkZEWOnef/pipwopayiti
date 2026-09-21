@@ -27,7 +27,7 @@ export function ShippingHero({ showLogo = true }) {
 
       <div className="relative mx-auto grid max-w-7xl items-center gap-12 px-6 py-16 md:py-24 lg:grid-cols-[1.15fr_1fr]">
         <div className="space-y-7">
-          {showLogo && <Logo size="text-2xl md:text-3xl" variant="light" />}
+          {showLogo && <div className="hidden md:block"><Logo size="text-2xl md:text-3xl" variant="light" /></div>}
 
           <span className="inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/10 px-4 py-1.5 text-sm font-semibold tracking-wide backdrop-blur-sm">
             🇺🇸 <span className="text-pp-gold">→</span> 🇭🇹 <span>{t("shipping.badge")}</span>

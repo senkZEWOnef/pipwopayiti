@@ -14,3 +14,41 @@ body {
 #root {
   @apply min-h-screen;
 }
+/* Phones: turn wide admin tables into stacked cards (cells are labelled by AdminPage) */
+@media (max-width: 767px) {
+  table.stack-table,
+  table.stack-table tbody,
+  table.stack-table tr,
+  table.stack-table td { display: block; width: 100%; }
+  table.stack-table thead { display: none; }
+  table.stack-table tr {
+    border: 1px solid rgba(16, 36, 61, 0.12);
+    border-radius: 1rem;
+    padding: 0.5rem 0.9rem;
+    margin-bottom: 0.75rem;
+  }
+  table.stack-table td {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 0.45rem 0 !important;
+    border: 0 !important;
+    text-align: right;
+    max-width: none !important;
+    word-break: break-word;
+  }
+  table.stack-table td::before {
+    content: attr(data-label);
+    flex: none;
+    max-width: 40%;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    opacity: 0.55;
+    text-align: left;
+  }
+  table.stack-table td:not([data-label])::before,
+  table.stack-table td[data-label=""]::before { display: none; }
+}

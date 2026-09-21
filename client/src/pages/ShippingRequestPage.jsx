@@ -86,7 +86,7 @@ export default function ShippingRequestPage() {
     return (
       <div className="bg-pp-gray pb-20 dark:bg-dark-bg">
         <PageHeader icon="🎉" title={t("shipping.request.success.title")} />
-        <div className="mx-auto -mt-8 max-w-2xl space-y-6 px-6">
+        <div className="relative z-10 mx-auto -mt-8 max-w-2xl space-y-6 px-6">
           <Card>
             <p className="mb-2 text-center text-sm font-semibold uppercase tracking-wider text-pp-deep/60 dark:text-dark-text-secondary">
               {t("shipping.request.success.numberLabel")}
@@ -146,7 +146,7 @@ export default function ShippingRequestPage() {
     <div className="bg-pp-gray pb-20 dark:bg-dark-bg">
       <PageHeader icon="📦" title={q("title")} subtitle={q("subtitle")} />
 
-      <form onSubmit={submit} className="mx-auto -mt-8 max-w-3xl space-y-6 px-6">
+      <form onSubmit={submit} className="relative z-10 mx-auto -mt-8 max-w-3xl space-y-6 px-6">
         {/* 1. Route */}
         <Card title={q("sections.route")}>
           <div className="grid gap-5 sm:grid-cols-3">

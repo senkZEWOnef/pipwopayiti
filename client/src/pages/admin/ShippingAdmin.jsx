@@ -101,7 +101,7 @@ function ShipmentDetail({ id, onBack, onChanged }) {
       <div className="flex flex-wrap items-center justify-between gap-3">
         <button onClick={onBack} className={btnGhost}>{t("shipAdmin.back")}</button>
         <div className="flex flex-wrap items-center gap-3">
-          <span className="font-mono text-2xl font-bold tracking-widest text-pp-navy dark:text-dark-text">{d.tracking_number}</span>
+          <span className="whitespace-nowrap font-mono text-xl font-bold tracking-wider text-pp-navy dark:text-dark-text sm:text-2xl sm:tracking-widest">{d.tracking_number}</span>
           <span className={`rounded-full px-3 py-1 text-xs font-bold ${statusBadge(d.status)}`}>
             {STATUS_ICONS[d.status]} {t(`shipping.status.${d.status}`)}
           </span>
@@ -178,8 +178,8 @@ function ShipmentDetail({ id, onBack, onChanged }) {
           </div>
         </div>
 
-        {/* RIGHT: manage */}
-        <div className="space-y-6">
+        {/* RIGHT: manage (shown first on phones so approve/track/pay are at the top) */}
+        <div className="order-first space-y-6 xl:order-none">
           {pending && (
             <div className={`${box} space-y-4`}>
               <h3 className="text-lg font-bold text-pp-deep dark:text-dark-text">{s("manage")}</h3>
@@ -468,7 +468,7 @@ function PaymentSettings() {
       <p className="mt-2 text-xs text-pp-deep/60 dark:text-dark-text-secondary">{ps("rateHelp")}</p>
       {info.configured.moncash && !info.usdToHtg && <p className="mt-2 text-sm font-semibold text-yellow-700">{ps("noRate")}</p>}
       <p className="mt-3 text-xs text-pp-deep/60 dark:text-dark-text-secondary">
-        {ps("returnUrl")} <code className="rounded bg-pp-gray px-2 py-0.5 dark:bg-dark-surface">{window.location.origin}/shipping/moncash/return</code>
+        {ps("returnUrl")} <code className="break-all rounded bg-pp-gray px-2 py-0.5 dark:bg-dark-surface">{window.location.origin}/shipping/moncash/return</code>
       </p>
     </div>
   );
@@ -501,9 +501,9 @@ export function ShipmentsPanel({ onChanged }) {
     <PaymentSettings />
     <div className={box}>
       <div className="mb-5 flex flex-wrap items-center justify-between gap-3">
-        <h2 className="text-2xl font-bold text-pp-deep dark:text-dark-text">🚢 {s("title")}</h2>
-        <div className="flex gap-3">
-          <select className={`${input} w-auto`} value={filter} onChange={(e) => setFilter(e.target.value)}>
+        <h2 className="text-xl font-bold text-pp-deep dark:text-dark-text sm:text-2xl">🚢 {s("title")}</h2>
+        <div className="flex w-full gap-3 sm:w-auto">
+          <select className={`${input} min-w-0 flex-1 sm:w-auto sm:flex-none`} value={filter} onChange={(e) => setFilter(e.target.value)}>
             {filters.map((f) => <option key={f} value={f}>{filterLabel(f)}</option>)}
           </select>
           <button className={btnPrimary} onClick={load}>{t("shipAdmin.refresh")}</button>
@@ -513,8 +513,36 @@ export function ShipmentsPanel({ onChanged }) {
       {shown.length === 0 ? (
         <p className="py-10 text-center text-pp-deep/60 dark:text-dark-text-secondary">{s("empty")}</p>
       ) : (
-        <div className="overflow-x-auto">
-          <table className="w-full text-left text-sm">
+        <>
+        {/* Phones: one card per shipment */}
+        <div className="space-y-3 md:hidden">
+          {shown.map((r) => (
+            <button
+              key={r.id}
+              onClick={() => setSelected(r.id)}
+              className={`block w-full rounded-2xl border border-pp-gray p-4 text-left dark:border-dark-border ${r.status === "submitted" ? "bg-yellow-50/70 dark:bg-yellow-900/10" : "bg-white dark:bg-dark-card"}`}
+            >
+              <div className="flex items-start justify-between gap-2">
+                <span className="whitespace-nowrap font-mono text-lg font-bold text-pp-navy dark:text-dark-text">{r.tracking_number}</span>
+                <span className={`flex-none rounded-full px-3 py-1 text-xs font-bold ${statusBadge(r.status)}`}>{t(`shipping.status.${r.status}`)}</span>
+              </div>
+              <p className="mt-1 font-semibold text-pp-deep dark:text-dark-text">{r.sender_name}</p>
+              <p className="text-sm text-pp-deep/70 dark:text-dark-text-secondary">{r.origin_city} → {r.destination_city}</p>
+              <p className="text-sm text-pp-deep/70 dark:text-dark-text-secondary">
+                {r.container_qty > 1 ? `${r.container_qty}× ` : ""}{t(`shipping.options.containers.${r.container_size}.label`)}
+              </p>
+              <div className="mt-3 flex flex-wrap items-center gap-2">
+                <span className={`rounded-full px-3 py-1 text-xs font-bold ${PAY_COLORS[r.payment_status]}`}>{t(`shipAdmin.shipments.paymentStatus.${r.payment_status}`)}</span>
+                {r.quote_amount !== null && <span className="text-xs font-semibold text-pp-deep/70 dark:text-dark-text-secondary">{money(r.quote_amount)}</span>}
+                {r.cash_pending && <span className="rounded-full bg-pp-gold px-2 py-0.5 text-[11px] font-bold text-pp-navy">💵 {t("shipAdmin.shipments.cashPending")}</span>}
+                <span className="ml-auto text-xs text-pp-deep/50 dark:text-dark-text-secondary">{when(r.created_at)}</span>
+              </div>
+            </button>
+          ))}
+        </div>
+
+        <div className="hidden overflow-x-auto md:block">
+          <table className="stack-table w-full text-left text-sm">
             <thead>
               <tr className="border-b border-pp-gray text-xs uppercase tracking-wide text-pp-deep/60 dark:border-dark-border dark:text-dark-text-secondary">
                 {["number", "customer", "route", "container", "status", "payment", "date"].map((h) => <th key={h} className="p-3">{s(h)}</th>)}
@@ -545,6 +573,7 @@ export function ShipmentsPanel({ onChanged }) {
             </tbody>
           </table>
         </div>
+        </>
       )}
     </div>
     </>
@@ -573,15 +602,38 @@ export function CallbacksPanel({ onChanged }) {
 
   return (
     <div className={box}>
-      <div className="mb-5 flex items-center justify-between">
-        <h2 className="text-2xl font-bold text-pp-deep dark:text-dark-text">📞 {c("title")}</h2>
+      <div className="mb-5 flex items-center justify-between gap-3">
+        <h2 className="text-xl font-bold text-pp-deep dark:text-dark-text sm:text-2xl">📞 {c("title")}</h2>
         <button className={btnPrimary} onClick={load}>{t("shipAdmin.refresh")}</button>
       </div>
       {rows.length === 0 ? (
         <p className="py-10 text-center text-pp-deep/60 dark:text-dark-text-secondary">{c("empty")}</p>
       ) : (
-        <div className="overflow-x-auto">
-          <table className="w-full text-left text-sm">
+        <>
+        <div className="space-y-3 md:hidden">
+          {rows.map((r) => (
+            <div key={r.id} className={`rounded-2xl border border-pp-gray p-4 dark:border-dark-border ${r.status === "new" ? "bg-yellow-50/70 dark:bg-yellow-900/10" : ""}`}>
+              <div className="flex items-start justify-between gap-2">
+                <p className="font-bold text-pp-deep dark:text-dark-text">{r.language === "fr" ? "🇫🇷" : "🇭🇹"} {r.name}</p>
+                <span className={`flex-none rounded-full px-3 py-1 text-xs font-bold ${colors[r.status]}`}>{c(`statuses.${r.status}`)}</span>
+              </div>
+              <a href={`tel:${r.phone}`} className="mt-2 inline-flex items-center gap-2 rounded-full bg-pp-blue px-4 py-2 text-sm font-bold text-white">📞 {r.phone}</a>
+              <p className="mt-2 text-sm text-pp-deep/80 dark:text-dark-text-secondary">
+                {t(`shipping.call.topics.${r.topic}`)} · {t(`shipping.call.times.${r.preferred_time}`)}
+              </p>
+              {r.message && <p className="mt-1 text-sm text-pp-deep dark:text-dark-text">{r.message}</p>}
+              <div className="mt-3 flex flex-wrap items-center justify-between gap-2 text-xs font-semibold">
+                <span className="text-pp-deep/50 dark:text-dark-text-secondary">{when(r.created_at)}</span>
+                <span className="space-x-4">
+                  {r.status === "new" && <button className="text-pp-blue" onClick={() => setStatus(r.id, "called")}>{c("markCalled")}</button>}
+                  {r.status !== "done" && <button className="text-green-700" onClick={() => setStatus(r.id, "done")}>{c("markDone")}</button>}
+                </span>
+              </div>
+            </div>
+          ))}
+        </div>
+        <div className="hidden overflow-x-auto md:block">
+          <table className="stack-table w-full text-left text-sm">
             <thead>
               <tr className="border-b border-pp-gray text-xs uppercase tracking-wide text-pp-deep/60 dark:border-dark-border dark:text-dark-text-secondary">
                 {["name", "phone", "time", "topic", "message", "date", "status"].map((h) => <th key={h} className="p-3">{c(h)}</th>)}
@@ -610,6 +662,7 @@ export function CallbacksPanel({ onChanged }) {
             </tbody>
           </table>
         </div>
+        </>
       )}
     </div>
   );
@@ -730,8 +783,8 @@ export function ChatPanel() {
       </div>
 
       <div className="grid gap-4 lg:grid-cols-[320px_1fr]">
-        {/* Conversations */}
-        <div className={`${box} max-h-[620px] overflow-y-auto p-3`}>
+        {/* Conversations (on phones hidden while a conversation is open) */}
+        <div className={`${box} max-h-[70vh] overflow-y-auto p-3 lg:max-h-[620px] ${selected ? "hidden lg:block" : ""}`}>
           <h3 className="mb-2 px-3 pt-2 text-sm font-bold uppercase tracking-wide text-pp-deep/60 dark:text-dark-text-secondary">{c("conversations")}</h3>
           {convs.length === 0 && <p className="p-3 text-sm text-pp-deep/60 dark:text-dark-text-secondary">{c("none")}</p>}
           {convs.map((x) => (
@@ -759,17 +812,18 @@ export function ChatPanel() {
         </div>
 
         {/* Thread */}
-        <div className={`${box} flex h-[620px] flex-col p-0`}>
+        <div className={`${box} h-[calc(100vh-190px)] min-h-[420px] flex-col p-0 lg:h-[620px] ${selected ? "flex" : "hidden lg:flex"}`}>
           {!current ? (
             <p className="m-auto p-6 text-center text-pp-deep/60 dark:text-dark-text-secondary">{c("select")}</p>
           ) : (
             <>
-              <div className="flex items-center justify-between border-b border-pp-gray p-4 dark:border-dark-border">
-                <div>
-                  <p className="font-bold text-pp-deep dark:text-dark-text">{nameOf(current)}</p>
+              <div className="flex items-center justify-between gap-2 border-b border-pp-gray p-3 dark:border-dark-border sm:p-4">
+                <button onClick={() => setSelected(null)} className="flex-none rounded-full px-3 py-2 text-lg font-bold text-pp-deep hover:bg-pp-gray dark:text-dark-text dark:hover:bg-dark-surface lg:hidden" aria-label={t("shipAdmin.back")}>←</button>
+                <div className="min-w-0 flex-1">
+                  <p className="truncate font-bold text-pp-deep dark:text-dark-text">{nameOf(current)}</p>
                   {current.visitor_phone && <a className="text-sm text-pp-blue underline" href={`tel:${current.visitor_phone}`}>{current.visitor_phone}</a>}
                 </div>
-                <button className={btnGhost} onClick={() => setStatus(current.status === "open" ? "closed" : "open")}>
+                <button className={`${btnGhost} flex-none`} onClick={() => setStatus(current.status === "open" ? "closed" : "open")}>
                   {current.status === "open" ? c("close") : c("reopen")}
                 </button>
               </div>

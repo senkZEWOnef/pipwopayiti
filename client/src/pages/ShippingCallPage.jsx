@@ -35,7 +35,7 @@ export default function ShippingCallPage() {
   return (
     <div className="bg-pp-gray pb-20 dark:bg-dark-bg">
       <PageHeader icon="📞" title={c("title")} subtitle={c("subtitle")} />
-      <div className="mx-auto -mt-8 max-w-2xl px-6">
+      <div className="relative z-10 mx-auto -mt-8 max-w-2xl px-6">
         {done ? (
           <Card>
             <div className="text-center">

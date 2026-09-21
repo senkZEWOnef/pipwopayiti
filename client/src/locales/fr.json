@@ -61,7 +61,8 @@
     "kitchensVanities": "Cuisines & Vanités",
     "closetsWardrobes": "Placards & Armoires",
     "electronics": "Électronique & Solaire",
-    "other": "Autres"
+    "other": "Autres",
+    "filters": "Filtres"
   },
   "services": {
     "title": "Nos Services",

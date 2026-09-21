@@ -36,6 +36,7 @@ const PRODUCT_DATA_FR = [
 ];
 
 export default function ProductsPage() {
+  const [showFilters, setShowFilters] = useState(false);
   const { t, i18n } = useTranslation();
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -107,8 +108,8 @@ export default function ProductsPage() {
         <div className="absolute inset-0 bg-black/20 dark:bg-black/40"></div>
         <div className="relative max-w-7xl mx-auto px-6">
           <div className="text-center max-w-3xl mx-auto">
-            <h1 className="text-5xl font-bold mb-6 animate-fade-in">{t('products.title')}</h1>
-            <p className="text-xl text-white/90 leading-relaxed animate-slide-up">
+            <h1 className="text-3xl sm:text-5xl font-bold mb-4 sm:mb-6 animate-fade-in">{t('products.title')}</h1>
+            <p className="text-lg sm:text-xl text-white/90 leading-relaxed animate-slide-up">
               {t('products.subtitle')}
             </p>
             <div className="mt-8 flex justify-center">
@@ -128,7 +129,16 @@ export default function ProductsPage() {
           
           {/* Sidebar Filters */}
           <div className="lg:col-span-1">
-            <div className="bg-white dark:bg-dark-card rounded-2xl p-6 shadow-soft-card dark:shadow-dark-card sticky top-6 space-y-6 border border-transparent dark:border-dark-border">
+            {/* Phones: filters are tucked behind a button so products show first */}
+            <button
+              onClick={() => setShowFilters((v) => !v)}
+              aria-expanded={showFilters}
+              className="mb-4 flex w-full items-center justify-between rounded-2xl bg-white px-5 py-3 font-bold text-pp-deep shadow-soft-card dark:bg-dark-card dark:text-dark-text lg:hidden"
+            >
+              <span>🔍 {t('products.filters')}</span>
+              <span>{showFilters ? '▲' : '▼'}</span>
+            </button>
+            <div className={`${showFilters ? '' : 'hidden'} lg:block bg-white dark:bg-dark-card rounded-2xl p-6 shadow-soft-card dark:shadow-dark-card lg:sticky lg:top-24 space-y-6 border border-transparent dark:border-dark-border`}>
               
               {/* Search */}
               <div>

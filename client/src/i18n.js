@@ -25,3 +25,5 @@ i18n
   });
 
 export default i18n;
+
+if (import.meta.env.DEV) window.__i18n = i18n; // dev-only hook (used by responsive checks)

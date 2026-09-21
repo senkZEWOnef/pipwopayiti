@@ -7,6 +7,7 @@ import { API_BASE } from "../api";
 
 export default function AdminPage() {
   const { t, i18n } = useTranslation();
+  const [navOpen, setNavOpen] = useState(false);
   const [badges, setBadges] = useState({ pendingShipments: 0, pendingCash: 0, newCallbacks: 0, unreadChats: 0 });
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
@@ -46,6 +47,24 @@ export default function AdminPage() {
       handleTabChange(activeTab);
     }
   }, [activeTab, isAuthenticated]);
+
+  // On phones tables become stacked cards; give each cell its column name as a label
+  useEffect(() => {
+    const label = () => {
+      document.querySelectorAll('table.stack-table').forEach((tbl) => {
+        const heads = [...tbl.querySelectorAll('thead th')].map((th) => th.textContent.trim());
+        tbl.querySelectorAll('tbody tr').forEach((tr) =>
+          [...tr.children].forEach((td, i) => {
+            if (heads[i] && td.getAttribute('data-label') !== heads[i]) td.setAttribute('data-label', heads[i]);
+          })
+        );
+      });
+    };
+    label();
+    const mo = new MutationObserver(label);
+    mo.observe(document.body, { childList: true, subtree: true });
+    return () => mo.disconnect();
+  }, []);
 
   // Sidebar badges. The chat summary call doubles as the "admin is here" heartbeat,
   // so visitors get the AI assistant when this page is closed.
@@ -503,21 +522,39 @@ export default function AdminPage() {
 
   return (
     <div className="flex min-h-screen bg-pp-gray dark:bg-dark-surface">
-      {/* Sidebar Navigation */}
-      <div className="w-64 bg-white dark:bg-dark-card shadow-xl flex flex-col">
+      {/* Phones: dark overlay behind the open menu */}
+      {navOpen && (
+        <div className="fixed inset-0 z-40 bg-black/50 lg:hidden" onClick={() => setNavOpen(false)} aria-hidden="true" />
+      )}
+
+      {/* Sidebar: slide-out drawer on phones/tablets, fixed column on desktop */}
+      <div
+        className={`fixed inset-y-0 left-0 z-50 flex w-72 max-w-[85vw] flex-col overflow-y-auto bg-white shadow-xl transition-transform duration-200 dark:bg-dark-card lg:sticky lg:top-0 lg:h-screen lg:w-64 lg:max-w-none lg:flex-none lg:translate-x-0 ${
+          navOpen ? "translate-x-0" : "-translate-x-full"
+        }`}
+      >
         {/* Logo/Header */}
-        <div className="p-6 border-b border-pp-gray dark:border-dark-border">
-          <h1 className="text-2xl font-bold text-pp-deep dark:text-dark-text">Pi Pwòp Shipping Admin</h1>
-          <p className="text-sm text-pp-deep/70 dark:text-dark-text-secondary">Dashboard Administrasyon</p>
+        <div className="flex items-start justify-between gap-2 border-b border-pp-gray p-4 dark:border-dark-border lg:p-6">
+          <div>
+            <h1 className="text-xl font-bold leading-tight text-pp-deep dark:text-dark-text lg:text-2xl">Pi Pwòp Shipping Admin</h1>
+            <p className="text-sm text-pp-deep/70 dark:text-dark-text-secondary">Dashboard Administrasyon</p>
+          </div>
+          <button
+            onClick={() => setNavOpen(false)}
+            aria-label="Close menu"
+            className="flex h-10 w-10 flex-none items-center justify-center rounded-full text-xl text-pp-deep hover:bg-pp-gray dark:text-dark-text dark:hover:bg-dark-surface lg:hidden"
+          >
+            ✕
+          </button>
         </div>
 
         {/* Navigation Menu */}
-        <nav className="flex-1 p-4">
-          <ul className="space-y-2">
+        <nav className="flex-1 p-3 lg:p-4">
+          <ul className="space-y-1.5 lg:space-y-2">
             {TABS.map(tab => (
               <li key={tab.id}>
                 <button
-                  onClick={() => setActiveTab(tab.id)}
+                  onClick={() => { setActiveTab(tab.id); setNavOpen(false); window.scrollTo(0, 0); }}
                   className={`w-full flex items-center space-x-3 px-4 py-3 rounded-lg font-medium transition-all text-left ${
                     activeTab === tab.id
                       ? "bg-pp-blue text-white shadow-md"
@@ -563,30 +600,40 @@ export default function AdminPage() {
       </div>
 
       {/* Main Content Area */}
-      <div className="flex-1 overflow-auto">
-        {/* Top Header */}
-        <div className="bg-white dark:bg-dark-card shadow-sm border-b border-pp-gray dark:border-dark-border">
-          <div className="px-8 py-4">
-            <div className="flex justify-between items-center">
-              <div>
-                <h1 className="text-2xl font-bold text-pp-deep dark:text-dark-text">
-                  {TABS.find(tab => tab.id === activeTab)?.label}
-                </h1>
-                <p className="text-pp-deep/70 dark:text-dark-text-secondary">
-                  {new Date().toLocaleDateString('fr-FR', { 
-                    weekday: 'long', 
-                    year: 'numeric', 
-                    month: 'long', 
-                    day: 'numeric' 
-                  })}
-                </p>
-              </div>
+      <div className="min-w-0 flex-1">
+        {/* Top bar (sticky, with the menu button on phones) */}
+        <div className="sticky top-0 z-30 border-b border-pp-gray bg-white shadow-sm dark:border-dark-border dark:bg-dark-card">
+          <div className="flex items-center gap-3 px-4 py-3 sm:px-6 lg:px-8 lg:py-4">
+            <button
+              onClick={() => setNavOpen(true)}
+              aria-label="Menu"
+              className="relative flex h-11 w-11 flex-none items-center justify-center rounded-xl text-pp-deep hover:bg-pp-gray dark:text-dark-text dark:hover:bg-dark-surface lg:hidden"
+            >
+              <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+              </svg>
+              {(badges.pendingShipments + badges.pendingCash + badges.unreadChats + badges.newCallbacks) > 0 && (
+                <span className="absolute right-1 top-1 h-3 w-3 rounded-full bg-red-500 ring-2 ring-white dark:ring-dark-card" />
+              )}
+            </button>
+            <div className="min-w-0">
+              <h1 className="truncate text-xl font-bold text-pp-deep dark:text-dark-text lg:text-2xl">
+                {TABS.find(tab => tab.id === activeTab)?.label}
+              </h1>
+              <p className="hidden text-pp-deep/70 dark:text-dark-text-secondary sm:block">
+                {new Date().toLocaleDateString('fr-FR', {
+                  weekday: 'long',
+                  year: 'numeric',
+                  month: 'long',
+                  day: 'numeric'
+                })}
+              </p>
             </div>
           </div>
         </div>
 
         {/* Content */}
-        <div className="p-8">
+        <div className="p-4 sm:p-6 lg:p-8">
 
         {/* Dashboard Tab */}
         {activeTab === "dashboard" && (
@@ -693,7 +740,7 @@ export default function AdminPage() {
             </div>
             
             <div className="overflow-x-auto">
-              <table className="w-full">
+              <table className="stack-table w-full">
                 <thead>
                   <tr className="border-b border-pp-gray">
                     <th className="text-left p-4 font-semibold text-pp-deep">Name</th>
@@ -759,7 +806,7 @@ export default function AdminPage() {
             </div>
             
             <div className="overflow-x-auto">
-              <table className="w-full">
+              <table className="stack-table w-full">
                 <thead>
                   <tr className="border-b border-pp-gray">
                     <th className="text-left p-4 font-semibold text-pp-deep">Name</th>
@@ -843,7 +890,7 @@ export default function AdminPage() {
             </div>
             
             <div className="overflow-x-auto">
-              <table className="w-full">
+              <table className="stack-table w-full">
                 <thead>
                   <tr className="border-b border-pp-gray">
                     <th className="text-left p-4 font-semibold text-pp-deep">Client</th>
@@ -936,7 +983,7 @@ export default function AdminPage() {
 
               {/* Products Table */}
               <div className="overflow-x-auto">
-                <table className="w-full">
+                <table className="stack-table w-full">
                   <thead>
                     <tr className="border-b border-pp-gray">
                       <th className="text-left p-4 font-semibold text-pp-deep">Pwodwi</th>
@@ -1011,7 +1058,7 @@ export default function AdminPage() {
             {/* Product Form Modal */}
             {showProductForm && (
               <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
-                <div className="bg-white rounded-2xl p-8 max-w-2xl w-full mx-4 max-h-[90vh] overflow-y-auto">
+                <div className="bg-white rounded-2xl p-4 sm:p-8 max-w-2xl w-full mx-3 sm:mx-4 max-h-[90vh] overflow-y-auto">
                   <div className="flex justify-between items-center mb-6">
                     <h3 className="text-2xl font-bold text-pp-deep">
                       {editingProduct ? 'Modifye Pwodwi' : 'Ajoute Nouvo Pwodwi'}
@@ -1323,7 +1370,7 @@ export default function AdminPage() {
             {/* Position Form Modal */}
             {showPositionForm && (
               <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
-                <div className="bg-white rounded-2xl p-8 max-w-3xl w-full mx-4 max-h-[90vh] overflow-y-auto">
+                <div className="bg-white rounded-2xl p-4 sm:p-8 max-w-3xl w-full mx-3 sm:mx-4 max-h-[90vh] overflow-y-auto">
                   <div className="flex justify-between items-center mb-6">
                     <h3 className="text-2xl font-bold text-pp-deep">
                       {editingPosition ? 'Modifye Pozisyon' : 'Ajoute Nouvo Pozisyon'}
@@ -1547,7 +1594,7 @@ export default function AdminPage() {
                 <div>
                   <h3 className="text-xl font-semibold text-pp-deep mb-4">📊 Pèfòmans Vann yo (30 jou ki sot pase yo)</h3>
                   <div className="overflow-x-auto">
-                    <table className="w-full">
+                    <table className="stack-table w-full">
                       <thead>
                         <tr className="border-b border-pp-gray">
                           <th className="text-left p-4 font-semibold text-pp-deep">Pwodwi</th>
@@ -1585,7 +1632,7 @@ export default function AdminPage() {
               <h3 className="text-xl font-semibold text-pp-deep mb-4">🌐 Analytics Sit la</h3>
               {analytics.length > 0 ? (
                 <div className="overflow-x-auto">
-                  <table className="w-full">
+                  <table className="stack-table w-full">
                     <thead>
                       <tr className="border-b border-pp-gray">
                         <th className="text-left p-4 font-semibold text-pp-deep">Paj</th>

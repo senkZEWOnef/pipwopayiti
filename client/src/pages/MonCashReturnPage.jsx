@@ -53,7 +53,7 @@ export default function MonCashReturnPage() {
   return (
     <div className="bg-pp-gray pb-20 dark:bg-dark-bg">
       <PageHeader icon="📱" title={t("shipping.moncash.title")} />
-      <div className="mx-auto -mt-8 max-w-xl px-6">
+      <div className="relative z-10 mx-auto -mt-8 max-w-xl px-6">
         <Card>
           <div className="text-center">
             <div className="mb-3 text-5xl">{icon}</div>
