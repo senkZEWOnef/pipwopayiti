@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
+import ShuffledGallery from "../components/ShuffledGallery";
 
 const SERVICES_HT = [
   {
@@ -383,6 +384,7 @@ export default function ServicesPage() {
           </div>
         </div>
       </div>
+      <ShuffledGallery count={3} />
     </div>
   );
 }

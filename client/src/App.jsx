@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Layout from "./components/Layout";
 import HomePage from "./pages/HomePage";
 import ShippingPage from "./pages/ShippingPage";
+import StorePage from "./pages/StorePage";
 import ShippingRequestPage from "./pages/ShippingRequestPage";
 import ShippingTrackPage from "./pages/ShippingTrackPage";
 import ShippingCallPage from "./pages/ShippingCallPage";
@@ -27,6 +28,7 @@ function App() {
               <Route path="/shipping/track/:number" element={<ShippingTrackPage />} />
               <Route path="/shipping/call" element={<ShippingCallPage />} />
               <Route path="/shipping/moncash/return" element={<MonCashReturnPage />} />
+              <Route path="/store" element={<StorePage />} />
               <Route path="/products" element={<ProductsPage />} />
               <Route path="/services" element={<ServicesPage />} />
               <Route path="/contact" element={<ContactPage />} />

@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { useState, useEffect } from "react";
+import ShuffledGallery from "../components/ShuffledGallery";
 import { ShippingHero, ShippingActions, ShippingServices, ShippingSteps } from "../components/ShippingSections";
 import { API_BASE } from "../api";
 
@@ -42,6 +43,7 @@ export default function HomePage() {
       <ShippingActions />
       <ShippingServices />
       <ShippingSteps />
+      <ShuffledGallery count={4} />
 
       {/* Products Preview Section */}
       <section className="py-20 bg-white dark:bg-dark-bg transition-colors duration-300">
@@ -211,6 +213,8 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      <ShuffledGallery count={3} />
 
       {/* Join Our Team Section */}
       <section className="py-20 bg-gradient-to-br from-pp-navy via-pp-deep to-pp-blue dark:from-dark-surface dark:via-dark-card dark:to-dark-bg text-white relative overflow-hidden">

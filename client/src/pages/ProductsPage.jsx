@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { API_BASE } from "../api";
+import ShuffledGallery from "../components/ShuffledGallery";
 
 const PRODUCT_DATA_HT = [
   { id: 1, name: "Detèjan Likid Premium", category: "cleaning", price: "$8.99", rating: 4.8, image: "🧴", description: "Detèjan ki efikas pou machin ak men", inStock: true },
@@ -345,6 +346,7 @@ export default function ProductsPage() {
           </div>
         </div>
       </div>
+      <ShuffledGallery count={4} dark />
     </div>
   );
 }

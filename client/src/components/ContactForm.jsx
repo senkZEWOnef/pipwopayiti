@@ -1,17 +1,22 @@
 import { useState } from "react";
 import { useSearchParams } from "react-router-dom";
+import { findItem } from "../data/store";
 import { useTranslation } from "react-i18next";
 import { API_BASE } from "../api";
 
 export default function ContactForm({ isMainPage = false }) {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const [searchParams] = useSearchParams();
+  const SERVICES = ['shipping', 'cleaning', 'kitchen', 'vanity', 'closets', 'tv', 'delivery', 'other'];
+  const presetItem = findItem(searchParams.get('item'));
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
     email: '',
-    serviceType: searchParams.get('service') === 'shipping' ? 'shipping' : '',
-    message: ''
+    serviceType: SERVICES.includes(searchParams.get('service')) ? searchParams.get('service') : '',
+    message: presetItem
+      ? i18n.t('store.contactMessage', { name: i18n.t(`store.items.${presetItem.id}.name`), code: presetItem.id.toUpperCase() })
+      : ''
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
@@ -143,7 +148,9 @@ export default function ContactForm({ isMainPage = false }) {
           <option value="shipping">{t('contact.shipping')}</option>
           <option value="cleaning">{t('contact.cleaningProducts')}</option>
           <option value="kitchen">{t('contact.pvcKitchen')}</option>
+          <option value="vanity">{t('contact.vanity')}</option>
           <option value="closets">{t('contact.closetsWardrobes')}</option>
+          <option value="tv">{t('contact.tvSet')}</option>
           <option value="delivery">{t('contact.deliveryInstall')}</option>
           <option value="other">{t('contact.otherMultiple')}</option>
         </select>

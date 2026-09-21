@@ -6,7 +6,8 @@
     "contact": "Kontak",
     "bookAppointment": "Pran Randevou",
     "shipping": "Shipping",
-    "getQuote": "Mande yon Devis"
+    "getQuote": "Mande yon Devis",
+    "store": "Boutik"
   },
   "homepage": {
     "title": "Pi Pwòp Shipping",
@@ -136,7 +137,9 @@
     "requiredFields": "Jaden ki obligatwa",
     "whereWeAre": "Kote nou ye",
     "location": "Port-au-Prince, Ayiti",
-    "shipping": "Shipping Ozetazini → Ayiti"
+    "shipping": "Shipping Ozetazini → Ayiti",
+    "vanity": "Vanity / meb twalèt",
+    "tvSet": "Meb TV / mi TV"
   },
   "footer": {
     "tagline": "Shipping Ozetazini → Ayiti",
@@ -153,7 +156,8 @@
     "deliveryInstall": "Livrezon & Enstalasyon",
     "applyWork": "Vin nan Ekip Nou an",
     "shipping": "Shipping Kontenè",
-    "shippingLink": "Shipping"
+    "shippingLink": "Shipping",
+    "storeLink": "Boutik"
   },
   "booking": {
     "bookAppointment": "Pran Randevou",
@@ -670,6 +674,78 @@
       "configured": "konfigire",
       "alwaysReady": "toujou disponib",
       "keysHint": "Mete kle yo nan server/.env (gade server/.env.example) pou aktive fason ki pa konfigire yo."
+    }
+  },
+  "store": {
+    "title": "Boutik Nou",
+    "subtitle": "Dekouvri modèl kwizin, vanity, closet ak meb TV nou yo. Nou fè yo sou mezi pou ou.",
+    "all": "Tout",
+    "categories": {
+      "kitchens": "Kwizin",
+      "vanities": "Vanity",
+      "closets": "Closet",
+      "tv": "Meb TV"
+    },
+    "madeToOrder": "Fèt sou mezi",
+    "requestQuote": "Mande yon devis",
+    "prev": "Anvan",
+    "next": "Apre",
+    "close": "Fèmen",
+    "viewAll": "Gade tout boutik la",
+    "galleryTitle": "Modèl pou kay ou",
+    "gallerySubtitle": "Klike sou yon foto pou wè plis.",
+    "illustrationNote": "Foto yo se ilistrasyon modèl yo. Koulè, mezi ak detay yo fèt sou mezi selon bezwen ou.",
+    "customCta": "Ou gen yon lòt lide? Pale ak nou",
+    "contactMessage": "Mwen enterese nan: {{name}} ({{code}})",
+    "items": {
+      "k1": {
+        "name": "Kwizin blan ak bwa klè",
+        "desc": "Kabinè blan ak tiwa an bwa klè. Konpak, ideyal pou yon ti espas."
+      },
+      "k2": {
+        "name": "Kwizin bwa natirèl ak gwo kolòn",
+        "desc": "Kabinè ba an bwa natirèl, kabinè wo blan, ak yon gwo kolòn pou ranje plis bagay."
+      },
+      "k3": {
+        "name": "Kwizin gri fonse an L",
+        "desc": "Kabinè gri fonse ak etajè an bwa ak limyè anba kabinè yo. Fòm L pou plis espas travay."
+      },
+      "v1": {
+        "name": "Vanity blan 2 pòt",
+        "desc": "Vanity blan senp ak lavabo entegre ak glas."
+      },
+      "v2": {
+        "name": "Vanity bwa ak gwo glas",
+        "desc": "Vanity an bwa natirèl ak tiwa, pòt, ak yon gwo glas ankadre."
+      },
+      "v3": {
+        "name": "Vanity suspann gri ak bwa",
+        "desc": "Vanity suspann ak tiwa gri ak bwa, ak yon kabinè glas ki gen limyè."
+      },
+      "c1": {
+        "name": "Gadrob blan ak tiwa",
+        "desc": "Gadrob blan ak plizyè pòt, plas pou pandye rad ak tiwa anba."
+      },
+      "c2": {
+        "name": "Mi gadrob bwa ak glas",
+        "desc": "Gwo mi rangman an bwa ak yon glas nan mitan, tiwa, ak plas pou pandye rad."
+      },
+      "c3": {
+        "name": "Closet ang ouvè",
+        "desc": "Closet ouvè nan ang ak etajè, tiwa ak plas pou soulye ak rad."
+      },
+      "t1": {
+        "name": "Meb TV blan ak bwa",
+        "desc": "Meb TV ba ak pòt ak etajè ouvè."
+      },
+      "t2": {
+        "name": "Mi TV bwa ak etajè",
+        "desc": "Panno an bwa ak etajè sou kote ak rangman blan anba."
+      },
+      "t3": {
+        "name": "Mi TV gri ak limyè",
+        "desc": "Gwo mi TV gri ak bwa, ak etajè ki gen limyè sou kote."
+      }
     }
   }
 }

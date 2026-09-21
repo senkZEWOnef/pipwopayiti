@@ -30,6 +30,9 @@ export default function Footer() {
               <Link to="/shipping" className="block text-pp-deep/80 dark:text-dark-text-secondary hover:text-pp-blue dark:hover:text-dark-accent-blue transition-colors">
                 {t('footer.shippingLink')}
               </Link>
+              <Link to="/store" className="block text-pp-deep/80 dark:text-dark-text-secondary hover:text-pp-blue dark:hover:text-dark-accent-blue transition-colors">
+                {t('footer.storeLink')}
+              </Link>
               <Link to="/products" className="block text-pp-deep/80 dark:text-dark-text-secondary hover:text-pp-blue dark:hover:text-dark-accent-blue transition-colors">
                 {t('nav.products')}
               </Link>

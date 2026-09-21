@@ -50,6 +50,14 @@ export default function Layout({ children }) {
               {t('nav.shipping')}
             </Link>
             <Link 
+              to="/store" 
+              className={`font-semibold transition-colors hover:text-pp-blue dark:hover:text-dark-accent-blue ${
+                location.pathname.startsWith('/store') ? 'text-pp-blue dark:text-dark-accent-blue' : 'text-pp-deep dark:text-dark-text'
+              }`}
+            >
+              {t('nav.store')}
+            </Link>
+            <Link 
               to="/products" 
               className={`font-semibold transition-colors hover:text-pp-blue dark:hover:text-dark-accent-blue ${
                 location.pathname === '/products' ? 'text-pp-blue dark:text-dark-accent-blue' : 'text-pp-deep dark:text-dark-text'
@@ -112,6 +120,7 @@ export default function Layout({ children }) {
           <nav className="px-6 py-4 space-y-3">
             <Link to="/" className="block py-2 text-pp-deep dark:text-dark-text font-semibold">{t('nav.home')}</Link>
             <Link to="/shipping" className="block py-2 text-pp-deep dark:text-dark-text font-semibold">{t('nav.shipping')}</Link>
+            <Link to="/store" className="block py-2 text-pp-deep dark:text-dark-text font-semibold">{t('nav.store')}</Link>
             <Link to="/products" className="block py-2 text-pp-deep font-semibold">{t('nav.products')}</Link>
             <Link to="/services" className="block py-2 text-pp-deep font-semibold">{t('nav.services')}</Link>
             <Link to="/contact" className="block py-2 text-pp-deep font-semibold">{t('nav.contact')}</Link>

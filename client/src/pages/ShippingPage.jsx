@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
+import ShuffledGallery from "../components/ShuffledGallery";
 import {
   ShippingHero,
   ShippingServices,
@@ -21,6 +22,7 @@ export default function ShippingPage() {
       <ShippingActions />
       <ShippingServices />
       <ShippingSteps />
+      <ShuffledGallery count={3} />
       <ShippingCTA />
     </div>
   );

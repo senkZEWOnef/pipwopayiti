@@ -1,5 +1,6 @@
 import { useTranslation } from "react-i18next";
 import ContactForm from "../components/ContactForm";
+import ShuffledGallery from "../components/ShuffledGallery";
 
 export default function ContactPage() {
   const { t, i18n } = useTranslation();
@@ -155,6 +156,7 @@ export default function ContactPage() {
           </div>
         </div>
       </div>
+      <ShuffledGallery count={3} dark />
     </div>
   );
 }

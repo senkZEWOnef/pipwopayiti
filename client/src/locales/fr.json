@@ -6,7 +6,8 @@
     "contact": "Contact",
     "bookAppointment": "Prendre Rendez-vous",
     "shipping": "Expédition",
-    "getQuote": "Demander un Devis"
+    "getQuote": "Demander un Devis",
+    "store": "Boutique"
   },
   "homepage": {
     "title": "Pi Pwòp Shipping",
@@ -136,7 +137,9 @@
     "requiredFields": "Champs requis",
     "whereWeAre": "Où nous sommes",
     "location": "Port-au-Prince, Haïti",
-    "shipping": "Expédition États-Unis → Haïti"
+    "shipping": "Expédition États-Unis → Haïti",
+    "vanity": "Meuble vasque / salle de bain",
+    "tvSet": "Meuble TV / mur TV"
   },
   "footer": {
     "tagline": "Expédition États-Unis → Haïti",
@@ -153,7 +156,8 @@
     "deliveryInstall": "Livraison & Installation",
     "applyWork": "Rejoindre Notre Équipe",
     "shipping": "Expédition de Conteneurs",
-    "shippingLink": "Expédition"
+    "shippingLink": "Expédition",
+    "storeLink": "Boutique"
   },
   "booking": {
     "bookAppointment": "Prendre Rendez-vous",
@@ -670,6 +674,78 @@
       "configured": "configuré",
       "alwaysReady": "toujours disponible",
       "keysHint": "Ajoutez les clés dans server/.env (voir server/.env.example) pour activer les moyens non configurés."
+    }
+  },
+  "store": {
+    "title": "Notre Boutique",
+    "subtitle": "Découvrez nos modèles de cuisines, meubles vasque, placards et meubles TV. Fabriqués sur mesure pour vous.",
+    "all": "Tout",
+    "categories": {
+      "kitchens": "Cuisines",
+      "vanities": "Meubles vasque",
+      "closets": "Placards",
+      "tv": "Meubles TV"
+    },
+    "madeToOrder": "Fabriqué sur mesure",
+    "requestQuote": "Demander un devis",
+    "prev": "Précédent",
+    "next": "Suivant",
+    "close": "Fermer",
+    "viewAll": "Voir toute la boutique",
+    "galleryTitle": "Des modèles pour votre maison",
+    "gallerySubtitle": "Cliquez sur une photo pour en voir plus.",
+    "illustrationNote": "Les images sont des illustrations des modèles. Couleurs, dimensions et détails sur mesure selon vos besoins.",
+    "customCta": "Une autre idée ? Parlez-nous-en",
+    "contactMessage": "Je suis intéressé(e) par : {{name}} ({{code}})",
+    "items": {
+      "k1": {
+        "name": "Cuisine blanche et bois clair",
+        "desc": "Meubles blancs avec tiroirs en bois clair. Compacte, idéale pour un petit espace."
+      },
+      "k2": {
+        "name": "Cuisine bois naturel avec grande colonne",
+        "desc": "Meubles bas en bois naturel, éléments hauts blancs et grande colonne de rangement."
+      },
+      "k3": {
+        "name": "Cuisine grise en L",
+        "desc": "Meubles gris anthracite, étagères en bois et éclairage sous les meubles hauts. Forme en L pour plus de plan de travail."
+      },
+      "v1": {
+        "name": "Meuble vasque blanc à 2 portes",
+        "desc": "Meuble vasque blanc simple avec lavabo intégré et miroir."
+      },
+      "v2": {
+        "name": "Meuble vasque bois avec grand miroir",
+        "desc": "Meuble en bois naturel avec tiroirs, portes et grand miroir encadré."
+      },
+      "v3": {
+        "name": "Meuble vasque suspendu gris et bois",
+        "desc": "Meuble suspendu à tiroirs gris et bois, avec armoire-miroir lumineuse."
+      },
+      "c1": {
+        "name": "Armoire blanche avec tiroirs",
+        "desc": "Armoire blanche à plusieurs portes, penderie et tiroirs en bas."
+      },
+      "c2": {
+        "name": "Mur de rangement bois avec miroir",
+        "desc": "Grand mur de rangement en bois avec miroir central, tiroirs et penderies."
+      },
+      "c3": {
+        "name": "Dressing d'angle ouvert",
+        "desc": "Dressing ouvert d'angle avec étagères, tiroirs et espace pour chaussures et vêtements."
+      },
+      "t1": {
+        "name": "Meuble TV blanc et bois",
+        "desc": "Meuble TV bas avec portes et étagères ouvertes."
+      },
+      "t2": {
+        "name": "Mur TV en bois avec étagères",
+        "desc": "Panneau en bois avec étagères latérales et rangements blancs en bas."
+      },
+      "t3": {
+        "name": "Mur TV gris avec éclairage",
+        "desc": "Grand mur TV gris et bois avec étagères éclairées."
+      }
     }
   }
 }
