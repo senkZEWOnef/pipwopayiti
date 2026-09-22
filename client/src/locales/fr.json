@@ -33,7 +33,36 @@
     "delivery": "Livraison",
     "productsServicesTitle": "Pi Pwòp Produits & Services",
     "productsServicesDesc": "En plus de l'expédition, nous proposons toujours des produits de qualité pour votre maison et votre entreprise, ainsi que des installations professionnelles.",
-    "viewServices": "Voir Tous les Services"
+    "viewServices": "Voir Tous les Services",
+    "heroChip": "🚢 États-Unis → Haïti",
+    "heroTitle": "Tout ce dont Haïti a besoin, en un seul endroit.",
+    "heroSubtitle": "Nous expédions des conteneurs entre les États-Unis et Haïti, vendons des produits de qualité et réalisons cuisines et placards sur mesure.",
+    "heroCtaPrimary": "Découvrir la Boutique",
+    "heroCtaSecondary": "Nous Contacter",
+    "heroBadge1": "Fabriqué sur mesure",
+    "heroBadge2": "États-Unis → Haïti",
+    "pillarsTitle": "Trois façons de vous aider",
+    "pillarsSubtitle": "Choisissez ce dont vous avez besoin aujourd'hui.",
+    "pillars": {
+      "shipping": {
+        "title": "Expédition",
+        "desc": "Envoi et réception de conteneurs entre les États-Unis et Haïti, avec suivi en direct.",
+        "cta": "Voir l'Expédition"
+      },
+      "store": {
+        "title": "Boutique",
+        "desc": "Cuisines, meubles vasque, placards et meubles TV, fabriqués sur mesure pour votre maison.",
+        "cta": "Découvrir la Boutique"
+      },
+      "products": {
+        "title": "Produits & Services",
+        "desc": "Produits de nettoyage et installation professionnelle pour votre maison.",
+        "cta": "Voir les Produits"
+      }
+    },
+    "categoriesTitle": "Produits Populaires",
+    "categoriesSubtitle": "Un aperçu de ce que propose notre boutique de produits.",
+    "categoriesCta": "Voir tous les produits"
   },
   "products": {
     "title": "Nos Produits",

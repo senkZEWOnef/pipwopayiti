@@ -33,7 +33,36 @@
     "delivery": "Livrezon",
     "productsServicesTitle": "Pi Pwòp Pwodwi & Sèvis",
     "productsServicesDesc": "Anplis shipping, nou toujou ofri pwodwi kalite pou kay ou ak biznis ou, ak enstalasyon pwofesyonèl.",
-    "viewServices": "Gade Tout Sèvis Yo"
+    "viewServices": "Gade Tout Sèvis Yo",
+    "heroChip": "🚢 Ozetazini → Ayiti",
+    "heroTitle": "Tout sa Ayiti bezwen, yon sèl kote.",
+    "heroSubtitle": "Nou voye kontenè ant Ozetazini ak Ayiti, nou vann pwodwi kalite, epi nou fè kwizin ak closet sou mezi.",
+    "heroCtaPrimary": "Dekouvri Boutik la",
+    "heroCtaSecondary": "Kontakte Nou",
+    "heroBadge1": "Fèt sou mezi",
+    "heroBadge2": "Ozetazini → Ayiti",
+    "pillarsTitle": "Twa fason nou la pou ou",
+    "pillarsSubtitle": "Chwazi sa w bezwen jodi a.",
+    "pillars": {
+      "shipping": {
+        "title": "Shipping",
+        "desc": "Voye ak resevwa kontenè ant Ozetazini ak Ayiti, ak swivi an dirèk.",
+        "cta": "Gade Shipping"
+      },
+      "store": {
+        "title": "Boutik",
+        "desc": "Kwizin, vanity, closet ak meb TV, fèt sou mezi pou kay ou.",
+        "cta": "Antre nan Boutik la"
+      },
+      "products": {
+        "title": "Pwodwi & Sèvis",
+        "desc": "Pwodwi netwayaj ak enstalasyon pwofesyonèl pou kay ou.",
+        "cta": "Gade Pwodwi yo"
+      }
+    },
+    "categoriesTitle": "Pwodwi ki Popilè",
+    "categoriesSubtitle": "Yon apèsi nan sa nou genyen nan Pwodwi Nou Yo.",
+    "categoriesCta": "Gade tout pwodwi yo"
   },
   "products": {
     "title": "Pwodwi Nou Yo",
